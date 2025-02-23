@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Method</title>
+</head>
+<body>
+    <script>
+    // string methods = allow you to manipulate and work with text (strings)
+
+    let userName = "Bro Code";
+    let phoneNumber = "123-456-7890";
+
+    console.log(userName.length); //menghitung seluruh char pada string
+    console.log(userName.charAt(0)); //menampilkan huruf pada string 0 = huruf pertama pada string
+    console.log(userName.indexOf("o")); //menghitung letak huruf o berada di nomer berapa dari depan, output = 2
+    console.log(userName.lastIndexOf("o")); //menghitung letak huruf o berada di nomer berapa dari paling belakang belakang, output = 6
+    userName = userName.trim(); //menghapus spasi apapun
+    userName = userName.toUpperCase(); //mengubah menjadi huruf besar semua
+    userName = userName.toLowerCase(); //mengubah menjadi huruf kecil semua
+    userName = userName.repeat(3); //menulis ulang string sebanyak perintah
+    let result1 = userName.startsWith(" "); //meriksa apakah ada spasi/char pada awal string, output= false
+    let result2 = userName.endsWith(" "); //meriksa apakah ada spasi/char pada akhir string, output= false
+    let result3 = userName.includes(" "); //meriksa apakah ada spasi/char pada tengah string, output= false
+    phoneNumber = phoneNumber.replaceAll("-", ""); // mengubah tanda "-" menjadi hilang atau dihapus
+    phoneNumber = phoneNumber.padStart(15, "0"); //menambahkan 0 di diawal string sampai jumlah karakter 15
+    phoneNumber = phoneNumber.padEnd(15, "0"); //menambahkan 0 di akhir string sampai jumlah karakter 15
+
+    console.log(phoneNumber);
+    </script>
+</body>
+</html>

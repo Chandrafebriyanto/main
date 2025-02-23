@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+</head>
+<body>
+    <script>
+        //switch adalah sebuah program yang sama dengan if else statement
+
+        const day = 7; 
+
+    switch (day) {
+        case 1: //digunakan jika kasus day nilainya 1 maka di proses, begitu seterusnya
+            console.log("It is Monday");
+            break; //break digunakan untuk menghentikan kasus jika nilai kasus terpenuhi
+        case 2:
+            console.log("It is Tuesday");
+            break;
+        case 3:
+            console.log("It is Wednesday");
+            break;
+        case 4:
+            console.log("It is Thursday");
+            break;
+        case 5:
+            console.log("It is Friday");
+            break;
+        case 6:
+            console.log("It is Saturday");
+            break;
+        case 7:
+            console.log("It is Sunday");
+            break;
+        default: //defaul sama dengan else (dia akan berfungsi jika nilai kasus tidak terpenuhi atau tidak sesuai dengan perintah kasus)
+            console.log(`${day} is not a day`);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z Index Position</title>
+    <style>
+        .content{
+            background-color: aqua;
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+        }
+
+        .content2{
+            border: solid 2px red;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content content1">
+            <h1>content 1</h1>
+        </div> 
+        <div class="content content2">
+            <h1>content 2</h1>
+        </div>
+        <div class="content content3">
+            <h1>content 3</h1>
+        </div>
+        
+    </div>
+</body>
+</html>

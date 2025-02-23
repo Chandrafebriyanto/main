@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+
+        input{
+            font-family: sans-serif;
+            margin: 10px;
+            
+        }
+        #username, #password{
+            border-style: solid;
+            border-color: black;
+            border-width: 4px;
+            border-radius: 7px;
+            box-shadow: 5px 6px grey;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        #submit{
+            border-style: solid;
+            border-color: black;
+            border-width: 2px;
+            border-radius: 7px;
+            box-shadow: 4px 4px grey;
+            margin: 10px;
+            padding: 5px;
+            background-color: white;
+            
+        }
+
+        #submit:hover{
+            background-color: black;
+            color: white;
+        }
+
+        #password:hover, #username:hover{
+            border-color: yellow;
+        }
+        #password:focus, #username:focus{
+            background-color: yellow;
+            border-color: yellow;
+            color: black;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="username">
+            Username: <br>
+            <input type="text" id="username">
+        </label>
+        <br>
+        <label for="Password">
+            Password: <br>
+            <input type="password" id="password">
+        </label><br>
+        <input type="submit" id="submit">
+    </form>
+</body>
+</html>

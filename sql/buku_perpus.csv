@@ -1,0 +1,51 @@
+nomer_buku,nama_buku,letak_buku,penulis,status
+1001,Machine Learning,Rak-4,Fajar Nugroho,tersedia
+1002,Pemrograman Java,Rak-8,Citra Lestari,dipinjam
+1003,Jaringan Saraf Tiruan,Rak-10,Indra Wijaya,tersedia
+1004,Artificial Intelligence,Rak-7,Citra Lestari,tersedia
+1005,Kalkulus Komputasi,Rak-1,Citra Lestari,dipinjam
+1006,Deep Neural Networks,Rak-8,Joko Suyono,dipinjam
+1007,Arsitektur Komputer,Rak-1,Citra Lestari,tersedia
+1008,Jaringan Saraf Tiruan,Rak-6,Citra Lestari,tersedia
+1009,Desain UI/UX,Rak-3,Gita Permata,tersedia
+1010,Pengenalan HTML dan CSS,Rak-3,Fajar Nugroho,tersedia
+1011,Pemrograman Java,Rak-7,Budi Santoso,tersedia
+1012,Keamanan Siber,Rak-6,Indra Wijaya,dipinjam
+1013,Manajemen Proyek IT,Rak-8,Andi Saputra,tersedia
+1014,Jaringan Komputer,Rak-10,Fajar Nugroho,tersedia
+1015,Jaringan Komputer,Rak-10,Gita Permata,dipinjam
+1016,Internet of Things,Rak-5,Fajar Nugroho,dipinjam
+1017,Pemrograman Web dengan PHP,Rak-4,Hadi Susanto,tersedia
+1018,Rekayasa Perangkat Lunak,Rak-4,Citra Lestari,dipinjam
+1019,Sistem Terdistribusi,Rak-10,Budi Santoso,tersedia
+1020,Metode Numerik,Rak-7,Andi Saputra,dipinjam
+1021,Etika Profesi IT,Rak-10,Indra Wijaya,dipinjam
+1022,Sistem Informasi,Rak-7,Budi Santoso,tersedia
+1023,Python untuk Data Science,Rak-8,Budi Santoso,dipinjam
+1024,Penambangan Data,Rak-9,Hadi Susanto,tersedia
+1025,Sistem Informasi,Rak-6,Citra Lestari,tersedia
+1026,Visualisasi Data,Rak-10,Citra Lestari,tersedia
+1027,Deep Neural Networks,Rak-10,Joko Suyono,tersedia
+1028,Sistem Terdistribusi,Rak-9,Joko Suyono,dipinjam
+1029,E-Commerce Development,Rak-7,Indra Wijaya,dipinjam
+1030,Desain UI/UX,Rak-1,Eko Prasetyo,dipinjam
+1031,Pengenalan HTML dan CSS,Rak-8,Budi Santoso,dipinjam
+1032,Keamanan Jaringan,Rak-5,Budi Santoso,tersedia
+1033,Full Stack Development,Rak-5,Dewi Handayani,dipinjam
+1034,Pengenalan HTML dan CSS,Rak-3,Andi Saputra,tersedia
+1035,Keamanan Jaringan,Rak-1,Budi Santoso,tersedia
+1036,Manajemen Proyek IT,Rak-7,Budi Santoso,tersedia
+1037,Visualisasi Data,Rak-2,Indra Wijaya,tersedia
+1038,Blockchain Technology,Rak-10,Andi Saputra,dipinjam
+1039,Algoritma dan Struktur Data,Rak-6,Andi Saputra,tersedia
+1040,Cybersecurity for Beginners,Rak-3,Indra Wijaya,dipinjam
+1041,Sistem Embedded,Rak-4,Andi Saputra,tersedia
+1042,Arsitektur Komputer,Rak-2,Hadi Susanto,tersedia
+1043,Analisis Data dengan R,Rak-8,Budi Santoso,tersedia
+1044,Full Stack Development,Rak-7,Eko Prasetyo,dipinjam
+1045,Keamanan Jaringan,Rak-6,Joko Suyono,dipinjam
+1046,Kecerdasan Buatan,Rak-4,Andi Saputra,tersedia
+1047,Keamanan Siber,Rak-8,Gita Permata,dipinjam
+1048,Deep Learning,Rak-7,Citra Lestari,dipinjam
+1049,Pengenalan HTML dan CSS,Rak-4,Indra Wijaya,tersedia
+1050,Data Science untuk Pemula,Rak-4,Fajar Nugroho,tersedia

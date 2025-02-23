@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content</title>
+    <style>
+        p{
+            font-size: 25px;
+        }
+        .content{
+            content: "konten";
+        }
+        .content::before{
+            content: "ini ";
+        }
+
+        .content::after{
+            content: " nya";
+        }
+    </style>
+</head>
+<body>
+    <p class="content">isi konten</p>
+</body>
+</html>

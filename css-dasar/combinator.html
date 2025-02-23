@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combinator</title>
+    <style>
+        header h1 /*ini adalah combinator selector*/{
+            color: aqua;
+        }
+
+        div > p /*ini adalah child selector*/{
+            color:blue
+        }
+
+        span + h1 /*adjancent sibling selector*/{
+            color: aquamarine;
+        }
+
+        #general ~ h1 /*general sibling selector*/{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <!-- combinator selector -->
+    <header>
+        <h1>ini adalah judul</h1>
+        <p>ini adalah paragraf</p>
+    </header>
+    <p>ini adalah isi</p><br>
+
+    <!-- child selector -->
+    <div>
+        <article>
+            <p>ini tidak dipilih</p>
+        </article>
+        <p>ini dipilih</p>
+    </div>
+    <p>ini tidak dipilih</p><br>
+
+    <!-- adjancent sibling selector -->
+    <span>
+        <article>
+            <h1>ini tidak dpilih</h1>
+        </article>
+        <h1>ini tidak dipilih</h1>
+    </span>
+    <h1>ini dipilih</h1>
+    <h1>ini tidak dipilih</h1><br>
+
+     <!-- general sibling selector -->
+     <div id="general">
+        <article>
+            <h1>ini tidak dpilih</h1>
+        </article>
+        <h1>ini tidak dipilih</h1>
+    </div>
+    <h1>ini dipilih</h1>
+    <h1>ini dipilih</h1>
+
+</body>
+</html>

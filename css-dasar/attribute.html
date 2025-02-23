@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute</title>
+
+    <style>
+        /* CSS [attribute] Selector: memilih semua element a yang mempunyai atribut target */
+        #value a/*tidak boleh di spasi*/[target]{
+            color: red;
+        }
+        /* CSS [attribute="value"] Selector: memilih semua element a yang mempunyai atribut target dengan nilai "_blank" */
+        #value2 a/*tidak boleh di spasi*/[target="_blank"]{
+            color: red;
+        }
+
+        /* CSS [attribute~="value"] Selector: memilih semua element p yang mempunyai atribut tittle yang terdapat kata "belajar" */
+        #p p[title~="belajar"]{
+            color: red;
+        }
+        /* CSS [attribute|="value"] Selector: memilih semua element p yang mempunyai atribut tittle yang memiliki value
+         "belajar" atau "belajar" yang diikuti dengan karakter (nilainya hanya satu)*/
+        #p2 p[title|="belajar"]{
+            color: red;
+        }
+        /* CSS [attribute|="value"] Selector: memilih semua element p yang mempunyai atribut tittle yang memiliki value
+         dimulai dengan kata "belajar" */
+        #p3 p[title^="belajar"]{
+            color: red;
+        }
+        /* CSS [attribute|="value"] Selector: memilih semua element p yang mempunyai atribut tittle yang memiliki value
+         diakhiri dengan kata "belajar" */
+        #p4 p[title$="belajar"]{
+            color: red;
+        }
+        /* CSS [attribute|="value"] Selector: memilih semua element p yang mempunyai atribut tittle yang memiliki value
+         yang mengandung kata "belajar" */
+        #p5 p[title*="belajar"]{
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="value"><!-- CSS [attribute] Selector-->
+        <a href="" target="_blank">contoh 1</a>
+        <a href="">contoh 2</a>
+        <a href="" target="_blank">contoh 3</a>
+        <a href="">contoh 4</a>
+    </div> <br>
+
+    <div id="value2"><!-- CSS [attribute="value"] Selector-->
+        <a href="">contoh 1</a>
+        <a href="" target="_blank">contoh 2</a>
+        <a href="" target="_self">contoh 3</a>
+        <a href="" target="_blank">contoh 4</a>
+    </div><br>
+
+    <div id="p"><!-- CSS [attribute~="value"] Selector-->
+        <p title="belajar pemrograman">ini dipilih</p>
+        <p title="belajarpemrograman">ini tidak dipilih<!--karena dianggap satu kata--></p>
+    </div> <br>
+
+    <div id="p2"><!-- CSS [attribute|="value"] Selector-->
+        <p title="belajar pemrograman">ini tidak dipilih<!--karena kata yang dipilih 1 kalimat belajar--></p>
+        <p title="belajar">ini dipilih</p>
+        <p title="belajar-pemrograman">ini dipilih</p>
+    </div> <br>
+
+    <div id="p3"><!-- CSS [attribute^="value"] Selector-->
+        <p title="belajarpemrograman">ini dipilih</p>
+        <p title="belajar pemrograman">ini dipilih</p>
+        <p title="belajar-pemrograman">ini dipilih</p>
+        <p title="belajar">ini dipilih</p>
+        <p title="pemrograman belajar">ini tidak dipilih <!--karena kata depannya bukan belajar--></p>
+    </div><br>
+
+    <div id="p4"><!-- CSS [attribute^="value"] Selector-->
+        <p title="belajarpemrograman">ini tidak dipilih</p>
+        <p title="belajar pemrograman">ini tidak dipilih</p>
+        <p title="belajar-pemrograman">ini tidak dipilih</p>
+        <p title="belajar">ini dipilih<!--karena berakhiran belajar--></p>
+        <p title="pemrograman belajar">ini dipilih<!--karena berakhiran belajar--></p>
+    </div><br>
+
+    <div id="p5"><!-- CSS [attribute^="value"] Selector (mengandung kata belajar baik diawal/tengah/akhir)-->
+        <p title="belajarpemrograman">ini dipilih</p>
+        <p title="belajar pemrograman">ini dipilih</p>
+        <p title="belajar-pemrograman">ini dipilih</p>
+        <p title="pemrograman belajar pemrograman">ini dipilih</p>
+        <p title="pemrograman belajar">ini dipilih</p>
+    </div>
+</body>
+</html>

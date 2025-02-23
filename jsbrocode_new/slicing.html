@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slicing String</title>
+</head>
+<body>
+    <script>
+        
+        //tittle: Slicing String
+        //note: sebuah metode untuk memotong string sesuai dengan index yang diinginkan
+        //example 1
+        const FullStr = "Hello World";
+        let FirstStr = FullStr.slice(0, 5); //mengambil string dari index 0 sampai 5
+        console.log(FirstStr);
+
+        let LastStr = FullStr.slice(6, 11); //mengambil string dari index 6 sampai 11
+        console.log(LastStr);
+
+        let FirstChar = FullStr.slice(0, 1); //mengambil karakter pertama
+        console.log(FirstChar);
+
+        let LastChar = FullStr.slice(-1); //mengambil karakter terakhir
+        console.log(LastChar);
+
+        //example 2
+        const Fullname = "Candra Febriyanto";
+        let FirstName = Fullname.slice(0, Fullname.indexOf(" ")); //mengambil nama depan dengan batas akhir spasi
+        let LastName = Fullname.slice(Fullname.indexOf(" ") + 1); //mengambil nama belakang dimulai dari index setelah spasi
+        console.log(FirstName);
+        console.log(LastName);
+
+        //example learing
+        const email = "febriyantocandra05@gmail.com";
+        let username = email.slice(0, email.indexOf("@"));
+        let domain = email.slice(email.indexOf("@") + 1);
+        console.log(username);
+        console.log(domain);
+        
+    </script>
+</body>
+</html>

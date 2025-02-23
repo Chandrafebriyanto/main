@@ -1,0 +1,22 @@
+#countLabel{
+    display: block;
+    text-align: center;
+    font-size: 10em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: aqua;
+}
+#btncontainer{
+    text-align: center;
+}
+.buttons{
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: rgb(138, 131, 240);
+    border-radius: 7px;
+    cursor: pointer; /*merubah bentuk kursor menjadi tangan ketika kursor diatas button*/
+    transition: background-color 0.25s;  /*berfungsi untuk transisi perubahan background color yang nanti akan berubah ketika di hover*/
+}
+.buttons:hover{
+    background-color:rgb(96, 85, 244) ;
+}

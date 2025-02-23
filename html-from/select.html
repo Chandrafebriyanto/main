@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select</title>
+</head>
+<body>
+    <form action="">
+        <label for="provinsi">nama provinsi</label>
+        <select name="provinsi" id="provinsi" multiple size="3">
+            <!-- <option value="provinsi" selected></option> -->o
+            <option value="jawa_timur">Jawa Timur</option>
+            <option value="jawa_tengah"> Jawa tengah</option>
+            <option value="jawa_barat">Jawa Barat</option>
+        </select>
+        <button type="submit">simpan</button>
+    </form><br>
+
+    <form action="">
+        <label for="provinsi">provinsi</label>
+        <select name="provinsi" id="provinsi">
+            <optgroup label="jawa_timur">
+                <option value="jombang">jombang</option>
+                <option value="pasuruan">pasuruan</option>
+                <option value="blitar">blitar</option>
+            </optgroup>
+            <optgroup label="jawa_tengah">
+                <option value="solo">solo</option>
+                <option value="magelang">magelang</option>
+                <option value="yogyakarta">yogyakarta</option>
+            </optgroup>
+            <optgroup label="jawa_barat">
+                <option value="bandung">bandung</option>
+                <option value="bekasi">bekasi</option>
+                <option value="cirebon">cirebon</option>
+            </optgroup>
+        </select>
+        <button type="submit">simpan</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Tamplate</title>
+</head>
+<body>
+    <script>
+        const name = "Candra Febriyanto";
+        const tamplate = `nama: ${name}`;
+        console.info(tamplate);
+        document.writeln(tamplate);
+
+        document.writeln("<br>")
+
+        const nilai = 80;
+        const kelulusan = `nama: ${name}, lulus: ${nilai > 70}`;
+        document.writeln(kelulusan);
+
+        const multiline = `halo perkenalkan nama saya candra,
+        dari dari program studi manajemen informatika angkatan 2024
+        di universitas negeri surabaya`
+
+        document.writeln("<h5>")
+            document.writeln(multiline);
+        document.writeln("</h5>")
+    </script>
+</body>
+</html>
