@@ -1,3 +1,4 @@
+// tittle: strict_equality
 // = digunakan untuk menyatakan variabel
 // == membandingkan antar data apakah sama (tanpa tipe data)
 // === membandingkan antar nilai dan tipe data apakah sama
