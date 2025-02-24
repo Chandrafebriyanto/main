@@ -3,7 +3,7 @@ import mediapipe as mp
 import numpy as np
 import math
 
-# Inisialisasi MediaPipe
+# note:Inisialisasi MediaPipe
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
