@@ -1,21 +1,18 @@
 class node:
-    def __init__(self, name, nim):
-        self.name = name
-        self.nim = nim
+    def __init__(self, value):
+        self.value = value
         self.next = None
         self.prev = None
 
 class double_linkedlist:
-    def __init__(self, name, nim):
-        new_node = node(name)
-        new_node = node(nim)
+    def __init__(self, value):
+        new_node = node(value)
         self.head = new_node
         self.tail = new_node
         self.length = 1
     
-    def append(self, name, nim):
-        new_node = node(name)
-        new_node = node(nim)
+    def append(self, value):
+        new_node = node(value)
         if self.head == 0:
             self.head = new_node
             self.tail = new_node
@@ -39,9 +36,8 @@ class double_linkedlist:
         self.length -= 1
         return temp.value
     
-    def prepend(self, name, nim):
-        new_node = node(name)
-        new_node = node(nim)
+    def prepend(self, value):
+        new_node = node(value)
         if self.head == 0:
             self.head = new_node
             self.tail = new_node
@@ -101,7 +97,24 @@ class double_linkedlist:
         print()
 
 
-my_list = double_linkedlist("candra febriyanto", "24091397027") 
+my_list = double_linkedlist(10) 
 my_list.print_list()
 
-    
+my_list.append(20)
+my_list.append(30)
+my_list.print_list()
+
+my_list.prepend(5)
+my_list.print_list()
+
+my_list.insert(2, 15)
+my_list.print_list()
+
+my_list.remove(2)
+my_list.print_list()
+
+my_list.remove(0)
+my_list.print_list()
+
+my_list.pop()
+my_list.print_list()    
