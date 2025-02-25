@@ -1,8 +1,5 @@
-num = 7
-if num > 3:
-    print("3")
-    if num < 5:
-        print("5")
-        if num == 7:
-          print(7)  
-          
+n = int(input('Masukkan nilai n: '))
+hasil = 1
+for i in range(1, n+1):
+    hasil *= i
+print(hasil)
