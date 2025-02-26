@@ -106,7 +106,6 @@ my_list.prepend('Fahrel', 24091397024)
 my_list.insert(0, 'Ahnaf', 24091397023)
 # my_list.remove(2)
 # my_list.pop()
-
 my_list.print_list()
 
 # INSERT INTO double_linkedlist(name, nim)

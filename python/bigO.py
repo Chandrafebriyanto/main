@@ -21,3 +21,5 @@ def print_items(n):
             print(f'buku ke {i} dan halaman ke {j}')
     
 print_items(4)
+
+
