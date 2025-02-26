@@ -4,8 +4,7 @@ class node:
         self.nim = nim
         self.next = None
         self.prev = None
-#note: the double linked list is a class that has a node class in it
-#note:the node class has a name, nim, next, and prev attributes
+#note: membuat
 
 class double_linkedlist:
     def __init__(self, name, nim):
