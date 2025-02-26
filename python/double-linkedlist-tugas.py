@@ -4,8 +4,7 @@ class node:
         self.nim = nim
         self.next = None
         self.prev = None
-#note: membuat
-
+        
 class double_linkedlist:
     def __init__(self, name, nim):
         new_node = node(name, nim)
@@ -101,10 +100,22 @@ class double_linkedlist:
 #note: the input data is a double linked list 
 my_list = double_linkedlist('Candra', 24091397027)
 my_list.append('Rizky', 24091397025)
+my_list.append('Lera', 24091397001)
+my_list.append('Anam', 24091397002)
+my_list.append('Haikhal', 24091397003)
+my_list.append('Habibi', 24091397004)
+my_list.append('Tirus', 24091397005)
+my_list.append('Aghnia', 24091397006)
+my_list.append('Bima', 24091397007)
+my_list.append('Septia', 24091397008)
+my_list.append('Zala', 24091397009)
+my_list.append('Zaryan', 24091397010)
+my_list.append('Rey', 24091397011)
+my_list.append('Margarita', 24091397012)
 my_list.prepend('Fahrel', 24091397024)
 my_list.insert(0, 'Ahnaf', 24091397023)
-# my_list.remove(2)
-# my_list.pop()
+my_list.remove(3)
+my_list.pop()
 my_list.print_list()
 
 # INSERT INTO double_linkedlist(name, nim)
@@ -114,4 +125,3 @@ my_list.print_list()
 #     nama varchar(255),
 #     nim int
 # }
-
