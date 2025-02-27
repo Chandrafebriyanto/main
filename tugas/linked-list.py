@@ -342,7 +342,7 @@ my_list = LinkedList(10)
 # my_list.prepend(5)
 my_list.append(20)
 my_list.insert(2, 15)
-my_list.remove(1)
+# my_list.remove(1)
 # my_list.pop()
 my_list.display() 
 
