@@ -13,3 +13,4 @@ if (PI !== 3.14){
 else{
     console.log("ini bukan nilai PI")
 }
+// note
