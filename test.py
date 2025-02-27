@@ -1,6 +1,4 @@
-
-n = int(input("masukan bilangan: "))
-if n % 2 == 0:
-    print("bilangan genap")
-else:
-    print("bilangan ganjil")
+# tittle: for lop
+n = 10
+for i in range(n+1):
+    print(i)

@@ -14,4 +14,3 @@
 #tittle: maximalSquare
 #tittle: land
 #tittle: print
-
