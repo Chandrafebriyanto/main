@@ -95,7 +95,7 @@ class double_linkedlist:
         while temp:
             print(f'{temp.name} ({temp.nim})')
             temp = temp.next
-  
+            
 #tittle: input data
 #note: the input data is a double linked list 
 my_list = double_linkedlist('Candra', 24091397027)
@@ -118,10 +118,3 @@ my_list.remove(3)
 my_list.pop()
 my_list.print_list()
 
-# INSERT INTO double_linkedlist(name, nim)
-# VALUES ('Candra', 24091397027);
-
-# create table nama_tabel{
-#     nama varchar(255),
-#     nim int
-# }

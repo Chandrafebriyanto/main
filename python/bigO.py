@@ -11,7 +11,7 @@ print_items(10)
 
 
 #tittle: Big O(n + n^2)
-print("\nBig O(n + n^2)")
+print("Big O(n + n^2)")
 def print_items(n):
     for i in range(1, n+1):
         print(f'ini adalah buku ke {i}')
