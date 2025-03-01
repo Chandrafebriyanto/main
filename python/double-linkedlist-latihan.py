@@ -1,3 +1,4 @@
+#date: 05 - 02 - 26
 class node:
     def __init__(self, value):
         self.value = value

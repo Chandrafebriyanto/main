@@ -1,3 +1,4 @@
+#date: 05 - 02 -26
 class node:
     def __init__(self, name, nim):
         self.name = name
@@ -14,7 +15,7 @@ class double_linkedlist:
     
     def append(self, name, nim):
         new_node = node(name, nim)
-        if self.head == 0:
+        if self.length == 0:
             self.head = new_node
             self.tail = new_node
         else: 
@@ -93,7 +94,7 @@ class double_linkedlist:
     def print_list(self):
         temp = self.head
         while temp:
-            print(f'{temp.name} ({temp.nim})')
+            print(f'Nama: {temp.name},  NIM: {temp.nim}')
             temp = temp.next
             
 #tittle: input data
