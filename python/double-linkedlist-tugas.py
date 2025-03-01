@@ -40,7 +40,7 @@ class double_linkedlist:
     
     def prepend(self, name, nim):
         new_node = node(name, nim)
-        if self.head == 0:
+        if self.length == 0:
             self.head = new_node
             self.tail = new_node
         else:
