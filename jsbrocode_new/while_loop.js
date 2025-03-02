@@ -21,11 +21,11 @@ for (let i = 0; i < num; i++) {
 }
 
 //example 3
-let loggin = false;
+let login = false;
 let username;
 let password;
 
-while (!loggin){
+while (!login){
     username = prompt("Please enter your name");
     password = prompt("Please enter your password");
     if (username === "username" || password === "password"){
