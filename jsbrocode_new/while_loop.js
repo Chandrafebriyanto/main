@@ -36,7 +36,6 @@ while (!login){
         console.log("try again")
     }
 }
-
 // //example 4
 // while(num<5){
 //     for(let i=1; i<=5; i++){
