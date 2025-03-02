@@ -11,8 +11,9 @@ for (let i = 10; i >= 1; i--){
 }
 console.log("HAPPY NEW YEAR")
 
+let i = prompt("please input numeber: ")
 //example 3
-for (let i = 1; i <= 20; i++){
+for (i; i <= 20; i++){
     if(i === 13){
         continue;
     }
@@ -20,3 +21,4 @@ for (let i = 1; i <= 20; i++){
         console.log(i)
     }
 }
+
