@@ -11,7 +11,7 @@ function myFunction() {
 
 myFunction();
 
-// tittle: variable scope = where a variable is recognized and accessible (local vs global)            
+// tittle: variable scope = where a variable is recognized and accessible (local vs global)
 
 let x = 3; // global scope
 
