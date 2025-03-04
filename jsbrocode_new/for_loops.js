@@ -37,3 +37,10 @@ function faktorial(n, r){
 }
 
 console.log(faktorial(5, 3));
+
+//example 2
+for (let i = 10; i >= 1; i--){
+    if(i === 13){
+        continue;
+    }
+}
