@@ -38,16 +38,16 @@ CREATE TABLE peminjaman_buku (
     FOREIGN KEY (nomer_anggota) REFERENCES anggota_perpus(nomer_anggota)
 );
 -- //program pembuatan tanggal kembali otomatis// --
-CREATE TRIGGER tanggal_kembali 
-BEFORE INSERT ON peminjaman_buku  
+CREATE TRIGGER tanggal_kembali
+BEFORE INSERT ON peminjaman_buku
 FOR EACH ROW
 SET NEW.tanggal_kembali = DATE_ADD(NEW.tanggal_pinjam, INTERVAL 7 DAY);
 -- program mengubah status buku ketika dipinjam --
-CREATE TRIGGER update_status_buku_pinjam -- NOTE: NAMA TRIGGER
-AFTER /* after = trigger aktif ketika nilai sudah di input*/ INSERT ON peminjaman_buku -- NOTE: tabel yang mau di kasih trigger
+CREATE TRIGGER update_status_buku_pinjam
+AFTER INSERT ON peminjaman_buku
 FOR EACH ROW
-    UPDATE buku_perpus -- NOTE: tabel yang ingin diperbarui kolom nilainya
-    SET status = 'dipinjam' -- NOTE: memperbarui tabel sesuai dengan yang dinginkan
+    UPDATE buku_perpus
+    SET status = 'dipinjam'
     WHERE nomer_buku = NEW.nomer_buku;
 
 
