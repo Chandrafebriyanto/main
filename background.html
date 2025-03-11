@@ -3,25 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Skill Table</title>
     <style>
-        body{
-            background-color: #09122c;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
         }
-        body .circle{
-            position: absolute;
-            height: 389px;
-            width: 389px;
-            background-color: #872341;
-            border-radius: 50%;
-            filter: blur(50px);
-            top: -100px;
-            left: -100px;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
 <body>
-    <div class="circle"></div>
-    
+
+<table>
+    <tr>
+        <th>JavaScript</th>
+        <th>HTML 5</th>
+        <th>Bootstrap</th>
+        <th>Python</th>
+        <th>MySQL</th>
+        <th>Github</th>
+    </tr>
+    <tr>
+        <td>Adobe Illustrator</td>
+        <td></td>
+        <td>Adobe Photoshop</td>
+        <td>Canva</td>
+        <td>Figma</td>
+        <td></td>
+    </tr>
+</table>
+
 </body>
 </html>
