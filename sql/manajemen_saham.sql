@@ -74,7 +74,8 @@ CREATE TABLE transaksi(
     Foreign Key (saham_id) REFERENCES saham(saham_id)
 );
 
-ALTER TABLE transaksi AUTO_INCREMENT = 3001;
+--MEMBUAT AUTO INCREMENT DIMULAI DARI 301
+ALTER TABLE transaksi AUTO_INCREMENT = 301;
 
 INSERT INTO transaksi (investor_id, saham_id, jumlah_lot)
 VALUE   (101, 201, 5),
@@ -98,7 +99,8 @@ CREATE TABLE portofolio(
     Foreign Key (saham_id) REFERENCES saham(saham_id)
 );
 
-ALTER TABLE portofolio AUTO_INCREMENT = 401
+--MEMBUAT AUTO INCREMENT DIMULAI DARI 401
+ALTER TABLE portofolio AUTO_INCREMENT = 401;
 
 -- MEMVALIDASI TABEL PORTOFOLIO
 SELECT * FROM portofolio;
