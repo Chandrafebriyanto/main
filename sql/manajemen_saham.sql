@@ -150,7 +150,7 @@ SELECT
 FROM portofolio as p
 JOIN investor as i ON i.investor_id = p.investor_id
 JOIN saham as s ON s.saham_id = p.saham_id
-JOIN transaksi as t ON t.investor_id = p.investor_id
+JOIN transaksi as t ON t.investor_id = p.investor_id;
 
 -- QUERY MELIHAT TABEL YANG ADA DIDALAM DATABASE
 SHOW TABLES;
