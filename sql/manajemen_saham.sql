@@ -110,7 +110,7 @@ ALTER TABLE portofolio AUTO_INCREMENT = 401;
 SELECT * FROM portofolio;
 
 -- --------------------------------------------------------------- --
---TRIGGER
+-- TRIGGER
 -- TRIGGER UNTUK MENAMBAHKAN DATA KE DALAM TABEL PORTOFOLIO DARI TABEL TRANSAKSI
 CREATE TRIGGER after_insert_transaksi
 AFTER INSERT ON Transaksi
