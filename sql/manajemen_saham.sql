@@ -1,6 +1,9 @@
 -- MEMBUAT DATABASE manajemen_Saham
 CREATE DATABASE manajemen_saham;
 
+-- MELIHAT DATABASE YANG SUDAH KITA BUAT
+SHOW DATABASES;
+
 --MENGGUNAKAN DATABASE manajemen_saham
 USE manajemen_Saham;
 
@@ -15,7 +18,7 @@ CREATE Table investor(
 );
 
 -- MEMBUAT AUTO INCREMENT DIMULAI DARI 101
-ALTER Table investor AUTO_INCREMENT = 101;
+ALTER TABLE investor AUTO_INCREMENT = 101;
 
 -- MENAMBAHKAN DATA KEDALAM TABEL INVESTOR
 INSERT INTO investor (nama, email, nomer_telepon)
@@ -44,7 +47,7 @@ CREATE TABLE saham(
 );
 
 --MEMBUAT AUTO INCREMENT DIMULAI DARI 201
-ALTER Table saham AUTO_INCREMENT = 201;
+ALTER TABLE saham AUTO_INCREMENT = 201;
 
 -- MENAMBAHKAN DATA KEDALAM TABEL SAHAM
 INSERT INTO saham(kode_saham, perusahaan, harga_per_lot, dividen_per_lot)
@@ -134,3 +137,32 @@ BEGIN
     SET p.total_investasi = p.jumlah_lot * s.harga_per_lot
     WHERE p.investor_id = NEW.investor_id AND p.saham_id = NEW.saham_id;
 END;
+
+-- MERANGKUM DATA DARI SEMUA TABEL.
+SELECT 
+    p.investor_id,
+    i.nama,
+    p.saham_id,
+    s.perusahaan,
+    p.jumlah_lot,
+    p.total_investasi,
+    t.tanggal_transaksi
+FROM portofolio as p
+JOIN investor as i ON i.investor_id = p.investor_id
+JOIN saham as s ON s.saham_id = p.saham_id
+JOIN transaksi as t ON t.investor_id = p.investor_id
+
+-- QUERY MELIHAT TABEL YANG ADA DIDALAM DATABASE
+SHOW TABLES;
+
+-- MELIHAT STRUKTUR TABEL INVESTOR
+DESCRIBE investor;
+
+-- MELIHAT STRUKTUR TABEL SAHAM
+DESCRIBE saham;
+
+-- MELIHAT STRUKTUR TABEL TRANSAKSI
+DESCRIBE transaksi;
+
+-- MELIHAT STRUKTUR TABEL PORTOFOLIO
+DESCRIBE portofolio;
