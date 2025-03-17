@@ -17,7 +17,7 @@ CREATE Table investor(
 -- MEMBUAT AUTO INCREMENT DIMULAI DARI 101
 ALTER Table investor AUTO_INCREMENT = 101;
 
--- MENAMBAHKAN NILAI KEDALAM TABEL INVESTOR
+-- MENAMBAHKAN DATA KEDALAM TABEL INVESTOR
 INSERT INTO investor (nama, email, nomer_telepon)
 VALUES  ("Andi Wijaya",	    "andi.wijaya@email.com",    "081234567890"),
         ("Budi Santoso",	"budi.santoso@email.com",	"081234567891"),
@@ -46,7 +46,7 @@ CREATE TABLE saham(
 --MEMBUAT AUTO INCREMENT DIMULAI DARI 201
 ALTER Table saham AUTO_INCREMENT = 201;
 
--- MENAMBAHKAN NILAI KEDALAM TABEL SAHAM
+-- MENAMBAHKAN DATA KEDALAM TABEL SAHAM
 INSERT INTO saham(kode_saham, perusahaan, harga_per_lot, dividen_per_lot)
 VALUES  ("BBCA",	"Bank Central Asia",	        10000000,    500000),
         ("TLKM",	"Telkom Indonesia",	            8000000,	 350000),
@@ -77,6 +77,7 @@ CREATE TABLE transaksi(
 --MEMBUAT AUTO INCREMENT DIMULAI DARI 301
 ALTER TABLE transaksi AUTO_INCREMENT = 301;
 
+-- MENAMBAHKAN DATA KEDALAM TABEL TRANSAKSI
 INSERT INTO transaksi (investor_id, saham_id, jumlah_lot)
 VALUE   (101, 201, 5),
         (102, 203, 3),
@@ -107,28 +108,27 @@ SELECT * FROM portofolio;
 
 -- --------------------------------------------------------------- --
 --TRIGGER
+-- TRIGGER UNTUK MENAMBAHKAN DATA KE DALAM TABEL PORTOFOLIO DARI TABEL TRANSAKSI
 CREATE TRIGGER after_insert_transaksi
 AFTER INSERT ON Transaksi
 FOR EACH ROW
 BEGIN
-    -- Cek apakah investor sudah memiliki saham di tabel Portofolio
+    -- CEK KONDISI DATA TABEL INVESTOR APAKAH SUDAH MEMILIKI DATA DI TABEL PORTOFOLIO
     IF EXISTS (SELECT * FROM Portofolio WHERE investor_id = NEW.investor_id AND saham_id = NEW.saham_id) THEN
-        -- Jika ada, update jumlah lot
         UPDATE Portofolio
         SET jumlah_lot = jumlah_lot + NEW.jumlah_lot
         WHERE investor_id = NEW.investor_id AND saham_id = NEW.saham_id;
     ELSE
-        -- Jika tidak ada, insert data baru
         INSERT INTO Portofolio (investor_id, saham_id, jumlah_lot, total_investasi)
         VALUES (NEW.investor_id, NEW.saham_id, NEW.jumlah_lot, 0);
     END IF;
 END;
 
+-- TRIGGER UNTUK MENGHITUNG TOTAL_INVESTASI
 CREATE TRIGGER after_update_portofolio
 AFTER INSERT ON Transaksi
 FOR EACH ROW
 BEGIN
-    -- Update total investasi berdasarkan jumlah lot terbaru
     UPDATE Portofolio p
     JOIN Saham s ON p.saham_id = s.saham_id
     SET p.total_investasi = p.jumlah_lot * s.harga_per_lot
