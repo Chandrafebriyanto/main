@@ -1,4 +1,4 @@
-#tittle: stack
+# #tittle: STACK DOUBLE LINKED LIST
 class node:
     def __init__(self, data):
         self.data = data
@@ -66,7 +66,7 @@ stack.display()
 print("")
 
 
-#tittle: queue Biasa dengan Array
+#tittle: QUEUE DENGAN ARRAY
 class QueueArray:
     def __init__(self, size):
         self.queue = [None] * size
@@ -129,7 +129,7 @@ queue.dequeue()
 print("==============================================================")
 
 
-#tittle: Circular Queue dengan Array
+#tittle: CIRCULAR QUEUE DENGAN ARRAY
 class CircularQueueArray:
     def __init__(self, size):
         self.queue = [None] * size
@@ -194,7 +194,7 @@ cq.dequeue()
 print("=============================================================")
 
 
-#tittle: Double Ended Queue (Deque) dengan Array
+#tittle: DOUBLE ENDED QUEUE (DEQUE) DENGAN ARRAY
 from collections import deque
 
 class Deque:
@@ -258,7 +258,7 @@ print("")
 my_deque.remove_rear()
 print("==========================================================================")
 
-#tittle: priority queue
+#tittle: PRIORITAS QUEUE
 import heapq
 class PriorityQueue:
     def __init__(self):
@@ -303,7 +303,7 @@ pq.dequeue()
 print("================================================")
 
 
-#tittle: queue dengan linked list
+#tittle: QUEUE DENGAN LINKED LIST
 class node:
     def __init__(self, data):
         self.data = data
