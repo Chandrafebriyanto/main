@@ -126,3 +126,70 @@
 # queue.enqueue(50)
 # queue.dequeue()
 # print("==============================================================")
+
+
+#tittle: Circular Queue dengan Array
+class CircularQueueArray:
+    def __init__(self, size):
+        self.queue = [None] * size
+        self.front = -1
+        self.rear = -1
+        self.size = size
+    
+    def is_empty(self):
+        return self.front == -1
+    
+    def is_full(self):
+        return (self.rear + 1) % self.size == self.front
+    
+    def enqueue(self, item):
+        if self.is_full():
+            print("Queue penuh!")
+            return
+        if self.is_empty():
+            self.front = 0
+        self.rear = (self.rear + 1) % self.size
+        self.queue[self.rear] = item
+        print(f"setelah nilai {item} masuk   --> {self.queue}")
+        
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue kosong!")
+            return None
+        item = self.queue[self.front]
+        self.queue[self.front] = None
+        if self.front == self.rear:
+            self.front = -1
+            self.rear = -1
+        else:
+            self.front = (self.front + 1) % self.size
+        print(f"setelah nilai {item} keluar  --> {self.queue}")
+        return item
+
+# Contoh penggunaan
+print("==============Circular Queue dengan Array #1==================")
+cq = CircularQueueArray(5)
+cq.enqueue(1)
+cq.enqueue(2)
+cq.dequeue()
+cq.enqueue(3)
+cq.dequeue()
+cq.enqueue(4)
+cq.enqueue(5)
+print("=============================================================")
+
+print("\n==============Circular Queue dengan Array #2==================")
+cq = CircularQueueArray(7)
+cq.enqueue(10)
+cq.enqueue(20)
+cq.enqueue(30)
+cq.enqueue(40)
+cq.enqueue(50)
+cq.enqueue(60)
+cq.enqueue(70)
+cq.dequeue()
+cq.dequeue()
+print("=============================================================")
+
+
+#tittle: Double Ended Queue (Deque) dengan Array
