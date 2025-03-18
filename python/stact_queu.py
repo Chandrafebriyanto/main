@@ -38,6 +38,7 @@
 #             temp = temp.prev
 #         print()
 
+# #contoh penggunaan
 # stack = StackDoubleLinkedList()
 # print("===============PERTAMA===============")
 # stack.push(100)
@@ -128,68 +129,175 @@
 # print("==============================================================")
 
 
-#tittle: Circular Queue dengan Array
-class CircularQueueArray:
-    def __init__(self, size):
-        self.queue = [None] * size
-        self.front = -1
-        self.rear = -1
-        self.size = size
+# #tittle: Circular Queue dengan Array
+# class CircularQueueArray:
+#     def __init__(self, size):
+#         self.queue = [None] * size
+#         self.front = -1
+#         self.rear = -1
+#         self.size = size
     
-    def is_empty(self):
-        return self.front == -1
+#     def is_empty(self):
+#         return self.front == -1
     
-    def is_full(self):
-        return (self.rear + 1) % self.size == self.front
+#     def is_full(self):
+#         return (self.rear + 1) % self.size == self.front
     
-    def enqueue(self, item):
-        if self.is_full():
-            print("Queue penuh!")
-            return
-        if self.is_empty():
-            self.front = 0
-        self.rear = (self.rear + 1) % self.size
-        self.queue[self.rear] = item
-        print(f"setelah nilai {item} masuk   --> {self.queue}")
+#     def enqueue(self, item):
+#         if self.is_full():
+#             print("Queue penuh!")
+#             return
+#         if self.is_empty():
+#             self.front = 0
+#         self.rear = (self.rear + 1) % self.size
+#         self.queue[self.rear] = item
+#         print(f"setelah nilai {item} masuk   --> {self.queue}")
         
+#     def dequeue(self):
+#         if self.is_empty():
+#             print("Queue kosong!")
+#             return None
+#         item = self.queue[self.front]
+#         self.queue[self.front] = None
+#         if self.front == self.rear:
+#             self.front = -1
+#             self.rear = -1
+#         else:
+#             self.front = (self.front + 1) % self.size
+#         print(f"setelah nilai {item} keluar  --> {self.queue}")
+#         return item
+
+# # Contoh penggunaan
+# print("==============Circular Queue dengan Array #1==================")
+# cq = CircularQueueArray(5)
+# cq.dequeue()
+# cq.enqueue(1)
+# cq.enqueue(2)
+# cq.enqueue(3)
+# cq.dequeue()
+# cq.enqueue(4)
+# cq.enqueue(5)
+# print("=============================================================")
+
+# print("\n==============Circular Queue dengan Array #2==================")
+# cq = CircularQueueArray(7)
+# cq.enqueue(10)
+# cq.enqueue(20)
+# cq.enqueue(30)
+# cq.enqueue(40)
+# cq.enqueue(50)
+# cq.enqueue(60)
+# cq.enqueue(70)
+# cq.enqueue(80)
+# cq.dequeue()
+# cq.dequeue()
+# print("=============================================================")
+
+
+# #tittle: Double Ended Queue (Deque) dengan Array
+# from collections import deque
+
+# class Deque:
+#     def __init__(self):
+#         self.deque = deque()
+    
+#     def add_front(self, item):
+#         print(f"sebelum menambahkan nilai --> {self.deque}")
+#         self.deque.appendleft(item)
+#         print(f"setelah nilai {item} ditambahkan   --> {self.deque}")
+    
+#     def add_rear(self, item):
+#         print(f"sebelum menambahkan nilai --> {self.deque}")
+#         self.deque.append(item)
+#         print(f"setelah nilai {item} ditambahkan   --> {self.deque}")
+        
+#     def remove_front(self):
+#         print(f"sebelum menghapus nilai --> {self.deque}")
+#         item = self.deque.popleft()
+#         print(f"setelah nilai {item} dihapus  --> {self.deque}")
+#         return item
+    
+#     def remove_rear(self):
+#         print(f"sebelum menghapus nilai --> {self.deque}")
+#         item = self.deque.pop()
+#         print(f"setelah nilai {item} dihapus  --> {self.deque}")
+#         return item
+
+# # Contoh penggunaan
+# print("==============Double Ended Queue (Deque) dengan Array #1==================")
+# my_deque = Deque()  # Renamed variable to avoid conflict
+# my_deque.add_front(100)
+# print("")
+# my_deque.add_front(200)
+# print("")
+# my_deque.add_front(300)
+# print("")
+# my_deque.add_rear(400)
+# print("")
+# my_deque.add_rear(500)
+# print("")
+# my_deque.remove_front()
+# print("")
+# my_deque.remove_rear()
+# print("==========================================================================")
+
+# print("\n\n=============Double Ended Queue (Deque) dengan Array #2=================")
+# my_deque = Deque()  # Renamed variable to avoid conflict
+# my_deque.add_rear(10)
+# print("")
+# my_deque.add_rear(20)
+# print("")
+# my_deque.add_rear(30)
+# print("")
+# my_deque.add_front(40)
+# print("")
+# my_deque.add_front(50)
+# print("")
+# my_deque.remove_front()
+# print("")
+# my_deque.remove_rear()
+# print("==========================================================================")
+
+#tittle: priority queue
+import heapq
+class PriorityQueue:
+    def __init__(self):
+        self.queue = []
+    
+    def enqueue(self, priority, item):
+        print(f"sebelum menambahkan nilai --> {self.queue}")
+        heapq.heappush(self.queue, (priority, item))
+        print(f"setelah nilai {item} dengan prioritas {priority} ditambahkan   --> {self.queue}")
+    
     def dequeue(self):
-        if self.is_empty():
-            print("Queue kosong!")
-            return None
-        item = self.queue[self.front]
-        self.queue[self.front] = None
-        if self.front == self.rear:
-            self.front = -1
-            self.rear = -1
-        else:
-            self.front = (self.front + 1) % self.size
-        print(f"setelah nilai {item} keluar  --> {self.queue}")
+        print(f"sebelum menghapus nilai --> {self.queue}")
+        item = heapq.heappop(self.queue)[1]
+        print(f"setelah nilai {item} dihapus  --> {self.queue}")
         return item
+    
+#contoh penggunaan
+print("==============Priority Queue #1==================")
+pq = PriorityQueue()
+pq.enqueue(2, 100)
+print("")
+pq.enqueue(1, 200)
+print("")
+pq.enqueue(3, 50)
+print("")
+pq.dequeue()
+print("")
+pq.dequeue()
+print("================================================")
 
-# Contoh penggunaan
-print("==============Circular Queue dengan Array #1==================")
-cq = CircularQueueArray(5)
-cq.enqueue(1)
-cq.enqueue(2)
-cq.dequeue()
-cq.enqueue(3)
-cq.dequeue()
-cq.enqueue(4)
-cq.enqueue(5)
-print("=============================================================")
-
-print("\n==============Circular Queue dengan Array #2==================")
-cq = CircularQueueArray(7)
-cq.enqueue(10)
-cq.enqueue(20)
-cq.enqueue(30)
-cq.enqueue(40)
-cq.enqueue(50)
-cq.enqueue(60)
-cq.enqueue(70)
-cq.dequeue()
-cq.dequeue()
-print("=============================================================")
-
-
-#tittle: Double Ended Queue (Deque) dengan Array
+print("\n==============Priority Queue #2==================")
+pq = PriorityQueue()
+pq.enqueue(5, 10)
+print("")
+pq.enqueue(3, 30)
+print("")
+pq.enqueue(4, 20)
+print("")
+pq.enqueue(2, 50)
+print("")
+pq.dequeue()
+print("================================================")
