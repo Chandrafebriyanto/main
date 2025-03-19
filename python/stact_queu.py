@@ -150,7 +150,7 @@ class CircularQueueArray:
             self.front = 0
         self.rear = (self.rear + 1) % self.size
         self.queue[self.rear] = item
-        print(f"/nsetelah nilai {item} masuk   --> {self.queue}")
+        print(f"setelah nilai {item} masuk   --> {self.queue}")
         
     def dequeue(self):
         if self.is_empty():
@@ -163,7 +163,7 @@ class CircularQueueArray:
             self.rear = -1
         else:
             self.front = (self.front + 1) % self.size
-        print(f"/nsetelah nilai {item} keluar  --> {self.queue}")
+        print(f"setelah nilai {item} keluar  --> {self.queue}")
         return item
 
 # Contoh penggunaan
