@@ -83,17 +83,15 @@ class QueueArray:
         return self.count == self.size
 
     def enqueue(self, item):
-        # print(f"Before Enqueue: {self.queue}")
         if self.is_full():
             print("Queue penuh!")
             return
-        self.rear = (self.rear + 1) % self.size  # Wrap around
+        self.rear = (self.rear + 1) % self.size
         self.queue[self.rear] = item
         self.count += 1
         print(f"\nsetelah nilai {item} masuk   --> {self.queue}")
 
     def dequeue(self):
-        # print(f"Before Dequeue: {self.queue}")
         if self.is_empty():
             print("Queue kosong!")
             return None
