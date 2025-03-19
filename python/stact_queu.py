@@ -53,7 +53,7 @@ stack.display()
 print("=========================================================")
 
 
-print("===============STACK DOUBLE LINKED LIST #2===============")
+print("\n===============STACK DOUBLE LINKED LIST #2===============")
 stack.push(50)
 stack.push(150)
 stack.push(250)
@@ -90,7 +90,7 @@ class QueueArray:
         self.rear = (self.rear + 1) % self.size  # Wrap around
         self.queue[self.rear] = item
         self.count += 1
-        print(f"setelah nilai {item} masuk   --> {self.queue}")
+        print(f"\nsetelah nilai {item} masuk   --> {self.queue}")
 
     def dequeue(self):
         # print(f"Before Dequeue: {self.queue}")
@@ -101,45 +101,31 @@ class QueueArray:
         self.queue[self.front] = None
         self.front = (self.front + 1) % self.size  # Wrap around
         self.count -= 1
-        print(f"setelah nilai {item} keluar  --> {self.queue}")
+        print(f"\nsetelah nilai {item} keluar  --> {self.queue}")
         return item
 
 # Contoh penggunaan
 print("\n\n==============Queue Biasa dengan Array #1==================")
 queue = QueueArray(5)
 queue.enqueue(10)
-print("")
 queue.enqueue(20)
-print("")
 queue.enqueue(30)
-print("")
 queue.enqueue(40)
-print("")
 queue.enqueue(50)
-print("")
 queue.dequeue()
-print("")
 queue.dequeue()
 print("=========================================================")
 
 print("\n=================Queue Biasa dengan Array #2====================")
 queue = QueueArray(6)
 queue.enqueue(5)
-print("")
 queue.enqueue(15)
-print("")
 queue.dequeue()
-print("")
 queue.enqueue(25)
-print("")
 queue.enqueue(35)
-print("")
 queue.dequeue()
-print("")
 queue.enqueue(45)
-print("")
 queue.enqueue(50)
-print("")
 queue.dequeue()
 print("==============================================================")
 
@@ -166,7 +152,7 @@ class CircularQueueArray:
             self.front = 0
         self.rear = (self.rear + 1) % self.size
         self.queue[self.rear] = item
-        print(f"setelah nilai {item} masuk   --> {self.queue}")
+        print(f"/nsetelah nilai {item} masuk   --> {self.queue}")
         
     def dequeue(self):
         if self.is_empty():
@@ -179,47 +165,32 @@ class CircularQueueArray:
             self.rear = -1
         else:
             self.front = (self.front + 1) % self.size
-        print(f"setelah nilai {item} keluar  --> {self.queue}")
+        print(f"/nsetelah nilai {item} keluar  --> {self.queue}")
         return item
 
 # Contoh penggunaan
 print("\n\n==============Circular Queue dengan Array #1==================")
 cq = CircularQueueArray(5)
 cq.dequeue()
-print("")
 cq.enqueue(1)
-print("")
 cq.enqueue(2)
-print("")
 cq.enqueue(3)
-print("")
 cq.dequeue()
-print("")
 cq.enqueue(4)
-print("")
 cq.enqueue(5)
 print("=============================================================")
 
 print("\n====================Circular Queue dengan Array #2====================")
 cq = CircularQueueArray(7)
 cq.enqueue(10)
-print("")
 cq.enqueue(20)
-print("")
 cq.enqueue(30)
-print("")
 cq.enqueue(40)
-print("")
 cq.enqueue(50)
-print("")
 cq.enqueue(60)
-print("")
 cq.enqueue(70)
-print("")
 cq.enqueue(80)
-print("")
 cq.dequeue()
-print("")
 cq.dequeue()
 print("=====================================================================")
 
@@ -232,23 +203,23 @@ class Deque:
         self.deque = deque()
     
     def add_front(self, item):
-        print(f"sebelum menambahkan nilai       --> {self.deque}")
+        print(f"\nsebelum menambahkan nilai       --> {self.deque}")
         self.deque.appendleft(item)
         print(f"setelah nilai {item} ditambahkan    --> {self.deque}")
     
     def add_rear(self, item):
-        print(f"sebelum menambahkan nilai       --> {self.deque}")
+        print(f"\nsebelum menambahkan nilai       --> {self.deque}")
         self.deque.append(item)
         print(f"setelah nilai {item} ditambahkan    --> {self.deque}")
         
     def remove_front(self):
-        print(f"sebelum menghapus nilai     --> {self.deque}")
+        print(f"\nsebelum menghapus nilai     --> {self.deque}")
         item = self.deque.popleft()
         print(f"setelah nilai {item} dihapus    --> {self.deque}")
         return item
     
     def remove_rear(self):
-        print(f"sebelum menghapus nilai     --> {self.deque}")
+        print(f"\nsebelum menghapus nilai     --> {self.deque}")
         item = self.deque.pop()
         print(f"setelah nilai {item} dihapus    --> {self.deque}")
         return item
@@ -257,34 +228,22 @@ class Deque:
 print("\n\n==============Double Ended Queue (Deque) dengan Array #1==================")
 my_deque = Deque()  # Renamed variable to avoid conflict
 my_deque.add_front(100)
-print("")
 my_deque.add_front(200)
-print("")
 my_deque.add_front(300)
-print("")
 my_deque.add_rear(400)
-print("")
 my_deque.add_rear(500)
-print("")
 my_deque.remove_front()
-print("")
 my_deque.remove_rear()
 print("==========================================================================")
 
 print("\n=============Double Ended Queue (Deque) dengan Array #2=================")
 my_deque = Deque()  # Renamed variable to avoid conflict
 my_deque.add_rear(10)
-print("")
 my_deque.add_rear(20)
-print("")
 my_deque.add_rear(30)
-print("")
 my_deque.add_front(40)
-print("")
 my_deque.add_front(50)
-print("")
 my_deque.remove_front()
-print("")
 my_deque.remove_rear()
 print("==========================================================================")
 
@@ -295,12 +254,12 @@ class PriorityQueue:
         self.queue = []
     
     def enqueue(self, priority, item):
-        print(f"sebelum menambahkan nilai                         --> {self.queue}")
+        print(f"\nsebelum menambahkan nilai                         --> {self.queue}")
         heapq.heappush(self.queue, (priority, item))
         print(f"setelah nilai {item} dengan prioritas {priority} ditambahkan   --> {self.queue}")
     
     def dequeue(self):
-        print(f"sebelum menghapus nilai     --> {self.queue}")
+        print(f"\nsebelum menghapus nilai     --> {self.queue}")
         item = heapq.heappop(self.queue)[1]
         print(f"setelah nilai {item} dihapus    --> {self.queue}")
         return item
@@ -309,26 +268,18 @@ class PriorityQueue:
 print("\n\n================================Priority Queue #1====================================")
 pq = PriorityQueue()
 pq.enqueue(2, 100)
-print("")
 pq.enqueue(1, 200)
-print("")
 pq.enqueue(3, 50)
-print("")
 pq.dequeue()
-print("")
 pq.dequeue()
 print("======================================================================================")
 
 print("\n==================================Priority Queue #2======================================")
 pq = PriorityQueue()
 pq.enqueue(5, 10)
-print("")
 pq.enqueue(3, 30)
-print("")
 pq.enqueue(4, 20)
-print("")
 pq.enqueue(2, 50)
-print("")
 pq.dequeue()
 print("==========================================================================================")
 
@@ -348,7 +299,7 @@ class QueueLinkedList:
         return self.front is None
     
     def enqueue(self, item):
-        print(f"sebelum menambahkan nilai       --> ", end=' ')
+        print(f"\nsebelum menambahkan nilai       --> ", end=' ')
         self.display()
         new_node = node(item)
         if self.rear is None:
@@ -360,7 +311,7 @@ class QueueLinkedList:
         self.display()
     
     def dequeue(self):
-        print(f"sebelum menghapus nilai         --> ", end=' ')
+        print(f"\nsebelum menghapus nilai         --> ", end=' ')
         self.display()
         if self.is_empty():
             print("Queue kosong!")
@@ -384,35 +335,22 @@ class QueueLinkedList:
 print("\n\n==============Queue dengan Linked List #1==================")
 queue = QueueLinkedList()
 queue.enqueue(8)
-print("")
 queue.enqueue(16)
-print("")
 queue.enqueue(24)
-print("")
 queue.dequeue()
-print("")
 queue.enqueue(32)
-print("")
 queue.enqueue(40)
-print("")
 queue.dequeue()
 print("=========================================================")
 
 print("\n==============Queue dengan Linked List #2==================")
 queue = QueueLinkedList()
 queue.dequeue()
-print("")
 queue.enqueue(11)
-print("")
 queue.enqueue(22)
-print("")
 queue.enqueue(33)
-print("")
 queue.dequeue()
-print("")
 queue.enqueue(44)
-print("")
 queue.enqueue(55)
-print("")
 queue.dequeue()
 print("=============================================================")
