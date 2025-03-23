@@ -1,9 +1,6 @@
-def sigma_sum(a, b, f):
-    total = 0
-    for i in range(a, b + 1):  # Iterasi dari a sampai b
-        total += f(i)  # Menambahkan hasil fungsi ke total
-    return total
+import pywhatkit as pwk
 
-# Contoh penggunaan: Sigma dari i^2 untuk i = 1 sampai 4
-result = sigma_sum(1, 4, lambda i: i**2)
-print("Hasil:", result)  # Output: 30
+phone_number = +6285161236246
+message = "Hello, this is a test message"
+
+pwk.send_message(phone_number, message)
