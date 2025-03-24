@@ -45,3 +45,18 @@ function isAdult(element){
 }
 let adultStudents = students.filter(isAdult);
 console.log(adultStudents);
+
+//EXAMPLE 4
+const words = ['apple', 'orange', 'kiwi', 'banana', 'pomegranate', 'coconut',];
+const longWords = words.filter(getLongWords);
+const shortWords = words.filter(getShortWords);
+
+console.log(longWords);
+
+function getShortWords(element){
+    return element.length <= 6;
+}
+
+function getLongWords(element){
+    return element.length > 6;
+}
