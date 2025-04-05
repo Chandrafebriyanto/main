@@ -13,21 +13,21 @@ let person = {
     },
 }
 
-// console.log(person.fullname);
-// console.log(person.age);
-// console.log(person.isStudent);
-// console.log(person.hobbies[0]);
-// // console.log(person.address.street);
-// // console.log(person.address.city);
-// // console.log(person.address.country);
+console.log(person.fullname);
+console.log(person.age);
+console.log(person.isStudent);
+console.log(person.hobbies[0]);
+// console.log(person.address.street);
+// console.log(person.address.city);
+// console.log(person.address.country);
 
-// for (const property in person.hobbies) {
-//     console.log("hobbi:" + person.hobbies[property]);
-// };
+for (const property in person.hobbies) {
+    console.log("hobbi:" + person.hobbies[property]);
+};
 
-// for(const property in person.address){
-//     console.log(person.address[property]);
-// };
+for(const property in person.address){
+    console.log(person.address[property]);
+};
 
 //EXAMPLE 2
 class person2 {
@@ -53,11 +53,11 @@ const people2 = new person2("Patrick Star", 25, "123 Bikini Bottom", "Bikini Bot
 
 const people3 = new person2("Squidward Tentacles", 30, "123 Bikini Bottom", "Bikini Bottom", "Atlantis");
 
-// console.log(people.name);
-// console.log(people.age);
-// console.log(people.address.street);
-// console.log(people.address.city);
-// console.log(people.address.country);
+console.log(people.name);
+console.log(people.age);
+console.log(people.address.street);
+console.log(people.address.city);
+console.log(people.address.country);
 
 console.log(people);
 console.log(people2);
