@@ -69,4 +69,3 @@ game.pointambah(10); // Output: score increased to 10
 game.pointambah(20); // Output: score increased to 30
 game.poinkurang(5); // Output: score decreased to 25
 console.log(`Current score: ${game.getscore()}`); // Output: Current score: 25
-
