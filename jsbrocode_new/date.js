@@ -42,3 +42,4 @@ const date2 = new Date('2024-01-01');
 if (date1 < date2) {
     console.log(`HAPPY NEW YEAR!`);
 }
+
