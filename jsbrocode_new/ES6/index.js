@@ -1,4 +1,4 @@
-import {PI, getCircumference, getArea, getVolume} from 'ES6/es6.js'
+import {PI, getCircumference, getArea, getVolume} from 'es6.js'
 
 console.log(PI); // 3.14
 console.log(getVolume(5)); // 523.3333333333334
