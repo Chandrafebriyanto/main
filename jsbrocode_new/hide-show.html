@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide Show Image</title>
+    <style>
+        #myBtn{
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    
+    <img id="myImg" src="https://avatars.githubusercontent.com/u/132718528?s=400&u=c4360142a511d0475b677592bc9e0afb03f01e3e&v=4" alt=""><br>
+    <button id="myBtn">Hide</button>
+
+    <script>
+        const myBtn = document.getElementById("myBtn");
+        const myImg = document.getElementById("myImg");
+
+        myBtn.addEventListener("click", function() {
+            if (myImg.style.visibility === "hidden") {
+                myImg.style.visibility = "visible";
+                myBtn.innerHTML = "Hide";
+            } else {
+                myImg.style.visibility = "hidden";
+                myBtn.innerHTML = "Show";
+            }
+        });
+    </script>
+</body>
+</html>
