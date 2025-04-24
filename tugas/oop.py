@@ -13,7 +13,7 @@ class Fibonacci:
             return Fibonacci(self.n - 1).get_fibonacci() + Fibonacci(self.n - 2).get_fibonacci()
 
 result = Fibonacci(25)
-print(f"data fibonacci dengan: {result.get_fibonacci()}")
+print(f"Data fibonacci dengan: {result.get_fibonacci()}")
 
 #tittle: class shorting
 class shorting:
