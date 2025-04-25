@@ -4,44 +4,48 @@ import matplotlib.pyplot as plt
 
 class Sorting:
     def __init__(self, arr):
-        self.arr = arr.copy()
+        self.arr = arr
         
     #note: bubble_short
     def bubble_sort(self):
-        arr = self.arr.copy()
-        n = len(arr)
+        n = len(self.arr)
         for i in range(n):
+            swapped = False
             for j in range(0, n - i - 1):
-                if arr[j] > arr[j + 1]:
-                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
-        return arr
+                if self.arr[j] > self.arr[j + 1]:
+                    self.arr[j], self.arr[j + 1] = self.arr[j + 1], self.arr[j]
+                    swapped = True
+            if not swapped:
+                break
+        return self.arr
 
     #note: insertion_sort
     def insertion_sort(self):
-        arr = self.arr.copy()
-        for i in range(1, len(arr)):
-            key = arr[i]
+        for i in range(1, len(self.arr)):
+            key = self.arr[i]
             j = i - 1
-            while j >= 0 and arr[j] > key:
-                arr[j + 1] = arr[j]
+            while j >= 0 and self.arr[j] > key:
+                self.arr[j + 1] = self.arr[j]
                 j -= 1
-            arr[j + 1] = key
-        return arr
+            self.arr[j + 1] = key
+        return self.arr
 
     #note: selection_sort
     def selection_sort(self):
-        arr = self.arr.copy()
-        n = len(arr)
+        n = len(self.arr)
         for i in range(n):
             min_idx = i
             for j in range(i+1, n):
-                if arr[j] < arr[min_idx]:
+                if self.arr[j] < self.arr[min_idx]:
                     min_idx = j
-            arr[i], arr[min_idx] = arr[min_idx], arr[i]
-        return arr
+            self.arr[i], self.arr[min_idx] = self.arr[min_idx], self.arr[i]
+        return self.arr
     
     #note: merge_sort
     def merge_sort(self, arr):
+        if arr is None:
+            arr = self.arr
+        
         if len(arr) > 1:
             mid = len(arr) // 2
             L = arr[:mid]
@@ -75,6 +79,9 @@ class Sorting:
     
     #note: quick_sort
     def quick_sort(self, arr):
+        if arr is None:
+            arr = self.arr
+        
         if len(arr) <= 1:
             return arr
         pivot = arr[len(arr) // 2]
@@ -96,11 +103,11 @@ data = random.sample(range(1000), 500)  # 500 elemen acak
 # Instansiasi dan pengukuran
 sorter = Sorting(data)
 times = {
-    "Bubble Sort": measure_time(sorter.bubble_sort),
-    "Insertion Sort": measure_time(sorter.insertion_sort),
-    "Selection Sort": measure_time(sorter.selection_sort),
-    "Merge Sort": measure_time(lambda: sorter.merge_sort(data.copy())),
-    "Quick Sort": measure_time(lambda: sorter.quick_sort(data.copy())),
+    "Bubble Sort": measure_time(lambda: Sorting(data.copy()).bubble_sort()),
+    "Insertion Sort": measure_time(lambda: Sorting(data.copy()).insertion_sort()),
+    "Selection Sort": measure_time(lambda: Sorting(data.copy()).selection_sort()),
+    "Merge Sort": measure_time(lambda: Sorting(data.copy()).merge_sort(data.copy())),
+    "Quick Sort": measure_time(lambda: Sorting(data.copy()).quick_sort(data.copy())),
 }
 
 # Visualisasi hasil
