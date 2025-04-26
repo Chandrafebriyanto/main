@@ -1,4 +1,4 @@
-
+#
 #tittle: faktorial dengan rekursi
 def faktorial_r(r):
     if r == 0 or r == 1:
