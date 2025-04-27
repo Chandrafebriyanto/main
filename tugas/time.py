@@ -90,17 +90,17 @@ class Sorting:
         right = [x for x in arr if x > pivot]
         return self.quick_sort(left) + middle + self.quick_sort(right)
 
-# Fungsi untuk mengukur waktu eksekusi
+# tittle: Fungsi untuk mengukur waktu eksekusi
 def measure_time(sort_func):
     start = time.time()
     sort_func()
     end = time.time()
-    return (end - start) * 1000  # dalam milidetik
+    return (end - start) * 1000  
 
-# Dataset random
-data = random.sample(range(1000), 500)  # 500 elemen acak
+# tittle: Dataset random
+data = random.sample(range(1000), 700) 
 
-# Instansiasi dan pengukuran
+# tittle: Instansiasi dan pengukuran
 sorter = Sorting(data)
 times = {
     "Bubble Sort": measure_time(lambda: Sorting(data.copy()).bubble_sort()),
@@ -110,11 +110,11 @@ times = {
     "Quick Sort": measure_time(lambda: Sorting(data.copy()).quick_sort(data.copy())),
 }
 
-# Visualisasi hasil
+# tittle: Visualisasi hasil
 plt.figure(figsize=(10, 6))
-plt.bar(times.keys(), times.values(), color='skyblue')
+plt.xticks(rotation=45)
+plt.bar(times.keys(), times.values(), color='purple')
 plt.ylabel("Waktu Eksekusi (ms)")
-plt.title("Perbandingan Efisiensi Algoritma Sorting")
-plt.grid(True, linestyle="--", alpha=0.5)
+plt.title("Perbandingan Efisiensi waktu Algoritma Sorting")
 plt.tight_layout()
 plt.show()
