@@ -28,7 +28,7 @@ def selectionShorting(arr):
         
 data = [115, 18, 45, 29, 56, 1, 37]
 selectionShorting(data)
-print("Data setelah diurutkan dengan Selection Short:", data)
+print("\nData setelah diurutkan dengan Selection Short:", data)
 
 
 #tittle: Quick shorting
@@ -43,4 +43,4 @@ def quick_sort(arr):
 
 data = [115, 18, 45, 29, 56, 1, 37]
 sorted_data = quick_sort(data)
-print("Data setelah diurutkan dengan Quick Short", sorted_data)
+print("\nData setelah diurutkan dengan Quick Short", sorted_data)
