@@ -27,6 +27,6 @@ if __name__ == "__main__":
     for u, v in edges:
         g.add_edge(u, v)
     
-    print("BFS (Adjacency List) Order:")
+    print("DFS (Adjacency List) Order:")
     g.bfs('A')
         
