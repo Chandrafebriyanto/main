@@ -22,31 +22,32 @@ class GraphList:
 
 if __name__ == "__main__":
     g = GraphList()
+    
     edges = [
-        ('A', 'D'), ('A', 'C'),
-        ('A', 'B'), ('B', 'E'),
-        ('B', 'F'), ('C', 'G')
+    ('A', 'B'), ('A', 'C'), ('A', 'D'),
+    ('B', 'E'), ('B', 'F'), ('C', 'G')
     ]
+
     for u, v in edges:
         g.add_edge(u, v)
     
     print("BFS (Adjacency List) Order:")
-    g.bfs('D')
+    g.bfs('A')
 
 
 # Tittle: BFS Adjacency matrix
 from collections import deque
 
 class GraphMatrix:
-    def __init__(self,nodes):
+    def __init__(self, nodes):
         self.nodes = nodes
         self.index = {node: i for i, node in enumerate(nodes)}
         n = len(nodes)
-        self.mat = [[0]*n for _ in  range (n)]
+        self.mat = [[0]*n for _ in range(n)]
     
     def add_edge(self, u, v):
         i, j = self.index[u], self.index[v]
-        self.mat[i][j] = 1
+        self.mat[i][j] = 1  # Untuk graf tak berarah, tambahkan juga self.mat[j][i] = 1
         
     def bfs(self, start):
         visited = [False] * len(self.nodes)
@@ -66,16 +67,23 @@ class GraphMatrix:
 if __name__ == "__main__":
     nodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     g = GraphMatrix(nodes)
-    edges = [
-        ('A', 'D'), ('A', 'C'),
-        ('A', 'B'), ('B', 'E'),
-        ('B', 'F'), ('C', 'G')
+    matrix = [
+        [0,1,1,1,0,0,0],       
+        [1,0,0,0,1,1,0],       
+        [1,0,0,0,0,0,1],       
+        [1,0,0,0,0,0,0],       
+        [0,1,0,0,0,0,0],       
+        [0,1,0,0,0,0,0],       
+        [0,0,1,0,0,0,0]
     ]
-    for u, v in edges:
-        g.add_edge(u, v)
     
-    print("BFS (Adjacency Matrix) Order:")
-    g.bfs('A')
+    for i in range(len(nodes)):
+        for j in range(len(nodes)):
+            if matrix[i][j] == 1:
+                g.add_edge(nodes[i], nodes[j])
+
+print("\n\nBFS (Adjacency Matrix) Order:")
+g.bfs('A')
 
 
 # Tittle: DFS Adjacency list
@@ -100,19 +108,18 @@ class GraphList:
 if __name__ == "__main__":
     g = GraphList()
     edges = [
-        ('A', 'D'), ('A', 'C'),
-        ('A', 'B'), ('B', 'E'),
-        ('B', 'F'), ('C', 'G')
+    ('A', 'B'), ('A', 'C'), ('A', 'D'),
+    ('B', 'E'), ('B', 'F'), ('C', 'G')
     ]
     for u, v in edges:
         g.add_edge(u, v)
     
-    print("DFS (Adjacency List) Order:")
+    print("\n\nDFS (Adjacency List) Order:")
     g.bfs('A')
         
 
 # Tittle: DFS Adjacency matix
-class graphmatrix_dfs:
+class graph_matrix_dfs:
     def __init__(self, nodes):
         self.nodes = nodes
         self.index = {node: i for i, node in enumerate(nodes)}
@@ -137,17 +144,28 @@ class graphmatrix_dfs:
                 
 if __name__ == "__main__":
     nodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-    g = graphmatrix_dfs(nodes)
+    g = graph_matrix_dfs(nodes)
     
-    edges = [
-        ('A', 'D'), ('A', 'C'),
-        ('A', 'B'), ('B', 'E'),
-        ('B', 'F'), ('C', 'G')
+    matrix = [
+        [0,1,1,1,0,0,0],       
+        [1,0,0,0,1,1,0],       
+        [1,0,0,0,0,0,1],       
+        [1,0,0,0,0,0,0],       
+        [0,1,0,0,0,0,0],       
+        [0,1,0,0,0,0,0],       
+        [0,0,1,0,0,0,0]
     ]
+     
+    for i in range(len(nodes)):
+        for j in range(len(nodes)):
+            if matrix[i][j] == 1:
+                g.add_edge(nodes[i], nodes[j])
     
-    for u, v in edges:
-        g.add_edge(u, v)
-    
-    print("DFS (Adjacency Matrix) Order:")
+    print("\n\nDFS (Adjacency Matrix) Order:")
     g.dfs('A')
-# Output: 
+
+# note: BFS adalah algoritma penelusuran graf yang memulai dari simpul awal (root) dan mengunjungi semua tetangga secara melebar berdasarkan level atau kedalaman.
+
+# note: DFS adalah algoritma penelusuran graf yang memulai dari simpul awal (root) dan menjelajahi sejauh mungkin ke dalam cabang sebelum mundur.
+
+# note: Adjacency list menggunakan daftar terhubung untuk setiap simpul, sedangkan adjacency matrix menggunakan matriks persegi di mana setiap elemen mewakili hubungan antara dua simpul

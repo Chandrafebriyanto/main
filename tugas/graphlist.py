@@ -21,7 +21,6 @@ if __name__ == "__main__":
     edges = [
         ('A', 'B'), ('A', 'C'),
         ('B', 'D'), ('B', 'E'),
-        ('D', 'I'), ('I', 'H'),
         ('C', 'F'), ('C', 'G')
     ]
     for u, v in edges:
