@@ -16,16 +16,16 @@ vnm  = "vietnam"
 
 
 graph = {
-    ind : {sgp: 863, brn:1300, mal:1369, mal:1369},
-    brn : {ind: 100, sgp:1301, khm:1414, phl:1259},
-    khm : {mal: 1029, vnm:421, brn:1505, tha:527, sgp:1295, phl: 1942},
-    lao : {myan: 686, vnm: 837, tha: 425},
-    mal : {ind:1369, sgp: 411, khm: 1071},
     myan: {lao: 686, tha: 857},
     phl : {brn: 1259, khm: 1942, vnm: 1625},
+    lao : {myan: 686, vnm: 837, tha: 425},
+    mal : {ind:1369, sgp: 411, khm: 1071},
+    ind : {sgp: 863, brn:1300, mal:1369, mal:1369},
+    brn : {ind: 100, sgp:1301, khm:1414, phl:1259},
     sgp : {ind:863, mal:411, brn: 1301, khm: 1295},
     tha : {myan: 857, lao: 425, khm: 527, vnm: 730},
-    vnm : {khm: 421, lao: 837, tha: 730, phl: 1625}
+    vnm : {khm: 421, lao: 837, tha: 730, phl: 1625},
+    khm : {mal: 1029, vnm:421, brn:1505, tha:527, sgp:1295, phl: 1942}
 }
 
 def dijkstra(graph, start, end):
@@ -53,7 +53,7 @@ def tsp(graph, start):
     
     for perm in itertools.permutations(cities):
         cost = 0
-        route = [start] + list(perm)
+        route = [start] + list(perm) + [start]
         valid = True
         for i in range(len(route) - 1):
             src, dst = route[i], route[i + 1]
@@ -79,9 +79,10 @@ print("----------algoritma dijkstra----------")
 print(f"kota yang dilalui dari {awal} ke {akhir}: {' -> '.join(route)}")
 print(f"Total jarak tempu dari {awal} ke {akhir}: {total_cost} km")
 
-# tittle: algoritma tsp
 
+# tittle: algoritma tsp
 total_cost, route = tsp(graph, awal)
+
 print("\n------------algoritma tsp-------------")
 print(f"rute terpendek dari {awal} ke semua negara: {' -> '.join(route)}")
 print(f"Total jarak tempu dari {awal} ke semua negara: {total_cost} km")
