@@ -16,16 +16,16 @@ vnm  = "vietnam"
 
 
 graph = {
-    myan: {lao: 686, tha: 857},
-    phl : {brn: 1259, khm: 1942, vnm: 1625},
+    ind : {sgp: 863, brn:1300, mal:1369, mal:1369},
+    brn : {ind: 1300, sgp:1301, khm:1414, phl:1259},
+    khm : {mal: 1029, vnm:421, brn:1505, tha:527, sgp:1295, phl: 1942},
     lao : {myan: 686, vnm: 837, tha: 425},
     mal : {ind:1369, sgp: 411, khm: 1071},
-    ind : {sgp: 863, brn:1300, mal:1369, mal:1369},
-    brn : {ind: 100, sgp:1301, khm:1414, phl:1259},
+    myan: {lao: 686, tha: 857},
+    phl : {brn: 1259, khm: 1942, vnm: 1625},
     sgp : {ind:863, mal:411, brn: 1301, khm: 1295},
     tha : {myan: 857, lao: 425, khm: 527, vnm: 730},
-    vnm : {khm: 421, lao: 837, tha: 730, phl: 1625},
-    khm : {mal: 1029, vnm:421, brn:1505, tha:527, sgp:1295, phl: 1942}
+    vnm : {khm: 421, lao: 837, tha: 730, phl: 1625}
 }
 
 def dijkstra(graph, start, end):
