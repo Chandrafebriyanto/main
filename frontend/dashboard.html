@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard WebGIS SiDamen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap");
+      @import "tailwindcss";
+
+      body{
+        font-family: "Poppins";
+      }
+      /* Custom scrollbar (optional) */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      /* Ensure icons in sidebar are consistently sized */
+      .sidebar-icon {
+        width: 1.25rem; /* Corresponds to w-5 in Tailwind */
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 h-screen overflow-hidden">
+    <div class="flex h-full">
+      <aside
+        id="sidebar"
+        class="fixed inset-y-0 left-0 bg-[#5D4037] text-white w-64 p-4 space-y-4 transform -translate-x-full transition-transform duration-300 ease-in-out z-30 flex flex-col"
+      >
+        <div class="flex items-center space-x-3 mb-2 py-2"></div>
+
+        <div class="bg-[#795548] p-3 rounded-lg">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-black text-xl"
+            >
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Admin SiDamen</p>
+              <p class="text-xs text-gray-200">sidamen.acc@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <nav class="flex-grow overflow-y-auto">
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded bg-[#FFC107] text-black font-semibold transition-colors"
+              >
+                <i class="fas fa-tachometer-alt sidebar-icon"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded hover:bg-[#795548] transition-colors"
+              >
+                <i class="fas fa-handshake sidebar-icon"></i>
+                <span>Sambung Niaga</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded hover:bg-[#795548] transition-colors"
+              >
+                <i class="fas fa-sliders-h sidebar-icon"></i>
+                <span>Input Parameter</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded hover:bg-[#795548] transition-colors"
+              >
+                <i class="fas fa-seedling sidebar-icon"></i>
+                <span>Pasca Panen</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded hover:bg-[#795548] transition-colors"
+              >
+                <i class="fas fa-cloud-sun sidebar-icon"></i>
+                <span>Cuaca</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded hover:bg-[#795548] transition-colors"
+              >
+                <i class="fas fa-calendar-alt sidebar-icon"></i>
+                <span>Kalender</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded hover:bg-[#795548] transition-colors"
+              >
+                <i class="fas fa-save sidebar-icon"></i>
+                <span>Disimpan</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded hover:bg-[#795548] transition-colors"
+              >
+                <i class="fas fa-history sidebar-icon"></i>
+                <span>Terbaru</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center space-x-3 p-2 rounded hover:bg-[#795548] transition-colors"
+              >
+                <i class="fas fa-language sidebar-icon"></i>
+                <span>Bahasa</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="mt-auto pt-4">
+          <button
+            class="w-full bg-[#FFC107] text-black font-semibold py-2.5 px-4 rounded-lg hover:bg-yellow-500 transition-colors"
+          >
+            LOGOUT
+          </button>
+        </div>
+      </aside>
+
+      <div
+        id="sidebarOverlay"
+        class="fixed inset-0 bg-black opacity-50 z-20 hidden transition-opacity duration-300 ease-in-out"
+      ></div>
+
+      <div class="flex-1 flex flex-col h-full">
+        <header
+          class="bg-[#1B5E20] text-white p-3 shadow-md flex justify-between items-center relative z-10"
+        >
+          <div class="flex items-center">
+            <img
+              src="logo Sidamen.png"
+              alt="Logo SiDamen"
+              class="h-8 w-8 mr-2 rounded"
+            />
+            <h1 class="text-xl font-bold font-Poetsen-One">SiDamen</h1>
+          </div>
+          <h2
+            class="absolute left-1/2 transform -translate-x-1/2 text-lg font-semibold hidden sm:block"
+          >
+            Halaman Dashboard WebGIS
+          </h2>
+        </header>
+
+        <main class="flex-1 p-4 relative overflow-y-auto">
+          <div class="flex items-center justify-between mb-4">
+            <button
+              id="hamburgerMenu"
+              class="text-white mr-3 p-2 focus:outline-none rounded-md hover:bg-green-700"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+            <div class="relative w-full sm:w-1/3 max-w-sm ml-4">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                <i class="fas fa-search text-gray-400"></i>
+              </span>
+              <input
+                type="text"
+                placeholder="Masukan Posisi Anda"
+                class="w-full py-2 px-4 pl-10 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              />
+            </div>
+          </div>
+
+          <div
+            id="map"
+            class="w-full h-full bg-gray-300 rounded-md shadow-lg flex items-center justify-center"
+          >
+            <p class="text-gray-500 text-lg sm:text-2xl">
+              Area Peta (OpenStreetMap)
+            </p>
+          </div>
+
+          <!-- <div class="absolute top-6 right-6 bg-white p-3 sm:p-4 rounded-lg shadow-xl w-60 sm:w-72 space-y-2 z-10">
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <h3 class="font-semibold text-gray-700 text-sm sm:text-base">📍 Detail Lokasi</h3>
+                        <button class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div>
+                        <p class="text-xs sm:text-sm text-gray-600"><strong>Daerah :</strong> Jombang</p>
+                        <p class="text-xs sm:text-sm text-gray-600"><strong>Suhu :</strong> 26°C - 31°C</p>
+                        <p class="text-xs sm:text-sm text-gray-600"><strong>Kelembapan :</strong> 79% - 93%</p>
+                        <p class="text-xs sm:text-sm text-gray-600"><strong>Cuaca :</strong> Berawan</p> </div>
+                    <div>
+                        <h4 class="font-medium text-gray-700 mb-1 text-sm sm:text-base">Rekomendasi Tanaman:</h4>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-gray-600 space-y-0.5">
+                            <li>Padi</li>
+                            <li>Jagung</li>
+                            <li>Kedelai</li>
+                        </ul>
+                    </div>
+                </div> -->
+
+          <div
+            class="absolute bottom-6 right-6 flex flex-col items-center space-y-2 z-10"
+          >
+            <button
+              class="bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+              title="Kompas"
+            >
+              <i class="fas fa-compass text-xl text-gray-600"></i>
+            </button>
+            <div class="flex flex-col bg-white rounded-md shadow-lg">
+              <button
+                class="p-3 hover:bg-gray-100 transition-colors border-b border-gray-200"
+                title="Zoom In"
+              >
+                <i class="fas fa-plus text-gray-600"></i>
+              </button>
+              <button
+                class="p-3 hover:bg-gray-100 transition-colors"
+                title="Zoom Out"
+              >
+                <i class="fas fa-minus text-gray-600"></i>
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const hamburgerMenu = document.getElementById("hamburgerMenu");
+      const sidebar = document.getElementById("sidebar");
+      const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("-translate-x-full");
+        sidebarOverlay.classList.toggle("hidden");
+      }
+
+      hamburgerMenu.addEventListener("click", toggleSidebar);
+      sidebarOverlay.addEventListener("click", toggleSidebar);
+    </script>
+  </body>
+</html>
