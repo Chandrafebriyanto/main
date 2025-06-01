@@ -1,315 +1,360 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard WebGIS SiDamen</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden; /* Mencegah scroll di body utama */
-        }
+      @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap');
 
-        #app-header {
-            background-color: #4CAF50; /* Hijau dari gambar */
-            color: white;
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-shrink: 0; /* Agar header tidak menyusut */
-            height: 60px; /* Tinggi header tetap */
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden; /* Mencegah scroll di body utama */
+      }
 
-        #app-header .logo-container {
-            display: flex;
-            align-items: center;
-        }
+      #app-header {
+        background-color: #2e7d32; /* Hijau dari gambar */
+        color: white;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0; /* Agar header tidak menyusut */
+        height: 60px; /* Tinggi header tetap */
+      }
 
-        #app-header .logo-container img {
-            height: 35px;
-            width: 35px;
-            margin-right: 10px;
-            background-color: white; /* Placeholder untuk logo */
-            border-radius: 4px;
-            padding: 2px; /* Sedikit padding jika logo adalah ikon */
-        }
-        #app-header .app-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        #app-header .page-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
+      #app-header .logo-container {
+        display: flex;
+        align-items: center;
+      }
 
-        #content-area {
-            display: flex;
-            flex-grow: 1; /* Mengisi sisa tinggi */
-            overflow: hidden; /* Mencegah scroll di content area */
-        }
+      #app-header .logo-container img {
+        height: 35px;
+        width: 35px;
+        margin-right: 10px;
+        background-color: #4caf50; /* Placeholder untuk logo */
+        border-radius: 50%;
+        padding: 2px; /* Sedikit padding jika logo adalah ikon */
+      }
+      #app-header .app-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ffeb3b;
+        font: "Poetsen One";
+      }
+      #app-header .page-title {
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
 
-        #sidebar {
-            width: 280px;
-            background-color: #754D3B; /* Coklat dari gambar 2 */
-            color: white;
-            padding: 1.5rem 1rem;
-            transition: margin-left 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto; /* Scroll jika konten sidebar panjang */
-            height: 100%; /* Mengisi tinggi content-area */
-        }
+      #content-area {
+        display: flex;
+        flex-grow: 1; /* Mengisi sisa tinggi */
+        overflow: hidden; /* Mencegah scroll di content area */
+      }
 
-        #sidebar.collapsed {
-            margin-left: -280px;
-        }
+      #sidebar {
+        width: 280px;
+        background-color: #754d3b; /* Coklat dari gambar 2 */
+        color: white;
+        padding: 1.5rem 1rem;
+        transition: margin-left 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; /* Scroll jika konten sidebar panjang */
+        height: 100%; /* Mengisi tinggi content-area */
+      }
 
-        .sidebar-user-info {
-            background-color: rgba(0,0,0,0.1);
-            padding: 1rem;
-            border-radius: 0.375rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-        .sidebar-user-info .user-icon {
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #F3B000;
-            color: #754D3B;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-        }
-        .sidebar-user-info .user-details p {
-            margin-bottom: 0.25rem;
-        }
-        .sidebar-user-info .user-name {
-            font-weight: bold;
-        }
-        .sidebar-user-info .user-email {
-            font-size: 0.8rem;
-            color: #e0e0e0;
-        }
+      #sidebar.collapsed {
+        margin-left: -280px;
+      }
 
-        .sidebar-nav .nav-link {
-            color: white;
-            padding: 0.75rem 1rem;
-            border-radius: 0.375rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-        .sidebar-nav .nav-link i {
-            width: 20px;
-            margin-right: 10px;
-            text-align: center;
-        }
-        .sidebar-nav .nav-link:hover,
-        .sidebar-nav .nav-link.active {
-            background-color: #F3B000;
-            color: #333;
-        }
-        .sidebar-nav .nav-link.active {
-            font-weight: bold;
-        }
+      .sidebar-user-info {
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        border-radius: 0.375rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+      }
+      .sidebar-user-info .user-icon {
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #f3b000;
+        color: #754d3b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+      }
+      .sidebar-user-info .user-details p {
+        margin-bottom: 0.25rem;
+      }
+      .sidebar-user-info .user-name {
+        font-weight: bold;
+      }
+      .sidebar-user-info .user-email {
+        font-size: 0.8rem;
+        color: #e0e0e0;
+      }
 
-        #logout-button {
-            background-color: #F3B000;
-            color: #333;
-            font-weight: bold;
-        }
-        #logout-button:hover {
-            background-color: #e0a000;
-        }
+      .sidebar-nav .nav-link {
+        color: white;
+        padding: 0.75rem 1rem;
+        border-radius: 0.375rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+      }
+      .sidebar-nav .nav-link i {
+        width: 20px;
+        margin-right: 10px;
+        text-align: center;
+      }
+      .sidebar-nav .nav-link:hover,
+      .sidebar-nav .nav-link.active {
+        background-color: #f3b000;
+        color: #333;
+      }
+      .sidebar-nav .nav-link.active {
+        font-weight: bold;
+      }
 
+      #logout-button {
+        background-color: #f3b000;
+        color: #333;
+        font-weight: bold;
+      }
+      #logout-button:hover {
+        background-color: #e0a000;
+      }
 
-        #main-map-wrapper {
-            flex-grow: 1;
-            position: relative;
-            height: 100%; /* Mengisi tinggi content-area */
-        }
+      #main-map-wrapper {
+        flex-grow: 1;
+        position: relative;
+        height: 100%; /* Mengisi tinggi content-area */
+      }
 
-        #map {
-            width: 100%;
-            height: 100%;
-        }
+      #map {
+        width: 100%;
+        height: 100%;
+      }
 
-        #hamburger-menu {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            z-index: 1001; /* Di atas map, di bawah detail panel jika overlap */
-            background-color: white;
-            border: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-         #hamburger-menu:focus {
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 0 0 0.25rem rgba(243, 176, 0, 0.5) ;
-        }
+      #hamburger-menu {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 1001; /* Di atas map, di bawah detail panel jika overlap */
+        background-color: white;
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      #hamburger-menu:focus {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+          0 0 0 0.25rem rgba(243, 176, 0, 0.5);
+      }
 
-        #search-bar-container {
-            position: absolute;
-            top: 70px; /* Di bawah hamburger menu */
-            left: 15px;
-            z-index: 1000;
-            width: 300px;
-            background-color: white;
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        #search-bar-container .input-group-text {
-             background-color: transparent;
-             border: none;
-        }
-        #search-bar-container .form-control {
-            border: none;
-            box-shadow: none;
-        }
-        #search-bar-container .form-control:focus {
-            border-color: transparent;
-        }
+      #search-bar-container {
+        position: absolute;
+        top: 70px; /* Di bawah hamburger menu */
+        left: 15px;
+        z-index: 1000;
+        width: 300px;
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      #search-bar-container .input-group-text {
+        background-color: transparent;
+        border: none;
+      }
+      #search-bar-container .form-control {
+        border: none;
+        box-shadow: none;
+      }
+      #search-bar-container .form-control:focus {
+        border-color: transparent;
+      }
 
+      #detail-lokasi {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 280px;
+        z-index: 1000;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      }
+      #detail-lokasi h5 {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+      }
+      #detail-lokasi p,
+      #detail-lokasi li {
+        font-size: 0.85rem;
+        color: #555;
+      }
+      #detail-lokasi strong {
+        color: #444;
+      }
+      #detail-lokasi ul {
+        padding-left: 1.2rem;
+      }
 
-        #detail-lokasi {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 280px;
-            z-index: 1000;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-        #detail-lokasi h5 {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #333;
-        }
-        #detail-lokasi p, #detail-lokasi li {
-            font-size: 0.85rem;
-            color: #555;
-        }
-        #detail-lokasi strong {
-            color: #444;
-        }
-         #detail-lokasi ul {
-            padding-left: 1.2rem;
-        }
-
-        #map-controls {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        #map-controls .btn {
-            background-color: white;
-            color: #555;
-            border: 1px solid #ddd;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        #map-controls .btn:hover {
-            background-color: #f8f9fa;
-        }
-        #map-controls .btn i {
-            font-size: 1.1rem;
-        }
-        #map-controls .btn-compass {
-            padding: 0.5rem 0.7rem; /* Membuatnya sedikit lebih bulat */
-            margin-bottom: 0.5rem;
-        }
-        #map-controls .zoom-controls .btn {
-             border-radius: 0;
-        }
-        #map-controls .zoom-controls .btn:first-child {
-            border-top-left-radius: 0.25rem;
-            border-top-right-radius: 0.25rem;
-            border-bottom: none;
-        }
-        #map-controls .zoom-controls .btn:last-child {
-            border-bottom-left-radius: 0.25rem;
-            border-bottom-right-radius: 0.25rem;
-        }
-
+      #map-controls {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+      #map-controls .btn {
+        background-color: white;
+        color: #555;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      #map-controls .btn:hover {
+        background-color: #f8f9fa;
+      }
+      #map-controls .btn i {
+        font-size: 1.1rem;
+      }
+      #map-controls .btn-compass {
+        padding: 0.5rem 0.7rem; /* Membuatnya sedikit lebih bulat */
+        margin-bottom: 0.5rem;
+      }
+      #map-controls .zoom-controls .btn {
+        border-radius: 0;
+      }
+      #map-controls .zoom-controls .btn:first-child {
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        border-bottom: none;
+      }
+      #map-controls .zoom-controls .btn:last-child {
+        border-bottom-left-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <header id="app-header">
-        <div class="logo-container">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='10' ry='10' fill='%234CAF50'/%3E%3Cpath d='M50 20 Q60 30 70 20 Q60 40 50 60 Q40 40 30 20 Q40 30 50 20 Z' fill='white'/%3E%3Cpath d='M50 35 Q60 45 75 35 Q60 55 50 75 Q40 55 25 35 Q40 45 50 35 Z' fill='rgba(255,255,255,0.7)'/%3E%3C/svg%3E" alt="SiDamen Logo">
-            <span class="app-title">SiDamen</span>
-        </div>
-        <span class="page-title">Halaman Dashboard WebGIS</span>
+      <div class="logo-container">
+        <img src="logo Sidamen.png" alt="SiDamen Logo" />
+        <span class="app-title">SiDamen</span>
+      </div>
+      <span class="page-title">Halaman Dashboard WebGIS</span>
     </header>
 
     <div id="content-area">
-        <nav id="sidebar" class_collapsed>
-            <div class="sidebar-user-info">
-                <div class="user-icon"><i class="fas fa-user"></i></div>
-                <div class="user-details">
-                    <p class="user-name">Admin SiDamen</p>
-                    <p class="user-email">sidamen.acc@gmail.com</p>
-                </div>
-            </div>
+      <nav id="sidebar" class_collapsed>
+        <div class="sidebar-user-info">
+          <div class="user-icon"><i class="fas fa-user"></i></div>
+          <div class="user-details">
+            <p class="user-name">Admin SiDamen</p>
+            <p class="user-email">sidamen.acc@gmail.com</p>
+          </div>
+        </div>
 
-            <ul class="nav flex-column sidebar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-handshake"></i> Sambung Niaga</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#"><i class="fas fa-sliders-h"></i> Input Parameter</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-seedling"></i> Pasca Panen</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-cloud-sun"></i> Cuaca</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-calendar-alt"></i> Kalender</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-save"></i> Disimpan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-history"></i> Terbaru</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-language"></i> Bahasa</a>
-                </li>
-            </ul>
+        <ul class="nav flex-column sidebar-nav flex-grow-1">
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-tachometer-alt"></i> Dashboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-handshake"></i> Sambung Niaga</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#"
+              ><i class="fas fa-sliders-h"></i> Input Parameter</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-seedling"></i> Pasca Panen</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-cloud-sun"></i> Cuaca</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-calendar-alt"></i> Kalender</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-save"></i> Disimpan</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-history"></i> Terbaru</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fas fa-language"></i> Bahasa</a
+            >
+          </li>
+        </ul>
 
-            <button id="logout-button" class="btn w-100 mt-auto">LOGOUT</button>
-        </nav>
+        <button id="logout-button" class="btn w-100 mt-auto">LOGOUT</button>
+      </nav>
 
-        <main id="main-map-wrapper">
-            <button id="hamburger-menu" class="btn" title="Toggle Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+      <main id="main-map-wrapper">
+        <div class="d-flex justify-content-between align-items-center">
+          <button id="hamburger-menu" class="btn" title="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
 
-            <div id="search-bar-container" class="input-group">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Masukan Posisi Anda">
-            </div>
+          <div id="search-bar-container" class="input-group">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Masukan Posisi Anda"
+            />
+          </div>
+        </div>
 
-            <div id="map"></div>
+        <div id="map"></div>
 
-            <div id="detail-lokasi" class="card">
+        <!-- <div id="detail-lokasi" class="card">
                 <div class="card-body p-3">
                     <div class="d-flex justify-content-between align-items-center mb-2 border-bottom pb-2">
                         <h5 class="card-title mb-0"><i class="fas fa-map-marker-alt text-danger"></i> Detail Lokasi</h5>
@@ -326,85 +371,95 @@
                         <li>Kedelai</li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
-            <div id="map-controls">
-                <button class="btn btn-light btn-compass rounded-circle p-2" title="Kompas">
-                    <i class="fas fa-compass"></i>
-                </button>
-                <div class="btn-group-vertical zoom-controls mt-2" role="group">
-                    <button id="zoom-in" class="btn btn-light" title="Zoom In">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <button id="zoom-out" class="btn btn-light" title="Zoom Out">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-        </main>
+        <div id="map-controls">
+          <button
+            class="btn btn-light btn-compass rounded-circle p-2"
+            title="Kompas"
+          >
+            <i class="fas fa-compass"></i>
+          </button>
+          <div class="btn-group-vertical zoom-controls mt-2" role="group">
+            <button id="zoom-in" class="btn btn-light" title="Zoom In">
+              <i class="fas fa-plus"></i>
+            </button>
+            <button id="zoom-out" class="btn btn-light" title="Zoom Out">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const sidebar = document.getElementById('sidebar');
-            const hamburgerMenu = document.getElementById('hamburger-menu');
-            const mainMapWrapper = document.getElementById('main-map-wrapper');
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.getElementById("sidebar");
+        const hamburgerMenu = document.getElementById("hamburger-menu");
+        const mainMapWrapper = document.getElementById("main-map-wrapper");
 
-            // Inisialisasi sidebar collapsed
-            sidebar.classList.add('collapsed');
+        // Inisialisasi sidebar collapsed
+        sidebar.classList.add("collapsed");
 
-
-            hamburgerMenu.addEventListener('click', function () {
-                sidebar.classList.toggle('collapsed');
-                 // Optional: Tambahkan class ke map wrapper untuk penyesuaian jika perlu
-                mainMapWrapper.classList.toggle('sidebar-active');
-                // Penting: Invalidate map size setelah transisi sidebar selesai
-                // agar map dirender ulang dengan ukuran yang benar.
-                setTimeout(function() {
-                    map.invalidateSize();
-                }, 300); // Sesuaikan dengan durasi transisi CSS sidebar
-            });
-
-            // Inisialisasi Peta Leaflet
-            // Koordinat Jombang, Jawa Timur (perkiraan dari gambar)
-            var map = L.map('map').setView([-7.5568, 112.2384], 13);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            // Contoh Marker (sesuai pin biru di gambar)
-            // Alamat: Jl. Soekarno Hatta / Jl. Urip Sumoharjo, Jombang (perkiraan)
-            L.marker([-7.546, 112.235]).addTo(map)
-                .bindPopup('Jl. Soekarno Urip / Jl. Urip Sumoharjo, Jombang<br>Kabupaten Jombang, Jawa Timur')
-                .openPopup();
-
-
-            // Fungsi untuk tombol Zoom
-            document.getElementById('zoom-in').addEventListener('click', function() {
-                map.zoomIn();
-            });
-
-            document.getElementById('zoom-out').addEventListener('click', function() {
-                map.zoomOut();
-            });
-
-            // Pastikan peta menyesuaikan ukuran jika window diresize
-            window.addEventListener('resize', function() {
-                setTimeout(function() {
-                    map.invalidateSize();
-                }, 100);
-            });
-
-            // Set sidebar collapsed by default on small screens if needed
-            if (window.innerWidth < 992) { // Bootstrap's lg breakpoint
-                 if (!sidebar.classList.contains('collapsed')) {
-                    sidebar.classList.add('collapsed');
-                 }
-            }
+        hamburgerMenu.addEventListener("click", function () {
+          sidebar.classList.toggle("collapsed");
+          // Optional: Tambahkan class ke map wrapper untuk penyesuaian jika perlu
+          mainMapWrapper.classList.toggle("sidebar-active");
+          // Penting: Invalidate map size setelah transisi sidebar selesai
+          // agar map dirender ulang dengan ukuran yang benar.
+          setTimeout(function () {
+            map.invalidateSize();
+          }, 300); // Sesuaikan dengan durasi transisi CSS sidebar
         });
+
+        // Inisialisasi Peta Leaflet
+        // Koordinat Jombang, Jawa Timur (perkiraan dari gambar)
+        var map = L.map("map").setView([-7.5568, 112.2384], 13);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        // Contoh Marker (sesuai pin biru di gambar)
+        // Alamat: Jl. Soekarno Hatta / Jl. Urip Sumoharjo, Jombang (perkiraan)
+        L.marker([-7.546, 112.235])
+          .addTo(map)
+          .bindPopup(
+            "Jl. Soekarno Urip / Jl. Urip Sumoharjo, Jombang<br>Kabupaten Jombang, Jawa Timur"
+          )
+          .openPopup();
+
+        // Fungsi untuk tombol Zoom
+        document
+          .getElementById("zoom-in")
+          .addEventListener("click", function () {
+            map.zoomIn();
+          });
+
+        document
+          .getElementById("zoom-out")
+          .addEventListener("click", function () {
+            map.zoomOut();
+          });
+
+        // Pastikan peta menyesuaikan ukuran jika window diresize
+        window.addEventListener("resize", function () {
+          setTimeout(function () {
+            map.invalidateSize();
+          }, 100);
+        });
+
+        // Set sidebar collapsed by default on small screens if needed
+        if (window.innerWidth < 992) {
+          // Bootstrap's lg breakpoint
+          if (!sidebar.classList.contains("collapsed")) {
+            sidebar.classList.add("collapsed");
+          }
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
