@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalender Tanam Interaktif</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap");
+
+      body {
+        font-family: "Poppins";
+        margin: 0;
+        background-color: #e9e9e9; /* Sedikit abu-abu seperti di gambar */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        color: #333;
+      }
+
+      header#main-header {
+        background-color: #2E7D32; /* Hijau header */
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        height: 70px;
+        margin-bottom: 20px;
+      }
+
+      header#main-header i {
+        font-size: 1.8em; /* Perbesar ikon kalender */
+        margin-right: 12px;
+      }
+
+      header#main-header h1 {
+        margin: 0;
+        font-size: 1.9em; /* Perbesar judul */
+      }
+
+      .calendar-navigation-wrapper {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 900px; /* Batasi lebar maksimum */
+        box-sizing: border-box;
+      }
+
+      .year-display-container {
+        text-align: center;
+        margin-bottom: 25px;
+        position: relative; /* Untuk positioning input tahun */
+      }
+
+      #displayed-year {
+        font-size: 2.2em; /* Ukuran font tahun */
+        font-family: "poetsen one";
+        color: #795548; /* Warna merah-oranye untuk tahun */
+      }
+
+      #year-input {
+        /* Input untuk mengganti tahun, dibuat lebih subtle */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px; /* Lebar sama dengan #displayed-year atau lebih */
+        opacity: 0; /* Sembunyikan secara default */
+        cursor: pointer; /* Tunjukkan bahwa bisa diklik */
+        height: 100%;
+        border: none;
+        font-size: 1em; /* Samakan ukuran agar area klik pas */
+        z-index: 2;
+      }
+      /* Hover untuk menunjukkan input */
+      .year-display-container:hover #year-input {
+        opacity: 0.2; /* Atau style lain untuk menunjukkan bisa diubah */
+      }
+
+      .months-carousel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-btn {
+        background-color: transparent;
+        border: none;
+        color: #2c6b2f; /* Warna hijau untuk tombol navigasi */
+        font-size: 2.5em; /* Ukuran ikon panah */
+        cursor: pointer;
+        padding: 0 15px;
+        transition: color 0.3s ease;
+      }
+
+      .nav-btn:hover {
+        color: #1e4a20; /* Warna hijau lebih gelap saat hover */
+      }
+
+      .months-display-area {
+        display: flex;
+        justify-content: space-around; /* Memberi jarak antar bulan */
+        flex-grow: 1;
+        gap: 20px; /* Jarak eksplisit antar kontainer bulan */
+      }
+
+      .month-container {
+        flex-basis: calc(
+          50% - 10px
+        ); /* Setiap bulan mengambil hampir setengah, dikurangi gap */
+        max-width: calc(50% - 10px);
+        background-color: #fff; /* Latar belakang bulan tetap putih */
+        /* padding: 15px; Dihapus, karena detail tanaman di bawah */
+        border-radius: 8px; /* Radius untuk kontainer bulan jika diperlukan */
+        /* box-shadow: 0 2px 5px rgba(0,0,0,0.05); Dihapus, shadow utama di wrapper */
+        display: flex;
+        flex-direction: column;
+      }
+
+      .month-container h2 {
+        /* Nama Bulan */
+        text-align: center;
+        color: #2E7D32; /* Warna hijau untuk nama bulan */
+        margin-top: 10px;
+        margin-bottom: 15px;
+        font-size: 1.6em;
+        font-family: 'poetsen one';
+      }
+
+      .days-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px; /* Jarak antar tanggal */
+        padding: 0 10px; /* Padding untuk grid tanggal */
+      }
+
+      .day {
+        background-color: #2E7D32; /* Warna hijau tanggal */
+        color: white;
+        padding: 12px 5px; /* Padding tanggal, buat lebih tinggi */
+        text-align: center;
+        border-radius: 6px; /* Radius tanggal */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+        font-size: 0.95em;
+      }
+
+      .day.empty {
+        background-color: transparent;
+        cursor: default;
+      }
+
+      .day.selected {
+        background-color: #fff; /* Warna hijau lebih gelap saat dipilih */
+        outline: 1px solid #2E7D32;
+        color: #2E7D32;
+      }
+
+      .day:not(.empty):hover {
+        scale: 1.05;
+        transition: all 0.2s ease;
+      }
+
+      .detail-tanaman {
+        background-color: #f8f9fa; /* Latar belakang detail tanaman (abu-abu muda) */
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 20px 10px 10px 10px; /* Margin atas, dan sedikit di sisi */
+        min-height: 100px; /* Tinggi minimum untuk konsistensi */
+      }
+
+      .detail-tanaman p {
+        margin: 8px 0;
+        color: #333;
+        font-size: 0.9em;
+      }
+
+      .detail-tanaman strong {
+        color: #2c6b2f;
+        font-weight: bold;
+      }
+
+      /* Responsivitas */
+      @media (max-width: 768px) {
+        .calendar-navigation-wrapper {
+          width: 95%;
+          padding: 15px;
+        }
+        .months-carousel {
+          flex-direction: column; /* Tombol navigasi di atas/bawah */
+        }
+        .nav-btn {
+          padding: 10px 0;
+          font-size: 2em;
+        }
+        #prev-month-btn {
+          order: 1;
+        }
+        #next-month-btn {
+          order: 3;
+        }
+        .months-display-area {
+          order: 2;
+          flex-direction: column; /* Bulan ditampilkan vertikal */
+          width: 100%; /* Ambil lebar penuh */
+          gap: 25px; /* Jarak antar bulan jika vertikal */
+        }
+        .month-container {
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+        #displayed-year {
+          font-size: 1.8em;
+        }
+        header#main-header {
+          height: 60px;
+          margin-bottom: 15px;
+        }
+        header#main-header h1 {
+          font-size: 1.6em;
+        }
+        header#main-header i {
+          font-size: 1.5em;
+        }
+
+        .day {
+          padding: 10px 3px;
+          font-size: 0.85em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .days-grid {
+          gap: 4px;
+        }
+        .day {
+          padding: 8px 2px;
+          font-size: 0.8em;
+        }
+        .detail-tanaman p {
+          font-size: 0.85em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="main-header">
+      <i class="fas fa-calendar-alt"></i>
+      <h1>Kalender</h1>
+    </header>
+
+    <div class="calendar-navigation-wrapper">
+      <div class="year-display-container">
+        <span id="displayed-year">2025</span>
+        <input
+          type="number"
+          id="year-input"
+          value="2025"
+          min="1900"
+          max="2100"
+          title="Ganti Tahun"
+        />
+      </div>
+
+      <div class="months-carousel">
+        <button id="prev-month-btn" class="nav-btn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="months-display-area">
+          <div class="month-container" id="month-container-1">
+            <h2 id="month-name-1">Januari</h2>
+            <div class="days-grid" id="days-grid-1"></div>
+            <div class="detail-tanaman" id="detail-tanaman-1">
+              <p><strong>Detail Tanaman:</strong></p>
+              <p id="tanggal-terpilih-1">Pilih tanggal untuk melihat detail.</p>
+              <p id="rekomendasi-tanaman-1" style="font-weight: bold;"></p>
+              <p id="suhu-1" style="font-weight: bold;"></p>
+            </div>
+          </div>
+
+          <div class="month-container" id="month-container-2">
+            <h2 id="month-name-2">Februari</h2>
+            <div class="days-grid" id="days-grid-2"></div>
+            <div class="detail-tanaman" id="detail-tanaman-2">
+              <p><strong>Detail Tanaman:</strong></p>
+              <p id="tanggal-terpilih-2">Pilih tanggal untuk melihat detail.</p>
+              <p id="rekomendasi-tanaman-2" style="font-weight: bold;"></p>
+              <p id="suhu-2" style="font-weight: bold;"></p>
+            </div>
+          </div>
+        </div>
+        <button id="next-month-btn" class="nav-btn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const displayedYearEl = document.getElementById("displayed-year");
+        const yearInputEl = document.getElementById("year-input");
+        const prevMonthBtn = document.getElementById("prev-month-btn");
+        const nextMonthBtn = document.getElementById("next-month-btn");
+
+        const monthNameEls = [
+          document.getElementById("month-name-1"),
+          document.getElementById("month-name-2"),
+        ];
+        const daysGridEls = [
+          document.getElementById("days-grid-1"),
+          document.getElementById("days-grid-2"),
+        ];
+        const detailTanamanContainers = [
+          {
+            tanggal: document.getElementById("tanggal-terpilih-1"),
+            rekomendasi: document.getElementById("rekomendasi-tanaman-1"),
+            suhu: document.getElementById("suhu-1"),
+          },
+          {
+            tanggal: document.getElementById("tanggal-terpilih-2"),
+            rekomendasi: document.getElementById("rekomendasi-tanaman-2"),
+            suhu: document.getElementById("suhu-2"),
+          },
+        ];
+
+        const namaBulan = [
+          "Januari",
+          "Februari",
+          "Maret",
+          "April",
+          "Mei",
+          "Juni",
+          "Juli",
+          "Agustus",
+          "September",
+          "Oktober",
+          "November",
+          "Desember",
+        ];
+
+        const dataTanaman = {
+          // Kunci: "tanggal-bulanIndex-tahun"
+          "12-0-2025": { rekomendasi: "Padi, Jagung, Singkong", suhu: "28 °C" },
+          "15-1-2025": { rekomendasi: "Cabai, Tomat, Terong", suhu: "29 °C" },
+          "20-0-2025": {
+            rekomendasi: "Bayam (awal tanam), Kangkung",
+            suhu: "27 °C",
+          },
+          "5-2-2025": { rekomendasi: "Mentimun, Pare", suhu: "28 °C" },
+          "10-11-2026": { rekomendasi: "Ubi Jalar", suhu: "26 °C" },
+        };
+
+        let currentYear = 2025;
+        let currentMonthIndex = 0; // Indeks bulan pertama yang ditampilkan (0 untuk Januari)
+
+        function updateDisplayedYear() {
+          displayedYearEl.textContent = currentYear;
+          yearInputEl.value = currentYear;
+        }
+
+        function resetDetailTanaman(detailContainer) {
+          detailContainer.tanggal.textContent =
+            "Pilih tanggal untuk melihat detail.";
+          detailContainer.rekomendasi.textContent = "";
+          detailContainer.suhu.textContent = "";
+        }
+
+        function tampilkanDetail(detailContainer, tanggal, bulanNama, tahun) {
+          detailContainer.tanggal.textContent = `Tanggal: ${tanggal} ${bulanNama} ${tahun}`;
+          const bulanIndex = namaBulan.indexOf(bulanNama);
+          const kunciData = `${tanggal}-${bulanIndex}-${tahun}`;
+
+          if (dataTanaman[kunciData]) {
+            detailContainer.rekomendasi.textContent = `Rekomendasi Tanaman: ${dataTanaman[kunciData].rekomendasi}`;
+            detailContainer.suhu.textContent = `Suhu: ${dataTanaman[kunciData].suhu}`;
+          } else {
+            detailContainer.rekomendasi.textContent =
+              "Rekomendasi Tanaman: Belum ada data.";
+            detailContainer.suhu.textContent = "Suhu: -";
+          }
+        }
+
+        function buatSatuBulan(tahun, bulanIndex, daysGridEl, detailContainer) {
+          daysGridEl.innerHTML = "";
+          monthNameEls[daysGridEls.indexOf(daysGridEl)].textContent =
+            namaBulan[bulanIndex];
+          resetDetailTanaman(detailContainer);
+
+          const tanggalPertama = new Date(tahun, bulanIndex, 1);
+          const hariPertamaMinggu = tanggalPertama.getDay();
+          const jumlahHari = new Date(tahun, bulanIndex + 1, 0).getDate();
+
+          for (let i = 0; i < hariPertamaMinggu; i++) {
+            const selKosong = document.createElement("div");
+            selKosong.classList.add("day", "empty");
+            daysGridEl.appendChild(selKosong);
+          }
+
+          let tanggalTerpilihDefaultDitemukan = false;
+          for (let tanggal = 1; tanggal <= jumlahHari; tanggal++) {
+            const selTanggal = document.createElement("div");
+            selTanggal.classList.add("day");
+            selTanggal.textContent = tanggal;
+            selTanggal.dataset.tanggal = tanggal;
+
+            selTanggal.addEventListener("click", function () {
+              // Hapus .selected dari semua tanggal di KEDUA grid
+              document
+                .querySelectorAll(".days-grid .day.selected")
+                .forEach((d) => d.classList.remove("selected"));
+              this.classList.add("selected");
+              tampilkanDetail(
+                detailContainer,
+                tanggal,
+                namaBulan[bulanIndex],
+                tahun
+              );
+            });
+
+            daysGridEl.appendChild(selTanggal);
+
+            // Otomatis pilih dan tampilkan detail untuk 12 Januari 2025 jika itu bulan yang tepat
+            if (
+              tahun === 2025 &&
+              bulanIndex === 0 &&
+              tanggal === 12 &&
+              !tanggalTerpilihDefaultDitemukan
+            ) {
+              if (daysGridEls.indexOf(daysGridEl) === 0) {
+                // Hanya jika ini kontainer bulan pertama
+                selTanggal.classList.add("selected");
+                tampilkanDetail(
+                  detailContainer,
+                  tanggal,
+                  namaBulan[bulanIndex],
+                  tahun
+                );
+                tanggalTerpilihDefaultDitemukan = true;
+              }
+            }
+          }
+        }
+
+        function renderKalenderDuaBulan() {
+          updateDisplayedYear();
+
+          const tahunBulan1 = currentYear;
+          const bulan1Index = currentMonthIndex;
+
+          let tahunBulan2 = currentYear;
+          let bulan2Index = (currentMonthIndex + 1) % 12;
+
+          if (bulan1Index === 11) {
+            // Jika bulan pertama adalah Desember
+            tahunBulan2 = currentYear + 1;
+          }
+
+          buatSatuBulan(
+            tahunBulan1,
+            bulan1Index,
+            daysGridEls[0],
+            detailTanamanContainers[0]
+          );
+          buatSatuBulan(
+            tahunBulan2,
+            bulan2Index,
+            daysGridEls[1],
+            detailTanamanContainers[1]
+          );
+        }
+
+        prevMonthBtn.addEventListener("click", () => {
+          currentMonthIndex--;
+          if (currentMonthIndex < 0) {
+            currentMonthIndex = 11;
+            currentYear--;
+          }
+          renderKalenderDuaBulan();
+        });
+
+        nextMonthBtn.addEventListener("click", () => {
+          currentMonthIndex++;
+          if (currentMonthIndex > 11) {
+            currentMonthIndex = 0;
+            currentYear++;
+          }
+          renderKalenderDuaBulan();
+        });
+
+        yearInputEl.addEventListener("change", () => {
+          const tahunBaru = parseInt(yearInputEl.value);
+          if (!isNaN(tahunBaru) && tahunBaru >= 1900 && tahunBaru <= 2100) {
+            currentYear = tahunBaru;
+            // currentMonthIndex = 0; // Opsional: reset ke Januari saat tahun diubah
+            updateDisplayedYear();
+            renderKalenderDuaBulan();
+          } else {
+            alert("Masukkan tahun yang valid (1900-2100).");
+            yearInputEl.value = currentYear; // Kembalikan ke nilai valid
+          }
+        });
+        yearInputEl.addEventListener("focus", () => {
+          // Optional: Style saat input tahun di-fokus, misal opacity jadi 1
+          yearInputEl.style.opacity = "1";
+        });
+        yearInputEl.addEventListener("blur", () => {
+          // Kembalikan opacity saat fokus hilang
+          yearInputEl.style.opacity = "0";
+          // Jika ingin input tetap terlihat setelah dihover oleh container:
+          // Check if .year-display-container is still hovered if needed for more complex logic
+        });
+
+        // Inisialisasi
+        renderKalenderDuaBulan();
+      });
+    </script>
+  </body>
+</html>
