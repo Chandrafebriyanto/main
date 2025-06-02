@@ -16,6 +16,10 @@
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +31,7 @@
     <style type="text/tailwindcss">
       @layer utilities {
         .collapsed {
-          margin-left: -300px !important; /* Pastikan ini menimpa gaya lain jika perlu */
+          margin-left: -300px !important;
         }
       }
       body {
@@ -35,6 +39,15 @@
       }
       .font-poetsen-one {
         font-family: "Poetsen One", sans-serif;
+      }
+      /* Styling tambahan untuk panel detail (jika diperlukan di luar Tailwind) */
+      #detail-lokasi-popup {
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+      #detail-lokasi-popup.hidden-popup {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
       }
     </style>
   </head>
@@ -64,7 +77,7 @@
         class="w-[300px] bg-[#754d3b] text-white py-6 px-4 transition-all duration-300 ease-in-out flex flex-col overflow-y-auto h-auto"
       >
         <div
-          class="sidebar-user-info bg-black/10 p-4 rounded-md mb-6 flex items-center"
+          class="sidebar-user-info bg-black/10 p-3 rounded-md mb-6 flex items-center"
         >
           <div
             class="user-icon text-[2rem] rounded-full bg-[#f3b000] p-[5px] text-[#754d3b] flex items-center justify-center mr-4"
@@ -72,9 +85,9 @@
             <i class="fas fa-user"></i>
           </div>
           <div class="user-details">
-            <p class="user-name mb-1 font-bold">Admin SiDamen</p>
+            <p class="user-name mb-1 font-bold">User</p>
             <p class="user-email mb-1 text-[0.8rem] text-[#e0e0e0]">
-              sidamen.acc@gmail.com
+              useracc6246@gmail.com
             </p>
           </div>
         </div>
@@ -155,7 +168,7 @@
 
         <button
           id="logout-button"
-          class="btn w-100 mt-auto bg-[#ffeb3b] text-[#2e7d32] font-poetsen-one hover:bg-[#2e7d32] hover:text-[#ffeb3b]"
+          class="btn w-100 mt-auto bg-[#ffeb3b] text-[#2e7d32] font-poetsen-one rounded-full hover:bg-[#2e7d32] hover:text-[#ffeb3b]"
         >
           LOGOUT
         </button>
@@ -167,77 +180,79 @@
             <button
               id="hamburger-menu"
               title="Toggle Menu"
-              class="absolute top-5 left-[50px] w-10 h-10 z-[1001] bg-white border-none rounded-[20px] p-[0.2rem] shadow-[0_2px_5px_rgba(0,0,0,0.2)] hover:bg-[#ffeb3b] transition-all duration-300 ease-in-out"
+              class="absolute top-5 left-[15px] md:left-[50px] w-10 h-10 z-[1001] bg-white border-none rounded-[20px] p-[0.2rem] shadow-[0_2px_5px_rgba(0,0,0,0.2)] hover:bg-[#ffeb3b] transition-all duration-300 ease-in-out"
             >
               <i class="fas fa-bars"></i>
             </button>
 
             <div
               id="search-bar-container"
-              class="input-group absolute left-[95px] top-5 z-[1000] w-[300px] bg-white p-[0.2rem] rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.1)]"
+              class="input-group absolute left-[65px] md:left-[95px] top-5 z-[1000] w-[calc(100%-80px)] md:w-[350px] bg-white p-[0.2rem] rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.1)] flex"
             >
-              <span class="input-group-text bg-transparent border-none"
-                ><i class="fas fa-search"></i
-              ></span>
               <input
                 type="text"
-                class="form-control border-none shadow-none focus:border-transparent focus:ring-0"
-                placeholder="Masukan Posisi Anda"
+                id="search-input"
+                class="form-control border-none shadow-none focus:border-transparent focus:ring-0 rounded-l-full flex-grow"
+                placeholder="Cari lokasi atau alamat..."
               />
+              <button
+                id="search-button"
+                class="input-group-text bg-transparent border-none px-3 rounded-r-full hover:bg-gray-100"
+              >
+                <i class="fas fa-search"></i>
+              </button>
             </div>
           </div>
         </div>
 
         <div id="map" class="w-full h-full"></div>
 
-        <!-- tittle: detail lokasi -->
-        <!-- <div
-          id="detail-lokasi"
-          class="card absolute top-[15px] right-[15px] w-[280px] z-[1000] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.15)]"
+        <div
+          id="detail-lokasi-popup"
+          class="card absolute top-[75px] right-[15px] w-[300px] z-[1000] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] rounded-lg hidden-popup"
         >
           <div class="card-body p-3">
-            <div
-              class="d-flex justify-content-between align-items-center mb-2 border-bottom pb-2"
-            >
+            <div class="flex justify-between items-center mb-2 border-b pb-2">
               <h5 class="card-title mb-0 text-base font-bold text-[#333]">
-                <i class="fas fa-map-marker-alt text-danger"></i> Detail Lokasi
+                <i class="fas fa-map-marker-alt text-red-500 mr-1"></i> Detail
+                Lokasi
               </h5>
               <button
                 type="button"
                 class="btn-close btn-sm"
                 aria-label="Close"
-                onclick="document.getElementById('detail-lokasi').style.display='none'"
+                id="close-detail-popup"
               ></button>
             </div>
-            <p class="mb-1 text-[0.85rem] text-[#555]">
-              <strong>Daerah :</strong> Jombang
+            <p id="detail-alamat" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Alamat:</strong> <span id="alamat-value">-</span>
             </p>
-            <p class="mb-1 text-[0.85rem] text-[#555]">
-              <strong>Suhu :</strong> 26°C - 31°C
+            <p id="detail-koordinat" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Koordinat:</strong> <span id="koordinat-value">-</span>
             </p>
-            <p class="mb-1 text-[0.85rem] text-[#555]">
-              <strong>Kelembapan :</strong> 79% - 93%
+            <p id="detail-daerah" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Daerah:</strong> <span id="daerah-value">-</span>
             </p>
-            <p class="mb-1 text-[0.85rem] text-[#555]">
-              <strong>Cuaca :</strong> Berawan
+            <p id="detail-suhu" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Suhu:</strong> <span id="suhu-value">-</span>
             </p>
-            <h6 class="mt-2 mb-1 text-[0.9rem] font-bold">
+            <p id="detail-kelembapan" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Kelembapan:</strong> <span id="kelembapan-value">-</span>
+            </p>
+            <p id="detail-cuaca" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Cuaca:</strong> <span id="cuaca-value">-</span>
+            </p>
+            <h6
+              id="title-rekomendasi"
+              class="mt-2 mb-1 text-[0.9rem] font-bold hidden"
+            >
               Rekomendasi Tanaman:
             </h6>
-            <ul class="mb-0 pl-[1.2rem]">
-              <li class="text-[0.85rem] text-[#555]">Padi</li>
-              <li class="text-[0.85rem] text-[#555]">Jagung</li>
-              <li class="text-[0.85rem] text-[#555]">Kedelai</li>
+            <ul id="rekomendasi-list" class="mb-0 pl-[1.2rem]">
+              {/* Rekomendasi akan diisi oleh JS */}
             </ul>
-            <style>
-              #detail-lokasi strong {
-                color: #444;
-              }
-            </style>
-            {/* Gaya spesifik untuk strong dipertahankan jika sulit dengan
-            Tailwind utility langsung ke child */}
           </div>
-        </div> -->
+        </div>
 
         <div id="map-controls" class="absolute bottom-5 right-5 z-[1000]">
           <img
@@ -256,15 +271,37 @@
         const sidebar = document.getElementById("sidebar");
         const hamburgerMenu = document.getElementById("hamburger-menu");
         const mainMapWrapper = document.getElementById("main-map-wrapper");
-        var map; // Deklarasikan variabel map di sini agar dapat diakses
+        const searchInput = document.getElementById("search-input");
+        const searchButton = document.getElementById("search-button");
+        const detailLokasiPopup = document.getElementById(
+          "detail-lokasi-popup"
+        );
+        const closeDetailPopupButton =
+          document.getElementById("close-detail-popup");
 
-        // Atur keadaan awal sidebar berdasarkan lebar layar
+        // Elemen untuk menampilkan detail
+        const alamatValue = document.getElementById("alamat-value");
+        const koordinatValue = document.getElementById("koordinat-value");
+        const daerahValue = document.getElementById("daerah-value");
+        // (Tambahkan elemen lain jika ada data cuaca, dll. dinamis)
+
+        var map;
+        var currentMarker; // Untuk menyimpan marker hasil pencarian/klik
+
+        // --- Fungsi untuk Sidebar (Sudah Ada) ---
+        function adjustLayoutBasedOnSidebar() {
+          // Fungsi ini bisa diperluas jika ada penyesuaian layout lain
+          setTimeout(function () {
+            if (typeof map !== "undefined" && map) {
+              map.invalidateSize();
+            }
+          }, 300); // Waktu transisi sidebar
+        }
+
         if (window.innerWidth >= 992) {
-          // Layar besar/desktop: Sidebar aktif (tidak diciutkan)
           sidebar.classList.remove("collapsed");
-          mainMapWrapper.classList.add("sidebar-active"); // Asumsikan kelas ini menyesuaikan konten utama
+          mainMapWrapper.classList.add("sidebar-active");
         } else {
-          // Layar kecil/mobile: Sidebar diciutkan
           sidebar.classList.add("collapsed");
           mainMapWrapper.classList.remove("sidebar-active");
         }
@@ -272,46 +309,188 @@
         hamburgerMenu.addEventListener("click", function () {
           sidebar.classList.toggle("collapsed");
           mainMapWrapper.classList.toggle("sidebar-active");
-          setTimeout(function () {
-            if (typeof map !== "undefined" && map) {
-              map.invalidateSize();
-            }
-          }, 300);
+          adjustLayoutBasedOnSidebar();
         });
-
-        map = L.map("map").setView([-7.5568, 112.2384], 13);
-
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
-
-        L.marker([-7.546, 112.235])
-          .addTo(map)
-          .bindPopup(
-            "Jl. Soekarno Urip / Jl. Urip Sumoharjo, Jombang<br>Kabupaten Jombang, Jawa Timur"
-          )
-          .openPopup();
-
-        setTimeout(function () {
-          if (typeof map !== "undefined" && map) {
-            map.invalidateSize();
-          }
-        }, 50);
-
         window.addEventListener("resize", function () {
           if (window.innerWidth < 992) {
             if (!sidebar.classList.contains("collapsed")) {
               sidebar.classList.add("collapsed");
               mainMapWrapper.classList.remove("sidebar-active");
+              adjustLayoutBasedOnSidebar();
+            }
+          } else {
+            // Jika layar membesar, sidebar mungkin perlu state default
+            if (sidebar.classList.contains("collapsed")) {
+              //  sidebar.classList.remove("collapsed"); // Atau biarkan user yang kontrol
+              //  mainMapWrapper.classList.add("sidebar-active");
+              //  adjustLayoutBasedOnSidebar();
             }
           }
           setTimeout(function () {
+            // invalidate map size on general resize too
             if (typeof map !== "undefined" && map) {
               map.invalidateSize();
             }
           }, 100);
         });
+        // --- Akhir Fungsi Sidebar ---
+
+        // Inisialisasi Peta Leaflet
+        map = L.map("map").setView([-7.5568, 112.2384], 13);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        // Contoh Marker Awal (jika diperlukan)
+        // L.marker([-7.546, 112.235])
+        //   .addTo(map)
+        //   .bindPopup("Jl. Soekarno Urip, Jombang")
+        //   .openPopup();
+
+        // --- Fungsi untuk Menampilkan Detail Lokasi di Popup ---
+        function showLocationDetail(data) {
+          alamatValue.textContent = data.displayName || "Tidak tersedia";
+          koordinatValue.textContent = `${parseFloat(data.lat).toFixed(
+            5
+          )}, ${parseFloat(data.lon).toFixed(5)}`;
+          daerahValue.textContent =
+            data.address?.city ||
+            data.address?.town ||
+            data.address?.county ||
+            data.address?.state ||
+            "Tidak diketahui";
+          // Untuk cuaca dan rekomendasi, Anda perlu sumber data lain
+          document.getElementById("suhu-value").textContent = "28°C"; // Contoh statis
+          document.getElementById("kelembapan-value").textContent = "80%"; // Contoh statis
+          document.getElementById("cuaca-value").textContent = "Cerah Berawan"; // Contoh statis
+
+          const rekomendasiList = document.getElementById("rekomendasi-list");
+          const titleRekomendasi = document.getElementById("title-rekomendasi");
+          rekomendasiList.innerHTML = ""; // Kosongkan list
+          const contohRekomendasi = ["Padi", "Jagung", "Tebu"]; // Contoh statis
+          if (contohRekomendasi.length > 0) {
+            contohRekomendasi.forEach((item) => {
+              const li = document.createElement("li");
+              li.className = "text-[0.85rem] text-gray-600";
+              li.textContent = item;
+              rekomendasiList.appendChild(li);
+            });
+            titleRekomendasi.classList.remove("hidden");
+          } else {
+            titleRekomendasi.classList.add("hidden");
+          }
+
+          detailLokasiPopup.classList.remove("hidden-popup");
+        }
+
+        closeDetailPopupButton.addEventListener("click", () => {
+          detailLokasiPopup.classList.add("hidden-popup");
+        });
+
+        // --- Fungsi Geocoding (Pencarian Lokasi) ---
+        async function searchLocation(query) {
+          if (!query) return;
+          const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+            query
+          )}&limit=1`;
+          try {
+            const response = await fetch(url);
+            const data = await response.json();
+            if (data && data.length > 0) {
+              const result = data[0];
+              const lat = parseFloat(result.lat);
+              const lon = parseFloat(result.lon);
+
+              map.setView([lat, lon], 15); // Pindahkan view peta dan zoom
+              if (currentMarker) {
+                map.removeLayer(currentMarker); // Hapus marker sebelumnya
+              }
+              currentMarker = L.marker([lat, lon])
+                .addTo(map)
+                .bindPopup(result.display_name)
+                .openPopup();
+
+              // Tampilkan detail di panel (menggunakan data hasil geocoding)
+              showLocationDetail({
+                displayName: result.display_name,
+                lat: result.lat,
+                lon: result.lon,
+                address: result.address, // address object dari nominatim
+              });
+            } else {
+              alert("Lokasi tidak ditemukan.");
+            }
+          } catch (error) {
+            console.error("Error saat mencari lokasi:", error);
+            alert("Terjadi kesalahan saat mencari lokasi.");
+          }
+        }
+
+        searchButton.addEventListener("click", () => {
+          searchLocation(searchInput.value);
+        });
+        searchInput.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            searchLocation(searchInput.value);
+          }
+        });
+
+        // --- Fungsi Reverse Geocoding (Klik pada Peta) ---
+        map.on("click", async function (e) {
+          const lat = e.latlng.lat;
+          const lon = e.latlng.lng;
+          const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+
+          try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data) {
+              if (currentMarker) {
+                map.removeLayer(currentMarker);
+              }
+              currentMarker = L.marker([lat, lon])
+                .addTo(map)
+                .bindPopup(
+                  data.display_name ||
+                    `Koordinat: ${lat.toFixed(5)}, ${lon.toFixed(5)}`
+                )
+                .openPopup();
+
+              // Tampilkan detail di panel
+              showLocationDetail({
+                displayName: data.display_name,
+                lat: lat,
+                lon: lon,
+                address: data.address,
+              });
+            } else {
+              console.warn("Tidak ada data alamat untuk lokasi ini.");
+              showLocationDetail({
+                displayName: "Informasi alamat tidak tersedia",
+                lat: lat,
+                lon: lon,
+                address: {},
+              });
+            }
+          } catch (error) {
+            console.error("Error saat reverse geocoding:", error);
+            showLocationDetail({
+              displayName: "Gagal mengambil informasi alamat",
+              lat: lat,
+              lon: lon,
+              address: {},
+            });
+          }
+        });
+
+        // Invalidate map size setelah semua siap
+        setTimeout(function () {
+          if (typeof map !== "undefined" && map) {
+            map.invalidateSize();
+          }
+        }, 150); // Beri sedikit waktu tambahan
       });
     </script>
   </body>
