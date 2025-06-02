@@ -301,9 +301,9 @@
           } else {
             // Jika layar membesar, sidebar mungkin perlu state default
              if (sidebar.classList.contains("collapsed")) {
-                //  sidebar.classList.remove("collapsed"); // Atau biarkan user yang kontrol
-                //  mainMapWrapper.classList.add("sidebar-active");
-                //  adjustLayoutBasedOnSidebar();
+                sidebar.classList.remove("collapsed"); // Atau biarkan user yang kontrol
+                mainMapWrapper.classList.add("sidebar-active");
+                adjustLayoutBasedOnSidebar();
              }
           }
            setTimeout(function () { // invalidate map size on general resize too
@@ -321,13 +321,6 @@
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map);
-
-        // Contoh Marker Awal (jika diperlukan)
-        // L.marker([-7.546, 112.235])
-        //   .addTo(map)
-        //   .bindPopup("Jl. Soekarno Urip, Jombang")
-        //   .openPopup();
-
 
         // --- Fungsi untuk Menampilkan Detail Lokasi di Popup ---
         function showLocationDetail(data) {
