@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .collapsed {
+          margin-left: -300px !important; /* Pastikan ini menimpa gaya lain jika perlu */
+        }
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      .font-poetsen-one {
+        font-family: "Poetsen One", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col h-screen m-0 overflow-hidden">
+    <header
+      id="app-header"
+      class="bg-[#2e7d32] text-white py-3 px-6 flex items-center justify-between flex-shrink-0 h-[60px]"
+    >
+      <div class="logo-container flex items-center">
+        <img
+          src="logo Sidamen.png"
+          alt="SiDamen Logo"
+          class="h-10 w-10 mr-[10px] bg-[#4caf50] rounded-full p-0"
+        />
+        <span class="app-title text-[2rem] text-[#ffeb3b] font-poetsen-one"
+          >SiDamen</span
+        >
+      </div>
+      <span class="page-title text-[1.1rem] font-medium"
+        >Halaman Dashboard WebGIS</span
+      >
+    </header>
+
+    <div id="content-area" class="flex flex-grow overflow-hidden">
+      <nav
+        id="sidebar"
+        class="w-[300px] bg-[#754d3b] text-white py-6 px-4 transition-all duration-300 ease-in-out flex flex-col overflow-y-auto h-auto"
+      >
+        <div
+          class="sidebar-user-info bg-black/10 p-4 rounded-md mb-6 flex items-center"
+        >
+          <div
+            class="user-icon text-[2rem] rounded-full bg-[#f3b000] p-[5px] text-[#754d3b] flex items-center justify-center mr-4"
+          >
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="user-details">
+            <p class="user-name mb-1 font-bold">Admin SiDamen</p>
+            <p class="user-email mb-1 text-[0.8rem] text-[#e0e0e0]">
+              sidamen.acc@gmail.com
+            </p>
+          </div>
+        </div>
+
+        <ul class="nav flex-column sidebar-nav flex-grow-1">
+          <li class="nav-item">
+            <a
+              class="nav-link active py-2 px-4 rounded-md mb-2 flex items-center bg-[#ffeb3b] text-[#333] font-bold"
+              href="test.html"
+              ><i class="fas fa-tachometer-alt w-5 mr-[10px] text-center"></i>
+              Dashboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link py-2 px-4 rounded-md mb-2 flex items-center text-white hover:bg-[#ffeb3b] hover:text-[#333]"
+              href="#"
+              ><i class="fas fa-handshake w-5 mr-[10px] text-center"></i>
+              Sambung Niaga</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link py-2 px-4 rounded-md mb-2 flex items-center text-white hover:bg-[#ffeb3b] hover:text-[#333]"
+              href="#"
+              ><i class="fas fa-sliders-h w-5 mr-[10px] text-center"></i> Input
+              Parameter</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link py-2 px-4 rounded-md mb-2 flex items-center text-white hover:bg-[#ffeb3b] hover:text-[#333]"
+              href="#"
+              ><i class="fas fa-seedling w-5 mr-[10px] text-center"></i> Pasca
+              Panen</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link py-2 px-4 rounded-md mb-2 flex items-center text-white hover:bg-[#ffeb3b] hover:text-[#333]"
+              href="#"
+              ><i class="fas fa-cloud-sun w-5 mr-[10px] text-center"></i>
+              Cuaca</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link py-2 px-4 rounded-md mb-2 flex items-center text-white hover:bg-[#ffeb3b] hover:text-[#333]"
+              href="#"
+              ><i class="fas fa-calendar-alt w-5 mr-[10px] text-center"></i>
+              Kalender</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link py-2 px-4 rounded-md mb-2 flex items-center text-white hover:bg-[#ffeb3b] hover:text-[#333]"
+              href="#"
+              ><i class="fas fa-save w-5 mr-[10px] text-center"></i> Disimpan</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link py-2 px-4 rounded-md mb-2 flex items-center text-white hover:bg-[#ffeb3b] hover:text-[#333]"
+              href="#"
+              ><i class="fas fa-history w-5 mr-[10px] text-center"></i>
+              Terbaru</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link py-2 px-4 rounded-md mb-2 flex items-center text-white hover:bg-[#ffeb3b] hover:text-[#333]"
+              href="#"
+              ><i class="fas fa-language w-5 mr-[10px] text-center"></i>
+              Bahasa</a
+            >
+          </li>
+        </ul>
+
+        <button
+          id="logout-button"
+          class="btn w-100 mt-auto bg-[#ffeb3b] text-[#2e7d32] font-poetsen-one hover:bg-[#2e7d32] hover:text-[#ffeb3b]"
+        >
+          LOGOUT
+        </button>
+      </nav>
+
+      <main id="main-map-wrapper" class="flex-grow relative h-full">
+        <div>
+          <div class="search">
+            <button
+              id="hamburger-menu"
+              title="Toggle Menu"
+              class="absolute top-5 left-[50px] w-10 h-10 z-[1001] bg-white border-none rounded-[20px] p-[0.2rem] shadow-[0_2px_5px_rgba(0,0,0,0.2)] hover:bg-[#ffeb3b] transition-all duration-300 ease-in-out"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+
+            <div
+              id="search-bar-container"
+              class="input-group absolute left-[95px] top-5 z-[1000] w-[300px] bg-white p-[0.2rem] rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.1)]"
+            >
+              <span class="input-group-text bg-transparent border-none"
+                ><i class="fas fa-search"></i
+              ></span>
+              <input
+                type="text"
+                class="form-control border-none shadow-none focus:border-transparent focus:ring-0"
+                placeholder="Masukan Posisi Anda"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div id="map" class="w-full h-full"></div>
+
+        <!-- tittle: detail lokasi -->
+        <!-- <div
+          id="detail-lokasi"
+          class="card absolute top-[15px] right-[15px] w-[280px] z-[1000] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.15)]"
+        >
+          <div class="card-body p-3">
+            <div
+              class="d-flex justify-content-between align-items-center mb-2 border-bottom pb-2"
+            >
+              <h5 class="card-title mb-0 text-base font-bold text-[#333]">
+                <i class="fas fa-map-marker-alt text-danger"></i> Detail Lokasi
+              </h5>
+              <button
+                type="button"
+                class="btn-close btn-sm"
+                aria-label="Close"
+                onclick="document.getElementById('detail-lokasi').style.display='none'"
+              ></button>
+            </div>
+            <p class="mb-1 text-[0.85rem] text-[#555]">
+              <strong>Daerah :</strong> Jombang
+            </p>
+            <p class="mb-1 text-[0.85rem] text-[#555]">
+              <strong>Suhu :</strong> 26°C - 31°C
+            </p>
+            <p class="mb-1 text-[0.85rem] text-[#555]">
+              <strong>Kelembapan :</strong> 79% - 93%
+            </p>
+            <p class="mb-1 text-[0.85rem] text-[#555]">
+              <strong>Cuaca :</strong> Berawan
+            </p>
+            <h6 class="mt-2 mb-1 text-[0.9rem] font-bold">
+              Rekomendasi Tanaman:
+            </h6>
+            <ul class="mb-0 pl-[1.2rem]">
+              <li class="text-[0.85rem] text-[#555]">Padi</li>
+              <li class="text-[0.85rem] text-[#555]">Jagung</li>
+              <li class="text-[0.85rem] text-[#555]">Kedelai</li>
+            </ul>
+            <style>
+              #detail-lokasi strong {
+                color: #444;
+              }
+            </style>
+            {/* Gaya spesifik untuk strong dipertahankan jika sulit dengan
+            Tailwind utility langsung ke child */}
+          </div>
+        </div> -->
+
+        <div id="map-controls" class="absolute bottom-5 right-5 z-[1000]">
+          <img
+            class="img w-[70px] h-[70px] p-0 hover:scale-110 transition-transform duration-200 ease-in-out"
+            src="compas.png"
+            alt="compas"
+          />
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.getElementById("sidebar");
+        const hamburgerMenu = document.getElementById("hamburger-menu");
+        const mainMapWrapper = document.getElementById("main-map-wrapper");
+        var map; // Deklarasikan variabel map di sini agar dapat diakses
+
+        // Atur keadaan awal sidebar berdasarkan lebar layar
+        if (window.innerWidth >= 992) {
+          // Layar besar/desktop: Sidebar aktif (tidak diciutkan)
+          sidebar.classList.remove("collapsed");
+          mainMapWrapper.classList.add("sidebar-active"); // Asumsikan kelas ini menyesuaikan konten utama
+        } else {
+          // Layar kecil/mobile: Sidebar diciutkan
+          sidebar.classList.add("collapsed");
+          mainMapWrapper.classList.remove("sidebar-active");
+        }
+
+        hamburgerMenu.addEventListener("click", function () {
+          sidebar.classList.toggle("collapsed");
+          mainMapWrapper.classList.toggle("sidebar-active");
+          setTimeout(function () {
+            if (typeof map !== "undefined" && map) {
+              map.invalidateSize();
+            }
+          }, 300);
+        });
+
+        map = L.map("map").setView([-7.5568, 112.2384], 13);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        L.marker([-7.546, 112.235])
+          .addTo(map)
+          .bindPopup(
+            "Jl. Soekarno Urip / Jl. Urip Sumoharjo, Jombang<br>Kabupaten Jombang, Jawa Timur"
+          )
+          .openPopup();
+
+        setTimeout(function () {
+          if (typeof map !== "undefined" && map) {
+            map.invalidateSize();
+          }
+        }, 50);
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth < 992) {
+            if (!sidebar.classList.contains("collapsed")) {
+              sidebar.classList.add("collapsed");
+              mainMapWrapper.classList.remove("sidebar-active");
+            }
+          }
+          setTimeout(function () {
+            if (typeof map !== "undefined" && map) {
+              map.invalidateSize();
+            }
+          }, 100);
+        });
+      });
+    </script>
+  </body>
+</html>
