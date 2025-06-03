@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuaca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap");
+
+      body {
+        font-family: "Poppins";
+        margin: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #2e7d32; /* Dark green */
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .header-icon {
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+        color: white; /* For SVG fill="currentColor" */
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 1.8em;
+        font-weight: 600;
+      }
+
+      /* Main Content Styles */
+      main {
+        padding: 20px;
+      }
+
+      .current-weather-overview{
+        justify-items: center;
+      }
+
+      .current-weather-overview h2 {
+        color: #2e7d32; /* Dark green */
+        font-size: 1.5em;
+        margin-bottom: 15px;
+      }
+
+      /* Location Cards Styles */
+      .locations-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding-bottom: 15px;
+      }
+
+      .location-card {
+        background-color: #5d4037; /* Dark brown/maroon */
+        color: white;
+        padding: 15px;
+        border-radius: 12px;
+        min-width: 150px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .location-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .location-card .city-name {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 5px;
+        white-space: nowrap;
+      }
+
+      .location-card .time {
+        font-size: 0.8em;
+        margin-bottom: 10px;
+        opacity: 0.8;
+      }
+
+      .location-card .weather-icon-small-wrapper svg {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 8px auto;
+        display: block;
+        color: white; /* For SVG fill="currentColor" */
+      }
+
+      .location-card .temperature {
+        font-size: 1.6em;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .location-card .weather-text {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+      }
+
+      .location-card .arrow-icon-wrapper svg {
+        width: 18px;
+        height: 18px;
+        color: white; /* For SVG fill="currentColor" */
+      }
+
+      /* Forecast Tabs Styles */
+      .forecast-tabs {
+        display: flex;
+        gap: 8px;
+        margin: 25px 0;
+        flex-wrap: wrap;
+      }
+
+      .tab {
+        background-color: #fff;
+        color: #2e7d32;
+        border: 1px solid #2e7d32;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+      }
+      #tabLihatSemua{
+        border: none
+      }
+      #tabLihatSemua:hover{
+        background-color: #fff;
+        color: #2e7d32;
+        text-decoration: underline;
+      }
+
+      .tab:hover {
+        background-color: #2e7d32;
+        color: white;
+      }
+      .tab.active {
+        background-color: #2e7d32; /* Light green */
+        color: white;
+        font-weight: 500;
+      }
+      .tab-link .inline-arrow {
+        width: 12px;
+        height: 12px;
+        margin-left: 5px;
+        color: #555; /* Default arrow color */
+      }
+      .tab.active .inline-arrow {
+        color: white; /* Arrow color on active tab */
+      }
+
+      /* Detailed Weather Section Styles */
+      .detailed-weather {
+        background-color: #5d4037; /* Dark brown/maroon */
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      .detailed-weather-icon-large-wrapper svg {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+        color: white; /* For SVG fill="currentColor" */
+      }
+
+      .detailed-info {
+        flex-grow: 1;
+      }
+
+      .detailed-info .current-moment {
+        font-size: 1em;
+        margin-bottom: 5px;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+      }
+      .info-icon {
+        width: 16px;
+        height: 16px;
+        margin-left: 5px;
+        color: white; /* For SVG fill="currentColor" */
+      }
+
+      .detailed-info .temperature-large {
+        font-size: 2.8em;
+        font-weight: 600;
+        margin: 5px 0;
+      }
+
+      .detailed-info .weather-description-detailed {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+      }
+
+      .extra-details {
+        font-size: 0.95em;
+      }
+
+      .extra-details p {
+        margin: 8px 0;
+        display: flex;
+        align-items: center;
+      }
+      .detail-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        color: white; /* For SVG fill="currentColor" */
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .detailed-weather {
+          flex-direction: column;
+          text-align: center;
+        }
+        .detailed-weather-icon-large-wrapper svg {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 15px;
+        }
+        .header-icon {
+          width: 24px;
+          height: 24px;
+        }
+        header h1 {
+          font-size: 1.5em;
+        }
+        .current-weather-overview h2 {
+          font-size: 1.3em;
+        }
+        .location-card {
+          min-width: 130px;
+          padding: 12px;
+        }
+        .location-card .temperature {
+          font-size: 1.4em;
+        }
+        .detailed-info .temperature-large {
+          font-size: 2.2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="img/Sun.png" alt="" class="header-icon" />
+      <h1>Cuaca</h1>
+    </header>
+
+    <main>
+      <section class="current-weather-overview">
+        <h2>Cuaca Saat Ini</h2>
+        <div class="locations-container" id="locationsContainer"></div>
+      </section>
+
+      <nav class="forecast-tabs">
+        <button class="tab active" id="tabSaatIni">Saat Ini</button>
+        <button class="tab" id="tabHariIni">Hari Ini</button>
+        <button class="tab" id="tabBesok">Besok</button>
+        <button class="tab" id="tabLusa">Lusa</button>
+        <a href="#" class="tab tab-link" id="tabLihatSemua"
+          >Lihat Semuanya
+          <svg
+            class="inline-arrow"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M10 17l5-5-5-5v10z" />
+          </svg>
+        </a>
+      </nav>
+
+      <section class="detailed-weather" id="detailedWeatherSection">
+        <div
+          id="detailedWeatherIconWrapper"
+          class="detailed-weather-icon-large-wrapper"
+        ></div>
+        <div class="detailed-info">
+          <p class="current-moment">
+            Saat ini
+            <svg
+              class="info-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+              />
+            </svg>
+          </p>
+          <p class="temperature-large"><span id="detailedTemp">--</span>°C</p>
+          <p class="weather-description-detailed">
+            <span id="detailedWeatherText">----</span> • di
+            <span id="detailedCityName">----</span>
+          </p>
+          <div class="extra-details">
+            <p id="detailedHumidity">
+              <svg
+                class="detail-icon"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2c-5.33 4.55-5.33 11.58 0 16.13S12 22 12 22s5.33-1.34 5.33-5.87C17.33 11.58 17.33 6.55 12 2z"
+                />
+              </svg>
+              Kelembapan : --%
+            </p>
+            <p id="detailedWind">
+              <svg
+                class="detail-icon"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4.5 12.5c0-1.08.36-2.08.96-2.89l-1.42-1.42C3.28 9.12 2.5 10.73 2.5 12.5s.78 3.38 1.54 4.31l1.42-1.42c-.6-.81-.96-1.81-.96-2.89zm15 0c0 1.08-.36 2.08-.96 2.89l1.42 1.42c.76-.93 1.54-2.54 1.54-4.31s-.78-3.38-1.54-4.31l-1.42 1.42c.6.81.96 1.81.96 2.89zm-5.04-2.89c.6.81.96 1.81.96 2.89s-.36 2.08-.96 2.89L17.5 17V7l-3.04 2.61zM6.5 7v10l3.04-2.61c-.6-.81-.96-1.81-.96-2.89s.36-2.08.96-2.89L6.5 7zM11 12.5c0 .61.17 1.17.46 1.64l-1.42 1.42C9.36 14.64 9 13.64 9 12.5s.36-2.14 1.04-3.06l1.42 1.42c-.29.47-.46 1.03-.46 1.64z"
+                />
+              </svg>
+              Kecepatan Angin : -- km/jam
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const locationsContainer =
+          document.getElementById("locationsContainer");
+        const detailedWeatherIconWrapper = document.getElementById(
+          "detailedWeatherIconWrapper"
+        );
+        const detailedTemp = document.getElementById("detailedTemp");
+        const detailedWeatherText = document.getElementById(
+          "detailedWeatherText"
+        );
+        const detailedCityName = document.getElementById("detailedCityName");
+        const detailedHumidity = document.getElementById("detailedHumidity");
+        const detailedWind = document.getElementById("detailedWind");
+
+        // SVG Icon Strings (using currentColor for fill)
+        const svgIconStrings = {
+          moonPlus: `<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10c.69 0 1.36-.07 2-.2.17-2.58 1.7-4.85 3.88-6.31C16.28 10.33 14.22 7.39 12.7 4.6c-.43-.8-.19-1.77.52-2.28C12.88 2.09 12.44 2 12 2zM17.5 12.5h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2zm-5-8h-2V2.5h-2V4.5h-2V6.5h2V8.5h2V6.5h2V4.5z"/></svg>`,
+          cloud: `<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>`,
+          moonCloudPlus: `<svg viewBox="0 0 30 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M15.35 8.04C14.67 4.59 11.64 2 8 2c-2.89 0-5.4 1.64-6.65 4.04C-.66 6.36-2 8.91-2 12c0 3.31 2.69 6 6 6h11.5c.69 0 1.36-.07 2-.2.17-2.58 1.7-4.85 3.88-6.31C18.28 10.33 16.22 7.39 14.7 4.6c-.43-.8-.19-1.77.52-2.28C14.88 2.09 14.44 2 14 2 M19 10v-2h-2v2h-2v2h2v2h2v-2h2v-2h-2zm-4-7h-2v2h-2V3H9v2H7v2h2v2H7v2h2V9h2v2h2V9h2V7h-2V3z M7.5 19c-2.76 0-5-2.24-5-5s2.24-5 5-5c.75 0 1.45.17 2.09.46C9.12 11.03 9 12.73 9 14.5c0 1.77.12 3.47.59 4.04.64.29 1.34.46 2.09.46z "/></svg>`, // Combined and simplified
+          arrowRight: `<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10 17l5-5-5-5v10z"/></svg>`,
+          defaultWeather: `<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>`, // Same as cloud for default
+        };
+
+        const defaultWeatherIconSVG = svgIconStrings.defaultWeather;
+
+        const cities = [
+          {
+            name: "Jombang",
+            id: "501291",
+            provinceFile: "JawaTimur",
+            weatherData: null,
+          },
+          {
+            name: "Nganjuk",
+            id: "501296",
+            provinceFile: "JawaTimur",
+            weatherData: null,
+          },
+          {
+            name: "Blitar",
+            id: "501284",
+            provinceFile: "JawaTimur",
+            weatherData: null,
+          },
+          {
+            name: "Pare (Kediri)",
+            id: "501290",
+            provinceFile: "JawaTimur",
+            weatherData: null,
+          },
+          {
+            name: "Surabaya",
+            id: "501306",
+            provinceFile: "JawaTimur",
+            weatherData: null,
+          },
+          {
+            name: "Semarang",
+            id: "501262",
+            provinceFile: "JawaTengah",
+            weatherData: null,
+          },
+        ];
+
+        const weatherTextMap = {
+          0: "Cerah",
+          1: "Cerah Berawan",
+          2: "Cerah Berawan",
+          3: "Berawan",
+          4: "Berawan Tebal",
+          5: "Udara Kabur",
+          10: "Asap",
+          45: "Kabut",
+          60: "Hujan Ringan",
+          61: "Hujan Sedang",
+          63: "Hujan Lebat",
+          80: "Hujan Lokal",
+          95: "Hujan Petir",
+          97: "Hujan Petir",
+        };
+
+        const weatherIconSVGMap = {
+          0: svgIconStrings.moonPlus,
+          1: svgIconStrings.moonCloudPlus,
+          2: svgIconStrings.moonCloudPlus,
+          3: svgIconStrings.cloud,
+          4: svgIconStrings.cloud,
+          default: svgIconStrings.defaultWeather,
+        };
+
+        async function fetchWeatherData(provinceFile) {
+          const url = `https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-${provinceFile}.xml`;
+          try {
+            const response = await fetch(url);
+            if (!response.ok)
+              throw new Error(
+                `HTTP error! status: ${response.status} for ${provinceFile}`
+              );
+            const xmlText = await response.text();
+            const parser = new DOMParser();
+            return parser.parseFromString(xmlText, "application/xml");
+          } catch (error) {
+            console.error("Error fetching weather data:", error);
+            return null;
+          }
+        }
+
+        function parseForecastTime(xmlDoc) {
+          return (
+            new Date().toLocaleTimeString("id-ID", {
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: "Asia/Jakarta",
+              hour12: false,
+            }) + " WIB"
+          );
+        }
+
+        function extractCityData(xmlDoc, cityId) {
+          const area = xmlDoc.querySelector(`forecast > area[id="${cityId}"]`);
+          if (!area) return null;
+
+          const data = { name: area.getAttribute("description") || cityId };
+          const firstTimeRange = area.querySelector(
+            'parameter[id="t"] > timerange'
+          ); // Use any parameter's first timerange
+
+          if (!firstTimeRange) return null; // No forecast data for this city
+
+          const tempNode = area.querySelector('parameter[id="t"] > timerange');
+          const weatherNode = area.querySelector(
+            'parameter[id="weather"] > timerange'
+          );
+          const humidityNode = area.querySelector(
+            'parameter[id="hu"] > timerange'
+          );
+          const windSpeedNode = area.querySelector(
+            'parameter[id="ws"] > timerange'
+          );
+
+          if (tempNode)
+            data.temp = tempNode.querySelector('value[unit="C"]').textContent;
+          if (weatherNode)
+            data.weatherCode =
+              weatherNode.querySelector('value[unit="icon"]').textContent;
+          if (humidityNode)
+            data.humidity =
+              humidityNode.querySelector('value[unit="%"]').textContent;
+          if (windSpeedNode) {
+            const windKnots = parseFloat(
+              windSpeedNode.querySelector('value[unit="KNOT"]').textContent
+            );
+            data.windSpeedKmh = (windKnots * 1.852).toFixed(0);
+          }
+
+          data.weatherText =
+            weatherTextMap[data.weatherCode] || "Data Cuaca Tidak Ada";
+          data.weatherIconSVG =
+            weatherIconSVGMap[data.weatherCode] || weatherIconSVGMap.default;
+
+          return data;
+        }
+
+        function displayLocationCard(city, forecastTime) {
+          const card = document.createElement("div");
+          card.className = "location-card";
+          card.innerHTML = `
+                    <p class="city-name">${city.name.split("(")[0].trim()}</p>
+                    <p class="time">${forecastTime}</p>
+                    <div class="weather-icon-small-wrapper">${
+                      city.weatherData.weatherIconSVG || defaultWeatherIconSVG
+                    }</div>
+                    <p class="temperature">${
+                      city.weatherData.temp || "--"
+                    }°C</p>
+                    <p class="weather-text">${
+                      city.weatherData.weatherText || "----"
+                    }</p>
+                    <div class="arrow-icon-wrapper">${
+                      svgIconStrings.arrowRight
+                    }</div>
+                `;
+          card.addEventListener("click", () => updateDetailedView(city));
+          locationsContainer.appendChild(card);
+        }
+
+        function updateDetailedView(city) {
+          const humidityIconSVG = `<svg class="detail-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c-5.33 4.55-5.33 11.58 0 16.13S12 22 12 22s5.33-1.34 5.33-5.87C17.33 11.58 17.33 6.55 12 2z"/></svg>`;
+          const windIconSVG = `<svg class="detail-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 12.5c0-1.08.36-2.08.96-2.89l-1.42-1.42C3.28 9.12 2.5 10.73 2.5 12.5s.78 3.38 1.54 4.31l1.42-1.42c-.6-.81-.96-1.81-.96-2.89zm15 0c0 1.08-.36 2.08-.96 2.89l1.42 1.42c.76-.93 1.54-2.54 1.54-4.31s-.78-3.38-1.54-4.31l-1.42 1.42c.6.81.96 1.81.96 2.89zm-5.04-2.89c.6.81.96 1.81.96 2.89s-.36 2.08-.96 2.89L17.5 17V7l-3.04 2.61zM6.5 7v10l3.04-2.61c-.6-.81-.96-1.81-.96-2.89s.36-2.08.96-2.89L6.5 7zM11 12.5c0 .61.17 1.17.46 1.64l-1.42 1.42C9.36 14.64 9 13.64 9 12.5s.36-2.14 1.04-3.06l1.42 1.42c-.29.47-.46 1.03-.46 1.64z"/></svg>`;
+
+          if (!city || !city.weatherData) {
+            detailedTemp.textContent = "--";
+            detailedWeatherText.textContent = "Data tidak tersedia";
+            detailedCityName.textContent =
+              city.name.split("(")[0].trim() || "Kota";
+            detailedWeatherIconWrapper.innerHTML = defaultWeatherIconSVG;
+            detailedHumidity.innerHTML = `${humidityIconSVG} Kelembapan : --%`;
+            detailedWind.innerHTML = `${windIconSVG} Kecepatan Angin : -- km/jam`;
+            return;
+          }
+
+          detailedTemp.textContent = city.weatherData.temp || "--";
+          detailedWeatherText.textContent =
+            city.weatherData.weatherText || "----";
+          detailedCityName.textContent = city.name.split("(")[0].trim();
+          detailedWeatherIconWrapper.innerHTML =
+            city.weatherData.weatherIconSVG || defaultWeatherIconSVG;
+          detailedHumidity.innerHTML = `${humidityIconSVG} Kelembapan : ${
+            city.weatherData.humidity || "--"
+          }%`;
+          detailedWind.innerHTML = `${windIconSVG} Kecepatan Angin : ${
+            city.weatherData.windSpeedKmh || "--"
+          } km/jam`;
+
+          document
+            .querySelectorAll(".location-card")
+            .forEach((c) => (c.style.boxShadow = "")); // Reset shadow
+          const activeCard = Array.from(locationsContainer.children).find(
+            (cardEl) =>
+              cardEl.querySelector(".city-name").textContent ===
+              city.name.split("(")[0].trim()
+          );
+          if (activeCard) {
+            activeCard.style.boxShadow = "0 0 15px rgba(255,255,255,0.3)"; // Highlight active card
+          }
+        }
+
+        async function initializeWeather() {
+          const provinceDocs = {};
+          let overallForecastTime =
+            new Date().toLocaleTimeString("id-ID", {
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: "Asia/Jakarta",
+              hour12: false,
+            }) + " WIB";
+
+          for (const city of cities) {
+            if (!provinceDocs[city.provinceFile]) {
+              const xmlDoc = await fetchWeatherData(city.provinceFile);
+              if (xmlDoc) {
+                provinceDocs[city.provinceFile] = xmlDoc;
+                if (Object.keys(provinceDocs).length === 1) {
+                  overallForecastTime = parseForecastTime(xmlDoc);
+                }
+              }
+            }
+            if (provinceDocs[city.provinceFile]) {
+              city.weatherData = extractCityData(
+                provinceDocs[city.provinceFile],
+                city.id
+              );
+            }
+          }
+
+          locationsContainer.innerHTML = "";
+          cities.forEach((city) => {
+            if (city.weatherData) {
+              displayLocationCard(city, overallForecastTime);
+            } else {
+              const errorData = {
+                name: city.name,
+                weatherData: {
+                  temp: "N/A",
+                  weatherText: "Error",
+                  weatherIconSVG: defaultWeatherIconSVG,
+                  humidity: "N/A",
+                  windSpeedKmh: "N/A",
+                },
+              };
+              displayLocationCard(errorData, overallForecastTime);
+            }
+          });
+
+          if (cities[0]) {
+            updateDetailedView(cities[0]);
+          }
+        }
+
+        initializeWeather();
+      });
+    </script>
+  </body>
+</html>
