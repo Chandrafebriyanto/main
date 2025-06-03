@@ -24,7 +24,7 @@
         display: flex;
         justify-content: center;
         text-align: center;
-        align-items: anchor-center;
+        align-items: center;
         background-color: #2e7d32;
         color: white;
         margin: 0;
@@ -51,6 +51,8 @@
       .product .img {
         min-width: 250px;
         min-height: 250px;
+        max-width: 250px;
+        max-height: 250px;
         border-radius: 20px;
         margin-right: 20px;
         object-fit: cover;
@@ -76,7 +78,7 @@
         text-align: justify;
       }
 
-      .product img {
+      .product .contact-icons img {
         margin-left: 10px;
         padding: 5px;
         width: 30px;
@@ -84,6 +86,11 @@
         transition: transform 0.3s ease;
         background-color: #2e7d32;
         border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .product .contact-icons img:hover {
+        transform: scale(1.1);
       }
 
       @media (max-width: 768px) {
@@ -91,17 +98,84 @@
           flex-direction: column;
           align-items: center;
         }
+        .product .img {
+          margin-right: 0;
+          margin-bottom: 15px;
+          min-width: 200px;
+          min-height: 200px;
+        }
         .product .box {
           margin-bottom: 20px;
         }
         .product h1 {
-          justify-self: center;
-          font-size: 75%;
+          align-self: center;
+          font-size: 1.5rem;
         }
         .product p {
           text-align: center;
-          font-size: 75%;
+          font-size: 0.9rem;
         }
+        .product .contact-icons {
+          text-align: center;
+        }
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      .modal-dialog {
+        background-color: #2e7d32;
+        color: white;
+        margin: 15% auto;
+        padding: 30px 20px;
+        border-radius: 15px;
+        width: 85%;
+        max-width: 380px;
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .modal-icon-whatsapp,
+      .modal-icon-instagram {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+      }
+
+      .modal-text {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        line-height: 1.5;
+      }
+
+      .modal-button-proceed {
+        background-color: white;
+        color: #2e7d32;
+        font-family: "Poppins", sans-serif;
+        font-weight: bold;
+        font-size: 1rem;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .modal-button-proceed:hover {
+        background-color: #f0f0f0;
       }
     </style>
   </head>
@@ -124,13 +198,23 @@
               Jombang! Dipetik saat matang sempurna, tomat hijau ini memiliki
               tekstur yang renyah dan rasa yang membangkitkan selera.
             </p>
-            <img src="img/WhatsApp.png" alt="WhatsApp" />
-            <img src="img/Instagram.png" alt="Instagram" />
+            <div class="contact-icons">
+              <img
+                src="img/WhatsApp.png"
+                alt="WhatsApp"
+                class="contact-link-wa"
+              />
+              <img
+                src="img/Instagram.png"
+                alt="Instagram"
+                class="contact-link-ig"
+              />
+            </div>
           </div>
         </div>
 
         <div class="product">
-          <img src="img/bayam.png" alt="bayam" class="img"/>
+          <img src="img/bayam.png" alt="bayam" class="img" />
           <div>
             <h1>Bayam Segar</h1>
             <p>Nganjuk</p>
@@ -139,13 +223,23 @@
               Nganjuk. Setiap helai daunnya yang hijau lebat menyimpan kekayaan
               vitamin dan mineral, siap menutrisi hari Anda.
             </p>
-            <img src="img/WhatsApp.png" alt="WhatsApp" />
-            <img src="img/Instagram.png" alt="Instagram" />
+            <div class="contact-icons">
+              <img
+                src="img/WhatsApp.png"
+                alt="WhatsApp"
+                class="contact-link-wa"
+              />
+              <img
+                src="img/Instagram.png"
+                alt="Instagram"
+                class="contact-link-ig"
+              />
+            </div>
           </div>
         </div>
 
         <div class="product">
-          <img src="img/bawang-merah.png" alt="bawang-merah" class="img"/>
+          <img src="img/bawang-merah.png" alt="bawang-merah" class="img" />
           <div>
             <h1>Bawang Merah</h1>
             <p>Pare</p>
@@ -155,13 +249,23 @@
               dikenal dengan ukurannya yang pas, warnanya yang cerah, serta
               aroma dan rasa yang kuat.
             </p>
-            <img src="img/WhatsApp.png" alt="WhatsApp" />
-            <img src="img/Instagram.png" alt="Instagram" />
+            <div class="contact-icons">
+              <img
+                src="img/WhatsApp.png"
+                alt="WhatsApp"
+                class="contact-link-wa"
+              />
+              <img
+                src="img/Instagram.png"
+                alt="Instagram"
+                class="contact-link-ig"
+              />
+            </div>
           </div>
         </div>
 
         <div class="product">
-          <img src="img/kol.png" alt="kol" class="img"/>
+          <img src="img/kol.png" alt="kol" class="img" />
           <div>
             <h1>Kol</h1>
             <p>Blitar</p>
@@ -171,11 +275,98 @@
               putih bersih, kol ini menawarkan tekstur renyah yang memuaskan dan
               rasa manis yang lembut.
             </p>
-            <img src="img/WhatsApp.png" alt="WhatsApp" />
-            <img src="img/Instagram.png" alt="Instagram" />
+            <div class="contact-icons">
+              <img
+                src="img/WhatsApp.png"
+                alt="WhatsApp"
+                class="contact-link-wa"
+              />
+              <img
+                src="img/Instagram.png"
+                alt="Instagram"
+                class="contact-link-ig"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div id="whatsappPopup" class="modal">
+      <div class="modal-dialog">
+        <img
+          src="img/WhatsApp.png"
+          alt="WhatsApp Icon"
+          class="modal-icon-whatsapp"
+        />
+        <p class="modal-text">Lanjut Menghubungi pemasok Melalui WhatsApp</p>
+        <button id="proceedWhatsappBtn" class="modal-button-proceed">
+          Lanjutkan
+        </button>
+      </div>
+    </div>
+
+    <div id="instagramPopup" class="modal">
+      <div class="modal-dialog">
+        <img
+          src="img/Instagram.png"
+          alt="Instagram Icon"
+          class="modal-icon-instagram"
+        />
+        <p class="modal-text">Lanjut Menghubungi pemasok Melalui Instagram</p>
+        <button id="proceedInstagramBtn" class="modal-button-proceed">
+          Kunjungi
+        </button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const whatsappPopup = document.getElementById("whatsappPopup");
+        const instagramPopup = document.getElementById("instagramPopup");
+
+        const proceedWhatsappBtn =
+          document.getElementById("proceedWhatsappBtn");
+        const proceedInstagramBtn = document.getElementById(
+          "proceedInstagramBtn"
+        );
+
+        const whatsappTriggers = document.querySelectorAll(".contact-link-wa");
+        const instagramTriggers = document.querySelectorAll(".contact-link-ig");
+
+        whatsappTriggers.forEach((trigger) => {
+          trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            whatsappPopup.style.display = "block";
+          });
+        });
+
+        instagramTriggers.forEach((trigger) => {
+          trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            instagramPopup.style.display = "block";
+          });
+        });
+
+        proceedWhatsappBtn.onclick = () => {
+          window.open("https://wa.me/+6285161236246", "_blank");
+          whatsappPopup.style.display = "none";
+        };
+
+        proceedInstagramBtn.onclick = () => {
+          window.open("https://instagram.com/_chandrafebriyanto", "_blank");
+          instagramPopup.style.display = "none";
+        };
+
+        window.addEventListener("click", (event) => {
+          if (event.target === whatsappPopup) {
+            whatsappPopup.style.display = "none";
+          }
+          if (event.target === instagramPopup) {
+            instagramPopup.style.display = "none";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
