@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sambung Niaga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap");
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #f0f0f0;
+        width: 100%;
+      }
+      .heading {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: anchor-center;
+        background-color: #2e7d32;
+        color: white;
+        margin: 0;
+        padding: 15px;
+      }
+      .heading img {
+        margin-right: 10px;
+      }
+      .heading-text {
+        font-family: "poppins";
+        font-weight: bold;
+        font-size: 2rem;
+        margin: 0;
+      }
+      .container-content {
+        margin: 20px 10%;
+      }
+      .product {
+        display: flex;
+        flex-direction: row;
+        margin: 30px 0;
+        align-items: center;
+      }
+      .product .img {
+        min-width: 250px;
+        min-height: 250px;
+        border-radius: 20px;
+        margin-right: 20px;
+        object-fit: cover;
+      }
+      .product h1 {
+        margin: 5px 10px;
+        font-family: "Poetsen One", sans-serif;
+        font-size: 2rem;
+        color: #2e7d32;
+        background-color: #ffeb3b;
+        padding: 5px 10px;
+        border-radius: 10px;
+        width: fit-content;
+        margin: 10px;
+        font-weight: normal;
+      }
+      .product p {
+        margin: 5px 10px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        color: #333;
+        max-width: 700px;
+        text-align: justify;
+      }
+
+      .product img {
+        margin-left: 10px;
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s ease;
+        background-color: #2e7d32;
+        border-radius: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .product {
+          flex-direction: column;
+          align-items: center;
+        }
+        .product .box {
+          margin-bottom: 20px;
+        }
+        .product h1 {
+          justify-self: center;
+          font-size: 75%;
+        }
+        .product p {
+          text-align: center;
+          font-size: 75%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heading">
+      <img src="img/Shop-icon.png" alt="shop icon" width="40" height="40" />
+      <p class="heading-text">Sambung Niaga</p>
+    </div>
+
+    <div class="container-content">
+      <div class="content">
+        <div class="product">
+          <img src="img/tomato.png" alt="tomat-hijau" class="img" />
+          <div>
+            <h1>Tomat Hijau</h1>
+            <p>Jombang</p>
+            <p>
+              Hadirkan sentuhan segar dan sedikit asam yang khas di setiap
+              masakan Anda dengan Tomat Hijau pilihan kami, langsung dari
+              Jombang! Dipetik saat matang sempurna, tomat hijau ini memiliki
+              tekstur yang renyah dan rasa yang membangkitkan selera.
+            </p>
+            <img src="img/WhatsApp.png" alt="WhatsApp" />
+            <img src="img/Instagram.png" alt="Instagram" />
+          </div>
+        </div>
+
+        <div class="product">
+          <img src="img/bayam.png" alt="bayam" class="img"/>
+          <div>
+            <h1>Bayam Segar</h1>
+            <p>Nganjuk</p>
+            <p>
+              Rasakan kebaikan alam dengan Bayam Segar kami yang berasal dari
+              Nganjuk. Setiap helai daunnya yang hijau lebat menyimpan kekayaan
+              vitamin dan mineral, siap menutrisi hari Anda.
+            </p>
+            <img src="img/WhatsApp.png" alt="WhatsApp" />
+            <img src="img/Instagram.png" alt="Instagram" />
+          </div>
+        </div>
+
+        <div class="product">
+          <img src="img/bawang-merah.png" alt="bawang-merah" class="img"/>
+          <div>
+            <h1>Bawang Merah</h1>
+            <p>Pare</p>
+            <p>
+              Tak ada masakan Indonesia yang lengkap tanpa Bawang Merah
+              berkualitas! Bawang Merah kami, didatangkan khas dari Pare,
+              dikenal dengan ukurannya yang pas, warnanya yang cerah, serta
+              aroma dan rasa yang kuat.
+            </p>
+            <img src="img/WhatsApp.png" alt="WhatsApp" />
+            <img src="img/Instagram.png" alt="Instagram" />
+          </div>
+        </div>
+
+        <div class="product">
+          <img src="img/kol.png" alt="kol" class="img"/>
+          <div>
+            <h1>Kol</h1>
+            <p>Blitar</p>
+            <p>
+              Nikmati kerenyahan alami dari Kol segar pilihan yang kami
+              datangkan langsung dari Blitar. Dengan daunnya yang padat dan
+              putih bersih, kol ini menawarkan tekstur renyah yang memuaskan dan
+              rasa manis yang lembut.
+            </p>
+            <img src="img/WhatsApp.png" alt="WhatsApp" />
+            <img src="img/Instagram.png" alt="Instagram" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
