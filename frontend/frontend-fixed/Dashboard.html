@@ -172,7 +172,10 @@
                 class="form-control border-none shadow-none focus:border-transparent focus:ring-0 rounded-l-full flex-grow"
                 placeholder="Cari lokasi atau alamat..."
               />
-              <button id="search-button" class="input-group-text bg-transparent border-none px-3 rounded-r-full hover:bg-gray-100">
+              <button
+                id="search-button"
+                class="input-group-text bg-transparent border-none px-3 rounded-r-full hover:bg-gray-100"
+              >
                 <i class="fas fa-search"></i>
               </button>
             </div>
@@ -186,11 +189,10 @@
           class="card absolute top-[75px] right-[15px] w-[300px] z-[1000] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] rounded-lg hidden-popup"
         >
           <div class="card-body p-3">
-            <div
-              class="flex justify-between items-center mb-2 border-b pb-2"
-            >
+            <div class="flex justify-between items-center mb-2 border-b pb-2">
               <h5 class="card-title mb-0 text-base font-bold text-[#333]">
-                <i class="fas fa-map-marker-alt text-red-500 mr-1"></i> Detail Lokasi
+                <i class="fas fa-map-marker-alt text-red-500 mr-1"></i> Detail
+                Lokasi
               </h5>
               <button
                 type="button"
@@ -199,19 +201,35 @@
                 id="close-detail-popup"
               ></button>
             </div>
-            <p id="detail-alamat" class="mb-1 text-[0.85rem] text-gray-700"><strong>Alamat:</strong> <span id="alamat-value">-</span></p>
-            <p id="detail-koordinat" class="mb-1 text-[0.85rem] text-gray-700"><strong>Koordinat:</strong> <span id="koordinat-value">-</span></p>
-            <p id="detail-daerah" class="mb-1 text-[0.85rem] text-gray-700"><strong>Daerah:</strong> <span id="daerah-value">-</span></p>
-            <p id="detail-suhu" class="mb-1 text-[0.85rem] text-gray-700"><strong>Suhu:</strong> <span id="suhu-value">-</span></p>
-            <p id="detail-kelembapan" class="mb-1 text-[0.85rem] text-gray-700"><strong>Kelembapan:</strong> <span id="kelembapan-value">-</span></p>
-            <p id="detail-cuaca" class="mb-1 text-[0.85rem] text-gray-700"><strong>Cuaca:</strong> <span id="cuaca-value">-</span></p>
-            <h6 id="title-rekomendasi" class="mt-2 mb-1 text-[0.9rem] font-bold hidden">Rekomendasi Tanaman:</h6>
+            <p id="detail-alamat" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Alamat:</strong> <span id="alamat-value">-</span>
+            </p>
+            <p id="detail-koordinat" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Koordinat:</strong> <span id="koordinat-value">-</span>
+            </p>
+            <p id="detail-daerah" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Daerah:</strong> <span id="daerah-value">-</span>
+            </p>
+            <p id="detail-suhu" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Suhu:</strong> <span id="suhu-value">-</span>
+            </p>
+            <p id="detail-kelembapan" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Kelembapan:</strong> <span id="kelembapan-value">-</span>
+            </p>
+            <p id="detail-cuaca" class="mb-1 text-[0.85rem] text-gray-700">
+              <strong>Cuaca:</strong> <span id="cuaca-value">-</span>
+            </p>
+            <h6
+              id="title-rekomendasi"
+              class="mt-2 mb-1 text-[0.9rem] font-bold hidden"
+            >
+              Rekomendasi Tanaman:
+            </h6>
             <ul id="rekomendasi-list" class="mb-0 pl-[1.2rem]">
               {/* Rekomendasi akan diisi oleh JS */}
             </ul>
           </div>
         </div>
-
 
         <div id="map-controls" class="absolute bottom-5 right-5 z-[1000]">
           <img
@@ -232,8 +250,11 @@
         const mainMapWrapper = document.getElementById("main-map-wrapper");
         const searchInput = document.getElementById("search-input");
         const searchButton = document.getElementById("search-button");
-        const detailLokasiPopup = document.getElementById("detail-lokasi-popup");
-        const closeDetailPopupButton = document.getElementById("close-detail-popup");
+        const detailLokasiPopup = document.getElementById(
+          "detail-lokasi-popup"
+        );
+        const closeDetailPopupButton =
+          document.getElementById("close-detail-popup");
 
         // Elemen untuk menampilkan detail
         const alamatValue = document.getElementById("alamat-value");
@@ -241,14 +262,13 @@
         const daerahValue = document.getElementById("daerah-value");
         // (Tambahkan elemen lain jika ada data cuaca, dll. dinamis)
 
-
         var map;
         var currentMarker; // Untuk menyimpan marker hasil pencarian/klik
 
         // --- Fungsi untuk Sidebar (Sudah Ada) ---
         function adjustLayoutBasedOnSidebar() {
           // Fungsi ini bisa diperluas jika ada penyesuaian layout lain
-           setTimeout(function () {
+          setTimeout(function () {
             if (typeof map !== "undefined" && map) {
               map.invalidateSize();
             }
@@ -268,7 +288,7 @@
           mainMapWrapper.classList.toggle("sidebar-active");
           adjustLayoutBasedOnSidebar();
         });
-         window.addEventListener("resize", function () {
+        window.addEventListener("resize", function () {
           if (window.innerWidth < 992) {
             if (!sidebar.classList.contains("collapsed")) {
               sidebar.classList.add("collapsed");
@@ -277,20 +297,20 @@
             }
           } else {
             // Jika layar membesar, sidebar mungkin perlu state default
-             if (sidebar.classList.contains("collapsed")) {
-                sidebar.classList.remove("collapsed"); // Atau biarkan user yang kontrol
-                mainMapWrapper.classList.add("sidebar-active");
-                adjustLayoutBasedOnSidebar();
-             }
+            if (sidebar.classList.contains("collapsed")) {
+              sidebar.classList.remove("collapsed"); // Atau biarkan user yang kontrol
+              mainMapWrapper.classList.add("sidebar-active");
+              adjustLayoutBasedOnSidebar();
+            }
           }
-           setTimeout(function () { // invalidate map size on general resize too
+          setTimeout(function () {
+            // invalidate map size on general resize too
             if (typeof map !== "undefined" && map) {
               map.invalidateSize();
             }
           }, 100);
         });
         // --- Akhir Fungsi Sidebar ---
-
 
         // Inisialisasi Peta Leaflet
         map = L.map("map").setView([-7.5568, 112.2384], 13);
@@ -301,43 +321,50 @@
 
         // --- Fungsi untuk Menampilkan Detail Lokasi di Popup ---
         function showLocationDetail(data) {
-            alamatValue.textContent = data.displayName || 'Tidak tersedia';
-            koordinatValue.textContent = `${parseFloat(data.lat).toFixed(5)}, ${parseFloat(data.lon).toFixed(5)}`;
-            daerahValue.textContent = data.address?.city || data.address?.town || data.address?.county || data.address?.state || 'Tidak diketahui';
-            // Untuk cuaca dan rekomendasi, Anda perlu sumber data lain
-            document.getElementById('suhu-value').textContent = '28°C'; // Contoh statis
-            document.getElementById('kelembapan-value').textContent = '80%'; // Contoh statis
-            document.getElementById('cuaca-value').textContent = 'Cerah Berawan'; // Contoh statis
+          alamatValue.textContent = data.displayName || "Tidak tersedia";
+          koordinatValue.textContent = `${parseFloat(data.lat).toFixed(
+            5
+          )}, ${parseFloat(data.lon).toFixed(5)}`;
+          daerahValue.textContent =
+            data.address?.city ||
+            data.address?.town ||
+            data.address?.county ||
+            data.address?.state ||
+            "Tidak diketahui";
+          // Untuk cuaca dan rekomendasi, Anda perlu sumber data lain
+          document.getElementById("suhu-value").textContent = "28°C"; // Contoh statis
+          document.getElementById("kelembapan-value").textContent = "80%"; // Contoh statis
+          document.getElementById("cuaca-value").textContent = "Cerah Berawan"; // Contoh statis
 
-            const rekomendasiList = document.getElementById('rekomendasi-list');
-            const titleRekomendasi = document.getElementById('title-rekomendasi');
-            rekomendasiList.innerHTML = ''; // Kosongkan list
-            const contohRekomendasi = ['Padi', 'Jagung', 'Tebu']; // Contoh statis
-            if (contohRekomendasi.length > 0) {
-                contohRekomendasi.forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = 'text-[0.85rem] text-gray-600';
-                    li.textContent = item;
-                    rekomendasiList.appendChild(li);
-                });
-                titleRekomendasi.classList.remove('hidden');
-            } else {
-                titleRekomendasi.classList.add('hidden');
-            }
+          const rekomendasiList = document.getElementById("rekomendasi-list");
+          const titleRekomendasi = document.getElementById("title-rekomendasi");
+          rekomendasiList.innerHTML = ""; // Kosongkan list
+          const contohRekomendasi = ["Padi", "Jagung", "Tebu"]; // Contoh statis
+          if (contohRekomendasi.length > 0) {
+            contohRekomendasi.forEach((item) => {
+              const li = document.createElement("li");
+              li.className = "text-[0.85rem] text-gray-600";
+              li.textContent = item;
+              rekomendasiList.appendChild(li);
+            });
+            titleRekomendasi.classList.remove("hidden");
+          } else {
+            titleRekomendasi.classList.add("hidden");
+          }
 
-
-            detailLokasiPopup.classList.remove("hidden-popup");
+          detailLokasiPopup.classList.remove("hidden-popup");
         }
 
         closeDetailPopupButton.addEventListener("click", () => {
-            detailLokasiPopup.classList.add("hidden-popup");
+          detailLokasiPopup.classList.add("hidden-popup");
         });
-
 
         // --- Fungsi Geocoding (Pencarian Lokasi) ---
         async function searchLocation(query) {
           if (!query) return;
-          const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`;
+          const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+            query
+          )}&limit=1`;
           try {
             const response = await fetch(url);
             const data = await response.json();
@@ -357,12 +384,11 @@
 
               // Tampilkan detail di panel (menggunakan data hasil geocoding)
               showLocationDetail({
-                  displayName: result.display_name,
-                  lat: result.lat,
-                  lon: result.lon,
-                  address: result.address // address object dari nominatim
+                displayName: result.display_name,
+                lat: result.lat,
+                lon: result.lon,
+                address: result.address, // address object dari nominatim
               });
-
             } else {
               alert("Lokasi tidak ditemukan.");
             }
@@ -397,37 +423,38 @@
               }
               currentMarker = L.marker([lat, lon])
                 .addTo(map)
-                .bindPopup(data.display_name || `Koordinat: ${lat.toFixed(5)}, ${lon.toFixed(5)}`)
+                .bindPopup(
+                  data.display_name ||
+                    `Koordinat: ${lat.toFixed(5)}, ${lon.toFixed(5)}`
+                )
                 .openPopup();
 
               // Tampilkan detail di panel
-               showLocationDetail({
-                  displayName: data.display_name,
-                  lat: lat,
-                  lon: lon,
-                  address: data.address
+              showLocationDetail({
+                displayName: data.display_name,
+                lat: lat,
+                lon: lon,
+                address: data.address,
               });
-
             } else {
               console.warn("Tidak ada data alamat untuk lokasi ini.");
-               showLocationDetail({
-                  displayName: "Informasi alamat tidak tersedia",
-                  lat: lat,
-                  lon: lon,
-                  address: {}
+              showLocationDetail({
+                displayName: "Informasi alamat tidak tersedia",
+                lat: lat,
+                lon: lon,
+                address: {},
               });
             }
           } catch (error) {
             console.error("Error saat reverse geocoding:", error);
-             showLocationDetail({
-                  displayName: "Gagal mengambil informasi alamat",
-                  lat: lat,
-                  lon: lon,
-                  address: {}
-              });
+            showLocationDetail({
+              displayName: "Gagal mengambil informasi alamat",
+              lat: lat,
+              lon: lon,
+              address: {},
+            });
           }
         });
-
 
         // Invalidate map size setelah semua siap
         setTimeout(function () {
