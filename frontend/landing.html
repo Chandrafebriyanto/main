@@ -3,634 +3,296 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Si Damen - Petani Cerdas, Panen Berkualitas</title>
-    <style>
-      /* Global Styles */
-      body {
-        font-family: sans-serif; /* Ganti dengan font yang diinginkan */
-        margin: 0;
-        padding: 0;
-        color: #333;
-        background-color: #f4f4f4; /* Warna latar belakang default jika ada area kosong */
-      }
-
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px 0;
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      /* Navigation Bar */
-      .navbar {
-        background-color: rgba(
-          0,
-          0,
-          0,
-          0.5
-        ); /* Latar belakang semi-transparan seperti di gambar */
-        padding: 15px 0;
-        position: fixed; /* Membuat navbar tetap di atas saat scroll */
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        color: white;
-      }
-
-      .navbar .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-      }
-
-      .logo img {
-        height: 40px; /* Sesuaikan ukuran logo */
-        margin-right: 10px;
-      }
-
-      .logo span {
-        font-size: 1.5em;
-        font-weight: bold;
-      }
-
-      .nav-links {
-        display: flex;
-      }
-
-      .nav-links li {
-        margin-left: 25px;
-      }
-
-      .nav-links a {
-        color: white;
-        font-weight: 500;
-      }
-
-      .nav-links a:hover,
-      .nav-links a.active {
-        color: #ffd700; /* Warna kuning untuk link aktif/hover */
-        border-bottom: 2px solid #ffd700;
-      }
-
-      .login-button {
-        background-color: #ffd700; /* Warna kuning */
-        color: #333;
-        padding: 10px 20px;
-        border-radius: 20px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-      }
-
-      .login-button:hover {
-        background-color: #e6c300;
-      }
-
-      /* Hero Section */
-      .hero {
-        background-image: url("img/background\ 1.png"); /* Ganti dengan path gambar hero Anda */
-        background-size: cover;
-        background-position: center;
-        height: 100vh; /* Mengisi seluruh tinggi viewport */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-        padding-top: 60px; /* Memberi ruang untuk navbar */
-        filter: brightness(50%);
-      }
-
-      .hero h1 {
-        font-size: 3em;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-
-      .hero p {
-        font-size: 1.2em;
-        max-width: 600px;
-        margin-bottom: 30px;
-        line-height: 1.6;
-        text-align: center;
-        justify-self: center;
-      }
-
-      .hero-button {
-        background-color: white;
-        color: #28a745; /* Warna hijau dari gambar */
-        padding: 15px 30px;
-        border: none;
-        border-radius: 25px;
-        font-size: 1.1em;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-
-      .hero-button:hover {
-        background-color: #f0f0f0;
-        color: #1e7e34;
-      }
-
-      /* About Us Section */
-      .about-us {
-        background-color: #fff;
-        padding: 60px 0;
-      }
-
-      .about-us .container {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-      }
-
-      .about-us-image {
-        flex: 1;
-        text-align: center; /* Untuk gambar agar di tengah jika lebih kecil */
-      }
-
-      .about-us-image img {
-        max-width: 350px; /* Sesuaikan ukuran gambar */
-        border-radius: 10px; /* Jika ada lengkungan pada gambar */
-      }
-
-      .about-us-content {
-        flex: 1.5;
-      }
-
-      .about-us-content h2 {
-        font-size: 2.5em;
-        color: #28a745; /* Warna hijau */
-        margin-bottom: 20px;
-        text-align: center; /* Judul "ABOUT US" di tengah */
-      }
-
-      .about-us-content p {
-        font-size: 1em;
-        line-height: 1.7;
-        color: #555;
-      }
-
-      /* Features Section */
-      .features {
-        background-color: #28a745; /* Warna hijau */
-        color: white;
-        padding: 60px 0;
-        text-align: center;
-      }
-
-      .features h2 {
-        font-size: 2.5em;
-        margin-bottom: 40px;
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-      }
-
-      .feature-item {
-        background-color: #ffd700; /* Warna kuning */
-        color: #333;
-        padding: 30px;
-        border-radius: 10px;
-        text-align: center;
-      }
-      .feature-item.light {
-        /* Untuk card dengan background putih */
-        background-color: white;
-        color: #333;
-      }
-
-      .feature-item img {
-        /* Jika ada ikon */
-        width: 60px; /* Sesuaikan ukuran ikon */
-        margin-bottom: 15px;
-      }
-
-      .feature-item h3 {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-      }
-
-      .feature-item p {
-        font-size: 0.9em;
-        line-height: 1.5;
-      }
-
-      /* News Section */
-      .news {
-        background-color: #fff;
-        padding: 60px 0;
-      }
-
-      .news .container h2 {
-        text-align: center;
-        font-size: 2.5em;
-        color: #333;
-        margin-bottom: 40px;
-      }
-
-      .news-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .news-item {
-        background-color: #f9f9f9;
-        border: 1px solid #eee;
-        border-radius: 8px;
-        overflow: hidden; /* Untuk memastikan gambar tidak keluar dari border-radius */
-      }
-
-      .news-item img {
-        width: 100%;
-        height: 200px; /* Atur tinggi gambar berita */
-        object-fit: cover;
-      }
-
-      .news-item-content {
-        padding: 20px;
-      }
-
-      .news-item-content h3 {
-        font-size: 1.3em;
-        margin-bottom: 10px;
-        color: #28a745; /* Warna hijau untuk judul berita */
-      }
-
-      .news-item-content p {
-        font-size: 0.9em;
-        line-height: 1.6;
-        color: #555;
-        margin-bottom: 15px;
-      }
-
-      .news-item-content a {
-        color: #28a745;
-        font-weight: bold;
-        font-size: 0.9em;
-      }
-      .news-item-content a:hover {
-        text-decoration: underline;
-      }
-
-      /* Footer */
-      .footer {
-        background-color: #333;
-        color: white;
-        padding: 40px 0;
-        font-size: 0.9em;
-      }
-
-      .footer .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start; /* Agar elemen rata atas */
-        flex-wrap: wrap; /* Agar bisa wrap di layar kecil */
-        gap: 20px;
-      }
-
-      .footer-logo-contact,
-      .footer-navigation,
-      .footer-social {
-        flex: 1;
-        min-width: 200px; /* Lebar minimum sebelum wrap */
-      }
-
-      .footer-logo-contact .logo img {
-        height: 30px;
-        margin-bottom: 10px;
-      }
-      .footer-logo-contact .logo span {
-        font-size: 1.2em;
-        font-weight: bold;
-      }
-
-      .footer-logo-contact p {
-        margin-bottom: 10px;
-        line-height: 1.6;
-      }
-
-      .footer-navigation h4,
-      .footer-social h4 {
-        font-size: 1.2em;
-        margin-bottom: 15px;
-        color: #ffd700; /* Warna kuning untuk judul di footer */
-      }
-
-      .footer-navigation ul li {
-        margin-bottom: 8px;
-      }
-
-      .footer-navigation ul li a:hover {
-        color: #ffd700;
-      }
-
-      .social-icons {
-        display: flex;
-      }
-
-      .social-icons a {
-        margin-right: 10px;
-        /* Anda perlu menambahkan ikon media sosial di sini, bisa berupa <img> atau font-icon */
-        font-size: 1.5em; /* Contoh jika menggunakan font icon */
-      }
-      .social-icons a:last-child {
-        margin-right: 0;
-      }
-
-      /* Efek grafis kecil (dots dan lengkungan) - ini lebih kompleks dan mungkin memerlukan SVG atau pseudo-elements */
-      /* Contoh sederhana untuk dots: */
-      .dots-pattern {
-        /* Ini hanya contoh, implementasi sebenarnya akan lebih detail */
-        position: absolute;
-        /* Anda perlu mengatur posisi dan gambar/style untuk dots */
-      }
-
-      /* Responsiveness (Contoh sederhana) */
-      @media (max-width: 992px) {
-        .navbar .container {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .nav-links {
-          margin-top: 15px;
-          width: 100%;
-          justify-content: space-around;
-        }
-        .nav-links li {
-          margin-left: 0;
-        }
-        .login-button {
-          margin-top: 10px;
-        }
-
-        .about-us .container {
-          flex-direction: column;
-          text-align: center;
-        }
-        .about-us-image {
-          margin-bottom: 30px;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.2em;
-        }
-        .hero p {
-          font-size: 1em;
-        }
-        .footer .container {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-        .footer-logo-contact,
-        .footer-navigation,
-        .footer-social {
-          margin-bottom: 20px;
-          width: 100%; /* Agar memenuhi lebar di layar kecil */
-        }
-        .social-icons {
-          justify-content: center;
-        }
-      }
-    </style>
+    <title>Welcome Sidamen</title>
+    <link rel="stylesheet" href="style-landing.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <a href="#" class="logo">
-          <img src="logo-placeholder.png" alt="Si Damen Logo" />
-          <span>Si Damen</span>
-        </a>
-        <ul class="nav-links">
-          <li><a href="#" class="active">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#news">News</a></li>
-        </ul>
-        <a href="#" class="login-button">Login</a>
-      </div>
-    </nav>
+    <div class="container">
+      <!-- tittle: Navbar -->
+      <div class="navbar">
+        <div class="logo">
+          <img src="img/logo Sidamen.png" alt="Sidamen Logo" />
+          <p>Si <span>Damen</span></p>
+        </div>
 
-    <section class="hero">
-      <div class="container">
-        <h1>WELCOME TO SI DAMEN</h1>
-        <h2>Petani Cerdas, Panen Berkualitas</h2>
-        <p>
-          Dapatkan rekomendasi tanaman, analisis tanah & iklim, serta estimasi
-          panen secara real-time melalui monitoring berbasis IOT dan citra
-          satelit untuk pertanian presisi, maju, dan berkelanjutan di Indonesia.
-        </p>
-        <button class="hero-button">Mulai</button>
-      </div>
-    </section>
+        <div class="nav-links">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#news">News</a></li>
+          </ul>
+        </div>
 
-    <section id="about" class="about-us">
-      <div class="container">
-        <div class="about-us-image">
-          <img src="img/background 1.png" alt="Petani dengan Wortel" />
+        <div class="login">
+          <a href="#" class="login-button">Login</a>
+        </div>
+      </div>
+
+      <!-- tittle: Welcome -->
+      <div id="home">
+        <div class="content-home">
+          <h1>WELCOME TO SI <span>DAMEN</span></h1>
+          <h2>Petani Cerdas, Panen Berkualitas</h2>
+          <p>
+            Dapatkan rekomendasi tanaman, analisis tanah & iklim, serta estimasi
+            panen secara real-time melalui sistem informasi berbasis peta
+            digital. Si Damen hadir untuk meningkatkan efisiensi dan hasil
+            pertanian Indonesia.
+          </p>
+          <a href=""><button>Mulai</button></a>
+        </div>
+      </div>
+
+      <!-- tittle: About -->
+      <section class="about-us-section" id="about">
+        <div class="top-green-line"></div>
+        <div class="decorative-dots"></div>
+        <div class="about-us-image-container">
+          <img
+            src="img/carrot.png"
+            alt="Tangan memegang wortel segar dengan tanah"
+          />
         </div>
         <div class="about-us-content">
           <h2>ABOUT US</h2>
           <p>
-            Si Damen adalah platform sistem informasi geografis berbasis web
-            yang dirancang untuk mendukung sektor pertanian Indonesia melalui
-            teknologi digital. Dengan menyediakan fitur rekomendasi tanaman,
-            analisis tanah dan iklim, estimasi panen, serta monitoring lahan
-            secara real-time menggunakan IoT dan citra satelit, Si Damen
-            bertujuan meningkatkan efisiensi dan efektivitas keputusan yang
-            tepat dan efisien. Melalui pemetaan digital dan input sederhana
-            seperti pH tanah, jenis tanah, ketinggian lokasi, Si Damen membantu
-            petani membuat keputusan pertanian dengan lebih cerdas,
-            berkelanjutan, dan menguntungkan.
+            Si Damen adalah platform Sistem Informasi Geografis (SIG) berbasis
+            web yang dirancang untuk mendukung sektor pertanian Indonesia
+            melalui teknologi digital. Dengan menyediakan informasi real-time
+            seperti kondisi tanah, iklim, jenis komoditas, dan rekomendasi
+            tanaman berdasarkan lokasi, Si Damen membantu petani dan pemangku
+            kebijakan dalam mengambil keputusan yang tepat dan efisien. Melalui
+            pemetaan digital dan input sederhana seperti pH tanah dan suhu,
+            pengguna dapat mengakses prediksi hasil panen, kalender tanam, serta
+            estimasi harga jual. Kami percaya bahwa pertanian berbasis data
+            adalah kunci menuju masa depan yang lebih cerdas, berkelanjutan, dan
+            menguntungkan.
           </p>
         </div>
-      </div>
-    </section>
+        <div class="decorative-brown-shape"></div>
+        <div class="bottom-green-line"></div>
+      </section>
 
-    <section id="features" class="features">
-      <div class="container">
+      <!-- tittle: Features -->
+      <section class="features-section" id="features">
+        <div class="dots-pattern dots-top-left"></div>
         <h2>Features</h2>
         <div class="features-grid">
-          <div class="feature-item">
+          <div class="feature-card yellow-card">
+            <img
+              src="img/Shop-icon.png"
+              alt="Sambung Niaga Icon"
+              class="icon"
+            />
+            <h3>Sambung Niaga</h3>
+            <p>
+              Pengguna dapat melakukan transaksi untuk memenuhi kebutuhan pokok
+              dengan produsen dari berbagai daerah.
+            </p>
+          </div>
+          <div class="feature-card yellow-card">
+            <img src="img/panen-icon.png" alt="Pasca Panen Icon" class="icon" />
+            <h3>Pasca Panen</h3>
+            <p>
+              Menyajikan estimasi hasil panen, durasi waktu panen, serta potensi
+              harga dan pasar lokal.
+            </p>
+          </div>
+          <div class="feature-card yellow-card">
+            <img
+              src="img/plant-icon.png"
+              alt="Rekomendasi Tanaman Icon"
+              class="icon"
+            />
             <h3>Rekomendasi Tanaman</h3>
             <p>
-              Dapatkan pilihan tanaman yang paling sesuai dengan kondisi lahan
-              Anda untuk hasil panen maksimal.
+              Sistem menampilkan daftar tanaman yang paling cocok untuk ditanam
+              berdasarkan kondisi lahan dan iklim, seperti padi, jagung, cabai,
+              kopi, dan lainnya.
             </p>
           </div>
-          <div class="feature-item">
-            <h3>Analisis Tanah & Iklim</h3>
+
+          <div class="feature-card white-card">
+            <img src="img/Calendar-icon.png" alt="Calender Icon" class="icon" />
+            <h3>Calender</h3>
             <p>
-              Pantau kualitas tanah dan kondisi iklim secara real-time untuk
-              mendukung pertumbuhan tanaman optimal.
+              Menyediakan jadwal tanam terbaik berdasarkan musim dan prediksi
+              cuaca lokal.
             </p>
           </div>
-          <div class="feature-item">
-            <h3>Estimasi Panen</h3>
-            <p>
-              Prediksi jumlah dan waktu panen secara akurat untuk perencanaan
-              pascapanen yang lebih baik.
-            </p>
-          </div>
-          <div class="feature-item light">
-            <h3>Kalender Tanam</h3>
-            <p>
-              Atur jadwal tanam dan aktivitas pertanian lainnya dengan mudah dan
-              presisi.
-            </p>
-          </div>
-          <div class="feature-item light">
+          <div class="feature-card white-card">
+            <img
+              src="img/peta-icon.png"
+              alt="Peta Interaktif Icon"
+              class="icon"
+            />
             <h3>Peta Interaktif</h3>
             <p>
-              Visualisasikan data lahan pertanian Anda secara detail melalui
-              peta interaktif yang mudah digunakan.
+              Petani dapat memilih lahan langsung di peta digital untuk melihat
+              dan mengelola informasi lokasi secara spesifik.
             </p>
           </div>
-          <div class="feature-item light">
-            <h3>Cuaca Terkini</h3>
+          <div class="feature-card white-card">
+            <img src="img/cuaca-icon.png" alt="Cuaca Icon" class="icon" />
+            <h3>Cuaca</h3>
             <p>
-              Dapatkan informasi cuaca akurat dan terkini untuk mendukung
-              pengambilan keputusan pertanian.
+              Menampilkan prediksi cuaca secara real-time dengan integrasi API
+              seperti OpenWeather untuk mendukung perencanaan tanam yang lebih
+              akurat.
             </p>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="dots-pattern dots-bottom-right"></div>
+      </section>
 
-    <section id="news" class="news">
-      <div class="container">
-        <h2>News</h2>
-        <div class="news-grid">
-          <div class="news-item">
-            <img src="news1.jpg" alt="Berita 1" />
-            <div class="news-item-content">
-              <h3>Tingkatkan Hasil Panen Padi dengan Irigasi Tetes</h3>
-              <p>
-                Teknologi irigasi tetes membantu petani padi meningkatkan
-                efisiensi penggunaan air dan...
-              </p>
-              <a href="#">Baca Selengkapnya ></a>
-            </div>
-          </div>
-          <div class="news-item">
-            <img src="news2.jpg" alt="Berita 2" />
-            <div class="news-item-content">
-              <h3>Pemanfaatan Drone untuk Pemetaan Lahan Pertanian</h3>
-              <p>
-                Drone kini semakin populer digunakan untuk memetakan lahan
-                pertanian secara cepat dan akurat...
-              </p>
-              <a href="#">Baca Selengkapnya ></a>
-            </div>
-          </div>
-          <div class="news-item">
-            <img src="news3.jpg" alt="Berita 3" />
-            <div class="news-item-content">
-              <h3>Tips Memilih Pupuk Organik Berkualitas Tinggi</h3>
-              <p>
-                Pupuk organik menjadi pilihan utama bagi petani yang ingin
-                menghasilkan panen sehat dan...
-              </p>
-              <a href="#">Baca Selengkapnya ></a>
-            </div>
-          </div>
-          <div class="news-item">
-            <img src="news4.jpg" alt="Berita 4" />
-            <div class="news-item-content">
-              <h3>Kementan Targetkan Swasembada Kedelai Tercapai</h3>
-              <p>
-                Kementerian Pertanian terus berupaya untuk mencapai swasembada
-                kedelai nasional melalui...
-              </p>
-              <a href="#">Baca Selengkapnya ></a>
-            </div>
-          </div>
-          <div class="news-item">
-            <img src="news5.jpg" alt="Berita 5" />
-            <div class="news-item-content">
-              <h3>Harga Cabai Diprediksi Stabil Jelang Idul Adha</h3>
-              <p>
-                Menjelang hari raya Idul Adha, pasokan cabai di pasar dipastikan
-                aman sehingga harga...
-              </p>
-              <a href="#">Baca Selengkapnya ></a>
-            </div>
-          </div>
-          <div class="news-item">
-            <img src="news6.jpg" alt="Berita 6" />
-            <div class="news-item-content">
-              <h3>Modernisasi Alsintan Kunci Sukses Pertanian Presisi</h3>
-              <p>
-                Penggunaan alat dan mesin pertanian (alsintan) modern menjadi
-                kunci keberhasilan...
-              </p>
-              <a href="#">Baca Selengkapnya ></a>
+      <!-- tittle: news & footer -->
+      <section class="news-section-wrapper" id="news">
+        <div class="decorative-yellow-shape"></div>
+        <div class="decorative-green-circle"></div>
+        <div class="decorative-dots-news"></div>
+        <div class="news-section">
+          <div class="container-news">
+            <h2>News</h2>
+            <div class="news-grid">
+              <div class="news-item">
+                <div class="news-item-image">
+                  <img
+                    src="https://psp.pertanian.go.id//storage/2278/Gambar-WhatsApp-2024-12-07-pukul-13.01.39_c61b5a54.jpg"
+                    alt="Berita 1"
+                  />
+                </div>
+                <div class="news-item-content">
+                  <h3>
+                    Tingkatkan Layanan Informasi Publik, Wamentan Sudarya:
+                    Inovasi dan Kreatifitas Kunci Sukses Pembangunan Pertanian
+                  </h3>
+                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                </div>
+              </div>
+              <div class="news-item">
+                <div class="news-item-image">
+                  <img
+                    src="https://psp.pertanian.go.id//storage/2262/DSC00686.JPG"
+                    alt="Berita 2"
+                  />
+                </div>
+                <div class="news-item-content">
+                  <h3>
+                    Penyederhanaan Regulasi Pupuk Subsidi, Wamentan: Segera
+                    Diajukan ke Presiden
+                  </h3>
+                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                </div>
+              </div>
+              <div class="news-item">
+                <div class="news-item-image">
+                  <img
+                    src="https://psp.pertanian.go.id//storage/2274/Gambar-WhatsApp-2024-12-03-pukul-22.02.13_3c8d12f9.jpg"
+                    alt="Berita 3"
+                  />
+                </div>
+                <div class="news-item-content">
+                  <h3>
+                    Kementan Tegaskan Alokasi Pupuk Dalam e-RDKK Tidak Bisa
+                    Diperjualbelikan
+                  </h3>
+                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                </div>
+              </div>
+              <div class="news-item">
+                <div class="news-item-image">
+                  <img
+                    src="https://psp.pertanian.go.id//storage/2284/Gambar-WhatsApp-2024-12-11-pukul-14.53.11_93eab7cf.jpg"
+                    alt="Berita 4"
+                  />
+                </div>
+                <div class="news-item-content">
+                  <h3>
+                    Tinjau Sawah Sumut, Mentan Amran Pastikan Program Swasembada
+                    Lewat Oplah dan Cetak Sawah Berjalan Lancar
+                  </h3>
+                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                </div>
+              </div>
+              <div class="news-item">
+                <div class="news-item-image">
+                  <img
+                    src="https://psp.pertanian.go.id//storage/2290/Gambar-WhatsApp-2024-12-25-pukul-11.46.51_4ab0f40f.jpg"
+                    alt="Berita 5"
+                  />
+                </div>
+                <div class="news-item-content">
+                  <h3>
+                    Kementan dan Pupuk Indonesia Teken Kontrak Pengadaan dan
+                    Penyaluran Pupuk Subsidi
+                  </h3>
+                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                </div>
+              </div>
+              <div class="news-item">
+                <div class="news-item-image">
+                  <img
+                    src="https://psp.pertanian.go.id//storage/2283/Gambar-WhatsApp-2024-12-10-pukul-18.36.35_e2492087.jpg"
+                    alt="Berita 6"
+                  />
+                </div>
+                <div class="news-item-content">
+                  <h3>
+                    Warga Merauke Mulai Tanam di Sawah Baru, Optimisme Kesehatan
+                    Meningkat
+                  </h3>
+                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-logo-contact">
-          <a href="#" class="logo">
-            <img src="logo-placeholder-white.png" alt="Si Damen Logo" />
-            <span>Si Damen</span>
-          </a>
-          <p>Kontak Kami:</p>
-          <p><i class="fas fa-phone"></i> +62 811-XXXX-XXXX</p>
-          <p><i class="fas fa-envelope"></i> info@sidamen.com</p>
-        </div>
-        <div class="footer-navigation">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#">Login</a></li>
-          </ul>
-        </div>
-        <div class="footer-social">
-          <h4>Follow Us</h4>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <img src="img/logo Sidamen.png" alt="Si Damen Logo" />
+            </div>
+            <span class="footer-title">Si <span>Damen</span></span>
+            <p class="footer-tagline">Petani Cerdas, Panen Berkualitas</p>
+          </div>
+          <div class="footer-column">
+            <div class="footer-contact-item">
+              <i>📍</i> <span>Surabaya, Indonesia</span>
+            </div>
+            <div class="footer-contact-item">
+              <i>📞</i> <span>+62 851-6123-6246</span>
+            </div>
+            <div class="footer-contact-item">
+              <i>✉️</i> <span>sidamen@gmail.com</span>
+            </div>
+          </div>
+          <div class="footer-column">
+            <div class="footer-navigation">
+              <h4>Navigation</h4>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#futures">Futures</a></li>
+                <li><a href="#news">News</a></li>
+              </ul>
+            </div>
+            <div class="footer-social-icons">
+              <a href="#" title="WhatsApp"><img src="img/WhatsApp.png" alt=""></a>
+              <a href="#" title="Instagram"><img src="img/Instagram.png" alt=""></a>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>
