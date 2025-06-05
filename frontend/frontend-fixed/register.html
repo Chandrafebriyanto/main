@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "poppins", sans-serif;
+        background-image: url("img/background\ 1.png");
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="min-h-screen flex items-center justify-center px-4"
+      style="
+        background-image: url('/img/2.jpg');
+        background-size: cover;
+        background-position: center;
+      "
+    >
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <div
+        class="relative bg-white rounded-3xl w-full max-w-md shadow-[0_0_20px_rgba(0,0,0,0.3)] flex flex-col items-center pt-10 pb-6 overflow-visible z-10"
+      >
+        <img
+          alt="Yellow wheat stalk icon with green stem"
+          class="mb-2"
+          height="80"
+          src="img/logo Sidamen.png"
+          width="80"
+        />
+        <h1 class="text-green-600 font-extrabold text-2xl mb-8">Sign Up</h1>
+        <form class="w-[90%] space-y-6">
+          <div>
+            <label
+              class="block text-black font-semibold text-sm mb-1"
+              for="email"
+            >
+              Nama:
+            </label>
+            <div
+              class="flex items-center bg-gray-200 rounded-full px-4 py-2 shadow-[3px_3px_6px_rgba(0,0,0,0.1)]"
+            >
+              <i class="fas fa-envelope text-gray-700 text-lg"> </i>
+              <input
+                class="bg-gray-200 rounded-full ml-3 w-full text-gray-600 placeholder-gray-500 focus:outline-none"
+                id="email"
+                placeholder="Masukan Nama Anda..."
+                type="email"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-black font-semibold text-sm mb-1"
+              for="email"
+            >
+              Email:
+            </label>
+            <div
+              class="flex items-center bg-gray-200 rounded-full px-4 py-2 shadow-[3px_3px_6px_rgba(0,0,0,0.1)]"
+            >
+              <i class="fas fa-envelope text-gray-700 text-lg"> </i>
+              <input
+                class="bg-gray-200 rounded-full ml-3 w-full text-gray-600 placeholder-gray-500 focus:outline-none"
+                id="email"
+                placeholder="Masukan Alamat Email"
+                type="email"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              class="block text-black font-semibold text-sm mb-1"
+              for="password"
+            >
+              Password
+            </label>
+            <div
+              class="flex items-center bg-gray-200 rounded-full px-4 py-2 shadow-[3px_3px_6px_rgba(0,0,0,0.1)]"
+            >
+              <i class="fas fa-lock text-gray-700 text-lg"> </i>
+              <input
+                class="bg-gray-200 rounded-full ml-3 w-full text-gray-600 placeholder-gray-500 focus:outline-none"
+                id="password"
+                placeholder="Masukan Password"
+                type="password"
+              />
+            </div>
+          </div>
+          <button
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold rounded-full py-3 shadow-[3px_3px_6px_rgba(0,0,0,0.2)]"
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </form>
+        <div
+          class="flex justify-center space-x-10 mt-6 mb-10 w-full max-w-[280px] z-20 relative"
+        >
+          <a
+            aria-label="Sign in with Google"
+            href="#"
+            class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center"
+          >
+            <img
+              alt="Google logo white G on green circle background"
+              class="w-5 h-5 bg-white rounded-full"
+              src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+            />
+          </a>
+          <a
+            aria-label="Sign in with Facebook"
+            href="#"
+            class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center"
+          >
+            <img
+              alt="Facebook logo white f on green circle background"
+              class="w-5 h-5"
+              src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_(2019).png"
+            />
+          </a>
+          <a
+            aria-label="Sign in with Instagram"
+            href="#"
+            class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center"
+          >
+            <img
+              alt="Instagram logo white camera on green circle background"
+              class="w-5 h-5"
+              src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+            />
+          </a>
+        </div>
+        <div
+          class="absolute bottom-0 left-0 w-full bg-yellow-400 rounded-b-3xl py-4 text-center text-black text-xs z-10"
+        >
+          Have an Account?
+          <a class="font-bold" href="login.html"> Sign In </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
