@@ -1,68 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome Sidamen</title>
-    <link rel="stylesheet" href="style-landing.css" />
+    <link rel="icon" href="img/logo Sidamen.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    
+    <link href="/dist/output.css" rel="stylesheet">
+    <style>
+      .clip-ellipse-about {
+        clip-path: ellipse(75% 50% at 25% 50%);
+      }
+      .clip-ellipse-about-responsive {
+        clip-path: ellipse(60% 50% at 50% 50%);
+      }
+      .clip-circle-brown-shape {
+        clip-path: circle(50% at 100% 100%);
+      }
+      .clip-polygon-yellow-news {
+        clip-path: polygon(0 0, 100% 100%, 0% 100%);
+      }
+      /* Untuk layar md ke atas, gambar about tidak di-clip */
+      @media (min-width: 769px) { /* Sesuaikan breakpoint jika beda dengan Tailwind punya `md:` */
+        .md\:clip-none {
+            clip-path: none;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <div class="container">
-      <!-- tittle: Navbar -->
-      <div class="navbar">
-        <div class="logo">
-          <img src="img/logo Sidamen.png" alt="Sidamen Logo" />
-          <p>Si <span>Damen</span></p>
+  <body class="font-poppins text-sidamen-text m-0 p-0"> <div class="m-0"> <div class="fixed flex justify-between items-center bg-sidamen-secondary rounded-5xl h-fit w-auto mx-[10%] my-18 shadow-navbar z-[99]">
+        <div class="logo flex items-center p-2.5 ml-5">
+          <img src="img/logo Sidamen.png" alt="Sidamen Logo" class="w-10 h-10 bg-sidamen-third rounded-full" />
+          <p class="font-poetsen text-2xl ml-2.5">Si <span class="text-sidamen-primary">Damen</span></p>
         </div>
 
         <div class="nav-links">
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#news">News</a></li>
+          <ul class="flex list-none">
+            <li class="mx-3.5"><a href="#home" class="no-underline text-sidamen-text font-medium hover:text-sidamen-primary transition-all duration-300 ease-in-out">Home</a></li>
+            <li class="mx-3.5"><a href="#about" class="no-underline text-sidamen-text font-medium hover:text-sidamen-primary transition-all duration-300 ease-in-out">About Us</a></li>
+            <li class="mx-3.5"><a href="#features" class="no-underline text-sidamen-text font-medium hover:text-sidamen-primary transition-all duration-300 ease-in-out">Features</a></li>
+            <li class="mx-3.5"><a href="#news" class="no-underline text-sidamen-text font-medium hover:text-sidamen-primary transition-all duration-300 ease-in-out">News</a></li>
           </ul>
         </div>
 
-        <div class="login">
-          <a href="login.html" class="login-button">Login</a>
+        <div class="login bg-sidamen-primary h-fit py-1.5 px-7 mx-5 rounded-4xl">
+          <a href="login.html" class="no-underline font-poetsen text-sidamen-bg text-xl hover:text-sidamen-text transition-all duration-300 ease-in-out">Login</a>
         </div>
       </div>
 
-      <!-- tittle: Welcome -->
-      <div id="home">
-        <div class="content-home">
-          <h1>WELCOME TO SI <span>DAMEN</span></h1>
-          <h2>Petani Cerdas, Panen Berkualitas</h2>
-          <p>
+      <div id="home" class="bg-hero-pattern bg-no-repeat bg-cover bg-center h-screen flex items-center justify-center">
+        <div class="text-center mx-[10%]">
+          <h1 class="text-5xl">WELCOME TO SI <span class="text-sidamen-primary">DAMEN</span></h1>
+          <h2 class="font-medium text-2xl mt-0">Petani Cerdas, Panen Berkualitas</h2>
+          <p class="text-center my-3.5 text-xl">
             Dapatkan rekomendasi tanaman, analisis tanah & iklim, serta estimasi
             panen secara real-time melalui sistem informasi berbasis peta
             digital. Si Damen hadir untuk meningkatkan efisiensi dan hasil
             pertanian Indonesia.
           </p>
-          <a href="login.html"><button>Mulai</button></a>
+          <a href="login.html"><button class="bg-sidamen-text text-sidamen-bg py-2.5 px-24 rounded-4xl text-base border-none font-bold mt-7 transition-all duration-300 ease-in-out hover:bg-sidamen-primary hover:text-sidamen-text">Mulai</button></a>
         </div>
       </div>
 
-      <!-- tittle: About -->
-      <section class="about-us-section" id="about">
-        <div class="top-green-line"></div>
-        <div class="decorative-dots"></div>
-        <div class="about-us-image-container">
+      <section class="about-us-section bg-white w-full max-w-4xl mx-auto my-10 py-15 px-0 flex items-center relative overflow-hidden shadow-about md:max-w-5xl lg:max-w-6xl xl:max-w-[1100px] max-md:flex-col max-md:py-10 max-md:px-5 max-md:text-center" id="about">
+        <div class="top-green-line absolute top-0 left-0 w-full h-[5px] bg-custom-green-about"></div>
+        <div class="decorative-dots absolute top-5 right-5 w-[70px] h-[70px] bg-radial-dots-yellow bg-dots-lg max-md:top-2.5 max-md:right-2.5 max-md:w-[50px] max-md:h-[50px] max-md:bg-dots-sm"></div>
+        <div class="about-us-image-container flex-shrink-0 w-[40%] mr-12.5 relative md:w-[20%] max-md:w-[80%] max-md:mr-0 max-md:mb-7">
           <img
             src="img/carrot.png"
             alt="Tangan memegang wortel segar dengan tanah"
+            class="block w-full max-w-xs h-auto clip-ellipse-about md:max-w-md max-md:clip-ellipse-about-responsive max-md:rounded-2xl md:max-w-sm lg:max-w-md xl:max-w-[400px] md:clip-none"
           />
         </div>
-        <div class="about-us-content">
-          <h2>ABOUT US</h2>
-          <p>
+        <div class="about-us-content flex-grow max-w-[55%] max-md:max-w-full">
+          <h2 class="text-4xl text-custom-green-about font-bold mt-0 mb-6 text-left max-md:text-3xl max-md:text-center">ABOUT US</h2>
+          <p class="text-base leading-relaxed text-custom-medium-text text-justify max-md:text-left">
             Si Damen adalah platform Sistem Informasi Geografis (SIG) berbasis
             web yang dirancang untuk mendukung sektor pertanian Indonesia
             melalui teknologi digital. Dengan menyediakan informasi real-time
@@ -76,179 +94,106 @@
             menguntungkan.
           </p>
         </div>
-        <div class="decorative-brown-shape"></div>
-        <div class="bottom-green-line"></div>
+        <div class="decorative-brown-shape absolute bottom-0 right-0 w-[250px] h-[250px] bg-sidamen-secondary rounded-none clip-circle-brown-shape md:w-[500px] md:h-[500px] max-md:w-[150px] max-md:h-[150px] max-md:bottom-[-50px] max-md:right-[-50px]"></div>
+        <div class="bottom-green-line absolute bottom-0 left-0 w-full h-[5px] bg-custom-green-about"></div>
       </section>
 
-      <!-- tittle: Features -->
-      <section class="features-section" id="features">
-        <div class="dots-pattern dots-top-left"></div>
-        <h2>Features</h2>
-        <div class="features-grid">
-          <div class="feature-card yellow-card">
-            <img
-              src="img/Shop-icon.png"
-              alt="Sambung Niaga Icon"
-              class="icon"
-            />
-            <h3>Sambung Niaga</h3>
-            <p>
-              Pengguna dapat melakukan transaksi untuk memenuhi kebutuhan pokok
-              dengan produsen dari berbagai daerah.
-            </p>
+      <section class="features-section bg-sidamen-bg py-20 px-5 w-full box-border relative overflow-hidden" id="features">
+        <div class="dots-pattern dots-top-left absolute top-5 left-5 w-[60px] h-[60px] bg-radial-dots-yellow-features bg-dots-md max-md:w-10 max-md:h-10 max-md:bg-dots-sm max-md:top-2.5 max-md:left-2.5"></div>
+        <h2 class="text-sidamen-primary text-4xl text-center mb-12.5 font-bold max-md:text-3xl">Features</h2>
+        <div class="features-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 justify-items-center w-full md:w-auto md:mx-auto lg:w-[1000px] xl:w-[1100px]">
+          <div class="feature-card yellow-card bg-custom-yellow-card p-5 rounded-feature-card text-center text-custom-card-text max-w-xs min-h-feature-card-min shadow-feature-card transition-transform duration-300 ease-in-out hover:-translate-y-1 flex flex-col justify-center items-center">
+            <img src="img/Shop-icon.png" alt="Sambung Niaga Icon" class="w-10 h-10 bg-sidamen-secondary rounded-4xl p-2.5 mb-4" />
+            <h3 class="text-2xl mb-2.5 font-bold">Sambung Niaga</h3>
+            <p class="text-sm leading-relaxed text-custom-medium-text">Pengguna dapat melakukan transaksi untuk memenuhi kebutuhan pokok dengan produsen dari berbagai daerah.</p>
           </div>
-          <div class="feature-card yellow-card">
-            <img src="img/panen-icon.png" alt="Pasca Panen Icon" class="icon" />
+          <div class="feature-card yellow-card bg-custom-yellow-card p-5 rounded-feature-card text-center text-custom-card-text max-w-xs min-h-feature-card-min shadow-feature-card transition-transform duration-300 ease-in-out hover:-translate-y-1 flex flex-col justify-center items-center">
+            <img src="img/panen-icon.png" alt="Pasca Panen Icon" class="w-10 h-10 bg-sidamen-secondary rounded-4xl p-2.5 mb-4" />
             <h3>Pasca Panen</h3>
-            <p>
-              Menyajikan estimasi hasil panen, durasi waktu panen, serta potensi
-              harga dan pasar lokal.
-            </p>
+            <p class="text-sm leading-relaxed text-custom-medium-text">Menyajikan estimasi hasil panen, durasi waktu panen, serta potensi harga dan pasar lokal.</p>
           </div>
-          <div class="feature-card yellow-card">
-            <img
-              src="img/plant-icon.png"
-              alt="Rekomendasi Tanaman Icon"
-              class="icon"
-            />
+          <div class="feature-card yellow-card bg-custom-yellow-card p-5 rounded-feature-card text-center text-custom-card-text max-w-xs min-h-feature-card-min shadow-feature-card transition-transform duration-300 ease-in-out hover:-translate-y-1 flex flex-col justify-center items-center">
+            <img src="img/plant-icon.png" alt="Rekomendasi Tanaman Icon" class="w-10 h-10 bg-sidamen-secondary rounded-4xl p-2.5 mb-4" />
             <h3>Rekomendasi Tanaman</h3>
-            <p>
-              Sistem menampilkan daftar tanaman yang paling cocok untuk ditanam
-              berdasarkan kondisi lahan dan iklim, seperti padi, jagung, cabai,
-              kopi, dan lainnya.
-            </p>
+            <p class="text-sm leading-relaxed text-custom-medium-text">Sistem menampilkan daftar tanaman yang paling cocok untuk ditanam berdasarkan kondisi lahan dan iklim, seperti padi, jagung, cabai, kopi, dan lainnya.</p>
           </div>
-
-          <div class="feature-card white-card">
-            <img src="img/Calendar-icon.png" alt="Calender Icon" class="icon" />
+          <div class="feature-card white-card bg-white p-5 rounded-feature-card text-center text-custom-card-text max-w-xs min-h-feature-card-min shadow-feature-card transition-transform duration-300 ease-in-out hover:-translate-y-1 flex flex-col justify-center items-center">
+            <img src="img/Calendar-icon.png" alt="Calender Icon" class="w-10 h-10 bg-sidamen-secondary rounded-4xl p-2.5 mb-4" />
             <h3>Calender</h3>
-            <p>
-              Menyediakan jadwal tanam terbaik berdasarkan musim dan prediksi
-              cuaca lokal.
-            </p>
+            <p class="text-sm leading-relaxed text-custom-medium-text">Menyediakan jadwal tanam terbaik berdasarkan musim dan prediksi cuaca lokal.</p>
           </div>
-          <div class="feature-card white-card">
-            <img
-              src="img/peta-icon.png"
-              alt="Peta Interaktif Icon"
-              class="icon"
-            />
+          <div class="feature-card white-card bg-white p-5 rounded-feature-card text-center text-custom-card-text max-w-xs min-h-feature-card-min shadow-feature-card transition-transform duration-300 ease-in-out hover:-translate-y-1 flex flex-col justify-center items-center">
+            <img src="img/peta-icon.png" alt="Peta Interaktif Icon" class="w-10 h-10 bg-sidamen-secondary rounded-4xl p-2.5 mb-4" />
             <h3>Peta Interaktif</h3>
-            <p>
-              Petani dapat memilih lahan langsung di peta digital untuk melihat
-              dan mengelola informasi lokasi secara spesifik.
-            </p>
+            <p class="text-sm leading-relaxed text-custom-medium-text">Petani dapat memilih lahan langsung di peta digital untuk melihat dan mengelola informasi lokasi secara spesifik.</p>
           </div>
-          <div class="feature-card white-card">
-            <img src="img/cuaca-icon.png" alt="Cuaca Icon" class="icon" />
+          <div class="feature-card white-card bg-white p-5 rounded-feature-card text-center text-custom-card-text max-w-xs min-h-feature-card-min shadow-feature-card transition-transform duration-300 ease-in-out hover:-translate-y-1 flex flex-col justify-center items-center">
+            <img src="img/cuaca-icon.png" alt="Cuaca Icon" class="w-10 h-10 bg-sidamen-secondary rounded-4xl p-2.5 mb-4" />
             <h3>Cuaca</h3>
-            <p>
-              Menampilkan prediksi cuaca secara real-time dengan integrasi API
-              seperti OpenWeather untuk mendukung perencanaan tanam yang lebih
-              akurat.
-            </p>
+            <p class="text-sm leading-relaxed text-custom-medium-text">Menampilkan prediksi cuaca secara real-time dengan integrasi API seperti OpenWeather untuk mendukung perencanaan tanam yang lebih akurat.</p>
           </div>
         </div>
-        <div class="dots-pattern dots-bottom-right"></div>
+        <div class="dots-pattern dots-bottom-right absolute bottom-5 right-5 w-[60px] h-[60px] bg-radial-dots-yellow-features bg-dots-md transform rotate-180 max-md:w-10 max-md:h-10 max-md:bg-dots-sm max-md:bottom-2.5 max-md:right-2.5"></div>
       </section>
 
-      <!-- tittle: news & footer -->
-      <section class="news-section-wrapper" id="news">
-        <div class="decorative-yellow-shape"></div>
-        <div class="decorative-green-circle"></div>
-        <div class="decorative-dots-news"></div>
-        <div class="news-section">
-          <div class="container-news">
-            <h2>News</h2>
-            <div class="news-grid">
-              <div class="news-item">
-                <div class="news-item-image">
-                  <img
-                    src="https://psp.pertanian.go.id//storage/2278/Gambar-WhatsApp-2024-12-07-pukul-13.01.39_c61b5a54.jpg"
-                    alt="Berita 1"
-                  />
+      <section class="news-section-wrapper py-15 px-0 relative overflow-hidden bg-white" id="news"> <div class="decorative-yellow-shape absolute bottom-0 left-0 w-[30%] h-[60%] bg-sidamen-primary clip-polygon-yellow-news z-[-1] max-md:w-[50%] max-md:h-[40%]"></div>
+        <div class="decorative-green-circle absolute top-[-80px] right-[-80px] w-[250px] h-[250px] bg-sidamen-third rounded-full z-[-1] max-md:w-[150px] max-md:h-[150px] max-md:top-[-50px] max-md:right-[-50px]"></div>
+        <div class="decorative-dots-news absolute bottom-5 right-5 w-[60px] h-[60px] bg-radial-dots-brown-news bg-dots-sm z-[1]"></div>
+        
+        <div class="news-section"> <div class="container-news mx-[10%] my-5 relative z-[2]"> <h2 class="text-center text-4xl text-sidamen-secondary mb-12.5 font-bold max-md:text-3xl">News</h2>
+            <div class="news-grid grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="news-item flex bg-[#f0f0f0] rounded-news-item overflow-hidden shadow-news-item transition-transform duration-300 ease-in-out hover:-translate-y-1 max-md:flex-col">
+                <div class="news-item-image flex-shrink-0 w-[150px] h-auto max-md:w-full max-md:h-[180px]">
+                  <img src="https://psp.pertanian.go.id//storage/2278/Gambar-WhatsApp-2024-12-07-pukul-13.01.39_c61b5a54.jpg" alt="Berita 1" class="w-full h-full object-cover block" />
                 </div>
-                <div class="news-item-content">
-                  <h3>
-                    Tingkatkan Layanan Informasi Publik, Wamentan Sudarya:
-                    Inovasi dan Kreatifitas Kunci Sukses Pembangunan Pertanian
-                  </h3>
-                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                <div class="news-item-content p-5 flex-grow bg-custom-news-text-bg self-center text-center">
+                  <h3 class="text-base font-medium mt-0 mb-2.5 text-black leading-snug">Tingkatkan Layanan Informasi Publik, Wamentan Sudarya: Inovasi dan Kreatifitas Kunci Sukses Pembangunan Pertanian</h3>
+                  <a href="#" class="read-more text-sm text-custom-news-link no-underline font-bold hover:underline">Baca Selengkapnya..</a>
                 </div>
               </div>
-              <div class="news-item">
-                <div class="news-item-image">
-                  <img
-                    src="https://psp.pertanian.go.id//storage/2262/DSC00686.JPG"
-                    alt="Berita 2"
-                  />
+              <div class="news-item flex bg-[#f0f0f0] rounded-news-item overflow-hidden shadow-news-item transition-transform duration-300 ease-in-out hover:-translate-y-1 max-md:flex-col">
+                <div class="news-item-image flex-shrink-0 w-[150px] h-auto max-md:w-full max-md:h-[180px]">
+                  <img src="https://psp.pertanian.go.id//storage/2262/DSC00686.JPG" alt="Berita 2" class="w-full h-full object-cover block" />
                 </div>
-                <div class="news-item-content">
-                  <h3>
-                    Penyederhanaan Regulasi Pupuk Subsidi, Wamentan: Segera
-                    Diajukan ke Presiden
-                  </h3>
-                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                <div class="news-item-content p-5 flex-grow bg-custom-news-text-bg self-center text-center">
+                  <h3 class="text-base font-medium mt-0 mb-2.5 text-black leading-snug">Penyederhanaan Regulasi Pupuk Subsidi, Wamentan: Segera Diajukan ke Presiden</h3>
+                  <a href="#" class="read-more text-sm text-custom-news-link no-underline font-bold hover:underline">Baca Selengkapnya..</a>
                 </div>
               </div>
-              <div class="news-item">
-                <div class="news-item-image">
-                  <img
-                    src="https://psp.pertanian.go.id//storage/2274/Gambar-WhatsApp-2024-12-03-pukul-22.02.13_3c8d12f9.jpg"
-                    alt="Berita 3"
-                  />
+              <div class="news-item flex bg-[#f0f0f0] rounded-news-item overflow-hidden shadow-news-item transition-transform duration-300 ease-in-out hover:-translate-y-1 max-md:flex-col">
+                <div class="news-item-image flex-shrink-0 w-[150px] h-auto max-md:w-full max-md:h-[180px]">
+                  <img src="https://psp.pertanian.go.id//storage/2274/Gambar-WhatsApp-2024-12-03-pukul-22.02.13_3c8d12f9.jpg" alt="Berita 3" class="w-full h-full object-cover block" />
                 </div>
-                <div class="news-item-content">
-                  <h3>
-                    Kementan Tegaskan Alokasi Pupuk Dalam e-RDKK Tidak Bisa
-                    Diperjualbelikan
-                  </h3>
-                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                <div class="news-item-content p-5 flex-grow bg-custom-news-text-bg self-center text-center">
+                  <h3 class="text-base font-medium mt-0 mb-2.5 text-black leading-snug">Kementan Tegaskan Alokasi Pupuk Dalam e-RDKK Tidak Bisa Diperjualbelikan</h3>
+                  <a href="#" class="read-more text-sm text-custom-news-link no-underline font-bold hover:underline">Baca Selengkapnya..</a>
                 </div>
               </div>
-              <div class="news-item">
-                <div class="news-item-image">
-                  <img
-                    src="https://psp.pertanian.go.id//storage/2284/Gambar-WhatsApp-2024-12-11-pukul-14.53.11_93eab7cf.jpg"
-                    alt="Berita 4"
-                  />
+              <div class="news-item flex bg-[#f0f0f0] rounded-news-item overflow-hidden shadow-news-item transition-transform duration-300 ease-in-out hover:-translate-y-1 max-md:flex-col">
+                <div class="news-item-image flex-shrink-0 w-[150px] h-auto max-md:w-full max-md:h-[180px]">
+                  <img src="https://psp.pertanian.go.id//storage/2284/Gambar-WhatsApp-2024-12-11-pukul-14.53.11_93eab7cf.jpg" alt="Berita 4" class="w-full h-full object-cover block" />
                 </div>
-                <div class="news-item-content">
-                  <h3>
-                    Tinjau Sawah Sumut, Mentan Amran Pastikan Program Swasembada
-                    Lewat Oplah dan Cetak Sawah Berjalan Lancar
-                  </h3>
-                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                <div class="news-item-content p-5 flex-grow bg-custom-news-text-bg self-center text-center">
+                  <h3 class="text-base font-medium mt-0 mb-2.5 text-black leading-snug">Tinjau Sawah Sumut, Mentan Amran Pastikan Program Swasembada Lewat Oplah dan Cetak Sawah Berjalan Lancar</h3>
+                  <a href="#" class="read-more text-sm text-custom-news-link no-underline font-bold hover:underline">Baca Selengkapnya..</a>
                 </div>
               </div>
-              <div class="news-item">
-                <div class="news-item-image">
-                  <img
-                    src="https://psp.pertanian.go.id//storage/2290/Gambar-WhatsApp-2024-12-25-pukul-11.46.51_4ab0f40f.jpg"
-                    alt="Berita 5"
-                  />
+                <div class="news-item flex bg-[#f0f0f0] rounded-news-item overflow-hidden shadow-news-item transition-transform duration-300 ease-in-out hover:-translate-y-1 max-md:flex-col">
+                <div class="news-item-image flex-shrink-0 w-[150px] h-auto max-md:w-full max-md:h-[180px]">
+                   <img src="https://psp.pertanian.go.id//storage/2290/Gambar-WhatsApp-2024-12-25-pukul-11.46.51_4ab0f40f.jpg" alt="Berita 5" class="w-full h-full object-cover block"/>
                 </div>
-                <div class="news-item-content">
-                  <h3>
-                    Kementan dan Pupuk Indonesia Teken Kontrak Pengadaan dan
-                    Penyaluran Pupuk Subsidi
-                  </h3>
-                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                <div class="news-item-content p-5 flex-grow bg-custom-news-text-bg self-center text-center">
+                  <h3 class="text-base font-medium mt-0 mb-2.5 text-black leading-snug">Kementan dan Pupuk Indonesia Teken Kontrak Pengadaan dan Penyaluran Pupuk Subsidi</h3>
+                  <a href="#" class="read-more text-sm text-custom-news-link no-underline font-bold hover:underline">Baca Selengkapnya..</a>
                 </div>
               </div>
-              <div class="news-item">
-                <div class="news-item-image">
-                  <img
-                    src="https://psp.pertanian.go.id//storage/2283/Gambar-WhatsApp-2024-12-10-pukul-18.36.35_e2492087.jpg"
-                    alt="Berita 6"
-                  />
+              <div class="news-item flex bg-[#f0f0f0] rounded-news-item overflow-hidden shadow-news-item transition-transform duration-300 ease-in-out hover:-translate-y-1 max-md:flex-col">
+                <div class="news-item-image flex-shrink-0 w-[150px] h-auto max-md:w-full max-md:h-[180px]">
+                  <img src="https://psp.pertanian.go.id//storage/2283/Gambar-WhatsApp-2024-12-10-pukul-18.36.35_e2492087.jpg" alt="Berita 6" class="w-full h-full object-cover block" />
                 </div>
-                <div class="news-item-content">
-                  <h3>
-                    Warga Merauke Mulai Tanam di Sawah Baru, Optimisme Kesehatan
-                    Meningkat
-                  </h3>
-                  <a href="#" class="read-more">Baca Selengkapnya..</a>
+                <div class="news-item-content p-5 flex-grow bg-custom-news-text-bg self-center text-center">
+                  <h3 class="text-base font-medium mt-0 mb-2.5 text-black leading-snug">Warga Merauke Mulai Tanam di Sawah Baru, Optimisme Kesehatan Meningkat</h3>
+                  <a href="#" class="read-more text-sm text-custom-news-link no-underline font-bold hover:underline">Baca Selengkapnya..</a>
                 </div>
               </div>
             </div>
@@ -256,39 +201,43 @@
         </div>
       </section>
 
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-column">
+      <footer class="footer bg-sidamen-secondary text-custom-footer-text py-5 text-sm">
+        <div class="container mx-auto flex justify-between flex-wrap gap-7 px-5 max-md:flex-col max-md:items-center max-md:text-center">
+          <div class="footer-column min-w-[250px] flex flex-col items-center md:items-start content-center">
             <div class="footer-logo">
-              <img src="img/logo Sidamen.png" alt="Si Damen Logo" />
+              <img src="img/logo Sidamen.png" alt="Si Damen Logo" class="w-[150px] h-[150px] align-middle" />
             </div>
-            <span class="footer-title">Si <span>Damen</span></span>
-            <p class="footer-tagline">Petani Cerdas, Panen Berkualitas</p>
+            <span class="footer-title text-3xl text-white align-middle font-poetsen">Si <span class="text-sidamen-primary">Damen</span></span>
+            <p class="footer-tagline text-base text-sidamen-text">Petani Cerdas, Panen Berkualitas</p>
           </div>
-          <div class="footer-column">
-            <div class="footer-contact-item">
-              <i>📍</i> <span>Surabaya, Indonesia</span>
+          <div class="footer-column min-w-[250px] flex flex-col justify-center items-center md:items-start">
+            <div class="footer-contact-item flex items-center mb-5">
+              <i class="mr-2.5 text-custom-footer-icon w-5 text-center">📍</i> <span>Surabaya, Indonesia</span>
             </div>
-            <div class="footer-contact-item">
-              <i>📞</i> <span>+62 851-6123-6246</span>
+            <div class="footer-contact-item flex items-center mb-5">
+              <i class="mr-2.5 text-custom-footer-icon w-5 text-center">📞</i> <span>+62 851-6123-6246</span>
             </div>
-            <div class="footer-contact-item">
-              <i>✉️</i> <span>sidamen@gmail.com</span>
+            <div class="footer-contact-item flex items-center mb-5">
+              <i class="mr-2.5 text-custom-footer-icon w-5 text-center">✉️</i> <span>sidamen@gmail.com</span>
             </div>
           </div>
-          <div class="footer-column">
+          <div class="footer-column min-w-[250px] flex flex-col items-center md:items-start">
             <div class="footer-navigation">
-              <h4>Navigation</h4>
-              <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#futures">Futures</a></li>
-                <li><a href="#news">News</a></li>
+              <h4 class="text-xl text-custom-footer-icon mb-3.5 mt-0">Navigation</h4>
+              <ul class="list-none p-0 m-0">
+                <li class="mb-2.5"><a href="#home" class="text-custom-footer-text no-underline transition-colors duration-300 ease-in-out hover:text-custom-footer-hover">Home</a></li>
+                <li class="mb-2.5"><a href="#about" class="text-custom-footer-text no-underline transition-colors duration-300 ease-in-out hover:text-custom-footer-hover">About Us</a></li>
+                <li class="mb-2.5"><a href="#futures" class="text-custom-footer-text no-underline transition-colors duration-300 ease-in-out hover:text-custom-footer-hover">Futures</a></li>
+                <li class="mb-2.5"><a href="#news" class="text-custom-footer-text no-underline transition-colors duration-300 ease-in-out hover:text-custom-footer-hover">News</a></li>
               </ul>
             </div>
-            <div class="footer-social-icons">
-              <a href="#" title="WhatsApp"><img src="img/WhatsApp.png" alt=""></a>
-              <a href="#" title="Instagram"><img src="img/Instagram.png" alt=""></a>
+            <div class="footer-social-icons mt-2.5">
+              <a href="#" title="WhatsApp" class="inline-block mr-3 text-custom-footer-text text-2xl w-[35px] h-[35px] leading-[35px] text-center rounded-full transition-all duration-300 ease-in-out hover:bg-custom-footer-hover hover:text-sidamen-secondary">
+                <img src="img/WhatsApp.png" alt="WhatsApp" class="w-5 h-5 inline-block">
+              </a>
+              <a href="#" title="Instagram" class="inline-block mr-3 text-custom-footer-text text-2xl w-[35px] h-[35px] leading-[35px] text-center rounded-full transition-all duration-300 ease-in-out hover:bg-custom-footer-hover hover:text-sidamen-secondary">
+                <img src="img/Instagram.png" alt="Instagram" class="w-5 h-5 inline-block">
+              </a>
             </div>
           </div>
         </div>
