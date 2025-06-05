@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Innovating Farming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .fade-in-up {
+        animation: fadeInUp 0.8s ease-out;
+      }
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900">
+    <header
+      class="flex items-center justify-between px-6 py-5 max-w-7xl mx-auto"
+    >
+      <div class="flex items-center">
+        <img
+          alt="logo"
+          class="h-22 w-auto"
+          src="/img/EcoHarvest-removebg-preview 1.png"
+        />
+      </div>
+      <nav class="hidden md:flex space-x-8 font-semibold text-gray-700 text-sm">
+        <a class="hover:text-green-600 transition" href="#">Home</a>
+        <a class="hover:text-green-600 transition" href="#">About</a>
+        <a class="hover:text-green-600 transition" href="#">Service</a>
+        <a class="hover:text-green-600 transition" href="#">Blog</a>
+      </nav>
+      <div class="hidden md:flex items-center space-x-4">
+        <a class="text-green-600 font-semibold text-sm hover:underline" href="#"
+          >Get in touch</a
+        >
+        <button
+          class="bg-green-600 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-700 transition"
+        >
+          Contact Us
+        </button>
+      </div>
+      <button
+        aria-label="Open menu"
+        class="md:hidden text-green-600 text-2xl focus:outline-none"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+    </header>
+    <main class="max-w-7xl mx-auto px-6">
+      <section
+        class="mt-10 md:mt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-12"
+      >
+        <div class="flex-1 max-w-md md:max-w-lg">
+          <h1
+            class="text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-lime-500 to-yellow-400 drop-shadow-lg text-center md:text-left fade-in-up"
+          >
+            Innovating<br />Farming
+          </h1>
+        </div>
+        <div
+          class="flex-1 max-w-sm md:max-w-md rounded-lg overflow-hidden shadow-lg"
+        >
+          <img
+            alt="Woman farmer wearing a hat working in a field with plants"
+            class="w-full h-auto object-cover"
+            src="/img/unsplash_XMSUfFloaHU.png"
+            loading="lazy"
+            width="400"
+            height="300"
+          />
+        </div>
+      </section>
+      <section class="mt-12 max-w-7xl mx-auto px-0 md:px-0">
+        <div class="flex flex-col md:flex-row md:space-x-12">
+          <section class="md:w-1/2 flex flex-col space-y-4">
+            <img
+              alt="Side view of a man wearing a straw hat standing in a green field with a cloudy sky"
+              class="rounded-xl object-cover w-full h-[300px]"
+              height="300"
+              src="https://storage.googleapis.com/a1aa/image/f53634fb-63ed-4068-71e1-e85ddc38b749.jpg"
+              width="600"
+            />
+            <div class="relative rounded-xl overflow-hidden">
+              <img
+                alt="Man wearing a dark jacket standing in a green field, side view"
+                class="rounded-xl object-cover w-full h-[300px]"
+                height="300"
+                src="https://storage.googleapis.com/a1aa/image/8ebb672c-b7b0-4a22-e7e3-3b9dd1c6625f.jpg"
+                width="600"
+              />
+              <div
+                class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-xl px-6 py-4 max-w-[90%] text-center text-lg font-semibold text-black"
+              >
+                Containing more than
+                <span class="text-green-600">2 decades</span>
+                of farming experience
+              </div>
+            </div>
+          </section>
+          <section class="md:w-1/2 mt-10 md:mt-0">
+            <h1 class="text-4xl font-semibold leading-tight mb-4">
+              Cultivating Innovation in Farming
+            </h1>
+            <p class="text-base max-w-xl mb-10">
+              We are committed to empowering farmers with modern solutions,
+              sustainable practices, and expert guidance. Our mission is to
+              revolutionize agriculture by blending tradition with innovation,
+              ensuring better yields and a greener future
+            </p>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8 max-w-xl"
+            >
+              <div>
+                <img
+                  alt="Icon of a green fence representing smart farming"
+                  class="mb-2"
+                  height="24"
+                  src="https://storage.googleapis.com/a1aa/image/14b6a169-eb78-4da4-30b8-d7bde47bf185.jpg"
+                  width="24"
+                />
+                <h3 class="font-semibold text-lg mb-1">Smart Farming</h3>
+                <p class="text-sm leading-relaxed">
+                  Ace your residency interviews with confidence. We prepare you
+                  for common questions and help you present your best self to
+                  program
+                </p>
+              </div>
+              <div>
+                <img
+                  alt="Icon of a green lawn mower representing sustainable practices"
+                  class="mb-2"
+                  height="24"
+                  src="https://storage.googleapis.com/a1aa/image/82d749cb-3415-44ef-8c7f-d18c154e745e.jpg"
+                  width="24"
+                />
+                <h3 class="font-semibold text-lg mb-1">
+                  Sustainable Practices
+                </h3>
+                <p class="text-sm leading-relaxed">
+                  Ace your residency interviews with confidence. We prepare you
+                  for common questions and help you present your best self to
+                  program
+                </p>
+              </div>
+              <div>
+                <img
+                  alt="Icon of a green hand holding a seedling representing expert guidance"
+                  class="mb-2"
+                  height="24"
+                  src="https://storage.googleapis.com/a1aa/image/5dee3721-5496-4f05-3305-7adfcd403604.jpg"
+                  width="24"
+                />
+                <h3 class="font-semibold text-lg mb-1">Expert Guidance</h3>
+                <p class="text-sm leading-relaxed">
+                  Ace your residency interviews with confidence. We prepare you
+                  for common questions and help you present your best self to
+                  program
+                </p>
+              </div>
+              <div>
+                <img
+                  alt="Icon of green seedlings representing innovation and growth"
+                  class="mb-2"
+                  height="24"
+                  src="https://storage.googleapis.com/a1aa/image/fca36dca-c5c1-4dfd-5d76-4b9866c17911.jpg"
+                  width="24"
+                />
+                <h3 class="font-semibold text-lg mb-1">
+                  Innovation &amp; Growth
+                </h3>
+                <p class="text-sm leading-relaxed">
+                  Ace your residency interviews with confidence. We prepare you
+                  for common questions and help you present your best self to
+                  program
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section class="mt-10 md:mt-16 flex flex-col md:flex-row gap-6 md:gap-12">
+        <div class="flex-1">
+          <img
+            alt="Close-up of hands holding fresh green lettuce in a farm"
+            class="w-full h-auto rounded-lg object-cover"
+            height="400"
+            loading="lazy"
+            src="https://storage.googleapis.com/a1aa/image/9d2d6097-e5ba-4f03-ac3e-d692e7dd4b06.jpg"
+            width="600"
+          />
+        </div>
+        <div class="flex-1 flex flex-col justify-between">
+          <div>
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+              Cultivating Innovation in Farming
+            </h2>
+            <p class="text-gray-700 mb-6 leading-relaxed">
+              Farmers are pioneering new ways to grow food sustainably, using
+              technology and traditional knowledge to improve yields and protect
+              the environment.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-seedling text-green-600 text-xl"></i>
+                <span class="text-gray-800 font-semibold">Smart Farming</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-leaf text-green-600 text-xl"></i>
+                <span class="text-gray-800 font-semibold"
+                  >Sustainable Practices</span
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-tractor text-green-600 text-xl"></i>
+                <span class="text-gray-800 font-semibold">Expert Guidance</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <i class="fas fa-apple-alt text-green-600 text-xl"></i>
+                <span class="text-gray-800 font-semibold"
+                  >Modern Eco-farms</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-8 grid grid-cols-2 gap-6 text-center text-gray-700 font-semibold text-sm"
+          >
+            <div>
+              <div class="text-green-600 text-2xl font-bold">20+</div>
+              <div>Years Experience</div>
+            </div>
+            <div>
+              <div class="text-green-600 text-2xl font-bold">25k+</div>
+              <div>Farmers</div>
+            </div>
+            <div>
+              <div class="text-green-600 text-2xl font-bold">75%</div>
+              <div>Reduce CO2 Emission</div>
+            </div>
+            <div>
+              <div class="text-green-600 text-2xl font-bold">95%</div>
+              <div>Satisfaction Rate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="mt-20 relative max-w-7xl mx-auto rounded-lg overflow-hidden shadow-lg"
+      >
+        <img
+          alt="Man working in a field with a video play button overlay"
+          class="w-full h-auto object-cover"
+          height="500"
+          loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/9c58120e-2eae-4f4d-2c98-bbfa8a667448.jpg"
+          width="1200"
+        />
+        <button
+          aria-label="Play video"
+          class="absolute inset-0 flex justify-center items-center text-white text-6xl opacity-90 hover:opacity-100 transition"
+        >
+          <i class="fas fa-play-circle"></i>
+        </button>
+      </section>
+      <section class="mt-20 max-w-4xl mx-auto text-center px-6">
+        <h4 class="text-2xl font-semibold text-gray-900 mb-2">
+          Customers have provided feedback
+        </h4>
+        <p class="text-gray-600 mb-12 max-w-xl mx-auto">
+          Learn how our innovative farming solutions have helped farmers
+          increase productivity and sustainability.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-8">
+          <div
+            class="border border-green-600 rounded-full p-8 max-w-xs flex flex-col items-center text-green-700"
+          >
+            <i class="fas fa-leaf text-4xl mb-4"></i>
+            <h5 class="font-semibold mb-2">Benefit</h5>
+            <p class="text-sm">
+              Our clients have seen a significant increase in crop yields and
+              soil health.
+            </p>
+          </div>
+          <div
+            class="border border-green-600 rounded-full p-8 max-w-xs flex flex-col items-center text-green-700"
+          >
+            <i class="fas fa-seedling text-4xl mb-4"></i>
+            <h5 class="font-semibold mb-2">Impact</h5>
+            <p class="text-sm">
+              Sustainable farming practices have reduced environmental impact
+              and improved biodiversity.
+            </p>
+          </div>
+          <div
+            class="border border-green-600 rounded-full p-8 max-w-xs flex flex-col items-center text-green-700"
+          >
+            <i class="fas fa-tractor text-4xl mb-4"></i>
+            <h5 class="font-semibold mb-2">Growth</h5>
+            <p class="text-sm">
+              Expert guidance has helped farms grow efficiently and profitably.
+            </p>
+          </div>
+        </div>
+        <div class="mt-6">
+          <button
+            class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition"
+          >
+            Read More
+          </button>
+        </div>
+      </section>
+      <section class="mt-20 max-w-7xl mx-auto px-6 mb-20">
+        <h4 class="text-3xl font-semibold text-gray-900 mb-10 text-center">
+          Our Agricultural Experts
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div
+            class="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+          >
+            <img
+              alt="Portrait of agricultural expert with phone icon overlay"
+              class="w-full h-80 object-cover"
+              height="400"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/69677591-4871-42a5-ab96-ade9fdaf6043.jpg"
+              width="400"
+            />
+            <div
+              class="absolute top-4 right-4 bg-green-600 p-2 rounded-full text-white text-lg"
+              title="Contact Expert"
+            >
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="p-4 bg-white">
+              <h5 class="font-semibold text-gray-900">Leon Harris</h5>
+              <p class="text-green-600 text-sm">Lead Agronomist</p>
+            </div>
+          </div>
+          <div
+            class="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+          >
+            <img
+              alt="Portrait of agricultural expert with phone icon overlay"
+              class="w-full h-80 object-cover"
+              height="400"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/69677591-4871-42a5-ab96-ade9fdaf6043.jpg"
+              width="400"
+            />
+            <div
+              class="absolute top-4 right-4 bg-green-600 p-2 rounded-full text-white text-lg"
+              title="Contact Expert"
+            >
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="p-4 bg-white">
+              <h5 class="font-semibold text-gray-900">Olivia Davis</h5>
+              <p class="text-green-600 text-sm">Crop Specialist</p>
+            </div>
+          </div>
+          <div
+            class="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+          >
+            <img
+              alt="Portrait of agricultural expert with phone icon overlay"
+              class="w-full h-80 object-cover"
+              height="400"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/69677591-4871-42a5-ab96-ade9fdaf6043.jpg"
+              width="400"
+            />
+            <div
+              class="absolute top-4 right-4 bg-green-600 p-2 rounded-full text-white text-lg"
+              title="Contact Expert"
+            >
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="p-4 bg-white">
+              <h5 class="font-semibold text-gray-900">Megan Clark</h5>
+              <p class="text-green-600 text-sm">Soil Scientist</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="mt-20 max-w-7xl mx-auto px-6 mb-20">
+        <h4 class="text-3xl font-semibold text-gray-900 mb-10 text-center">
+          Latest trends in
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div
+            class="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+          >
+            <img
+              alt="Image representing latest trend 1 in agriculture"
+              class="w-full h-56 object-cover"
+              height="300"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/29beb75f-ea0e-4c5a-3800-dcbb28525227.jpg"
+              width="400"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition flex flex-col justify-center items-center text-white px-4"
+            >
+              <button
+                class="bg-green-600 px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition"
+              >
+                View
+              </button>
+              <p class="mt-4 text-center text-sm max-w-xs">
+                Innovative farming techniques and technology adoption.
+              </p>
+            </div>
+          </div>
+          <div
+            class="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+          >
+            <img
+              alt="Image representing latest trend 2 in agriculture"
+              class="w-full h-56 object-cover"
+              height="300"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/b6d84d77-d95c-4652-23c4-85c5d1c7e122.jpg"
+              width="400"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition flex flex-col justify-center items-center text-white px-4"
+            >
+              <button
+                class="bg-green-600 px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition"
+              >
+                View
+              </button>
+              <p class="mt-4 text-center text-sm max-w-xs">
+                Sustainable crop rotation and soil management.
+              </p>
+            </div>
+          </div>
+          <div
+            class="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+          >
+            <img
+              alt="Image representing latest trend 3 in agriculture"
+              class="w-full h-56 object-cover"
+              height="300"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/13d5bfdb-22d5-4992-f400-ea0cc9b9a385.jpg"
+              width="400"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition flex flex-col justify-center items-center text-white px-4"
+            >
+              <button
+                class="bg-green-600 px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition"
+              >
+                View
+              </button>
+              <p class="mt-4 text-center text-sm max-w-xs">
+                Advances in irrigation and water conservation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
