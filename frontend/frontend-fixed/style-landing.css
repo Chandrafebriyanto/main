@@ -112,6 +112,11 @@ body {
   font-size: 1.2rem;
 }
 
+.login a:hover {
+  color: var(--text);
+  transition: all 0.3s ease-in-out;
+}
+
 .profile{
   width: 40px;
   height: 40px;
@@ -167,7 +172,15 @@ body {
   border: none;
   font-weight: bold;
   margin-top: 30px;
+  transition: all 0.3s ease-in-out;;
 }
+
+.content-home button:hover {
+  background-color: var(--primary);
+  color: var(--text);
+  transition: all 0.3s ease-in-out;
+}
+  
 
 /* tittle: About Us */
 .about-us-section {
