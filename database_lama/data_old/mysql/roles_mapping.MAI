@@ -1,0 +1,1 @@
+`si_akademik`.`nilai`, CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`MahasiswaID`) REFERENCES `mahasiswa` (`MahasiswaID`)
