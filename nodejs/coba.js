@@ -24,8 +24,9 @@ class Orang {
 // module.exports.Orang = Orang;
 
 module.exports = {
-    username: username,
-    PI: PI,
-    mahasiswa: mahasiswa,
-    Orang: Orang
+    username,
+    PI,
+    mahasiswa,
+    Orang
+
 }
