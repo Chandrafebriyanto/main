@@ -115,7 +115,7 @@ const detailContact = (nama) => {
 
 // tittle: menghapus kontak
 const removeContact = (nama) => {
-  const contacts = loadcontact();
+  const contacts = loadcontact(); //(./data/contact.json)
   const newContacts = contacts.filter(
     (contact) => contact.nama.toLowerCase() !== nama.toLowerCase()
   );
@@ -127,6 +127,12 @@ const removeContact = (nama) => {
   fs.writeFileSync("data/contact.json", JSON.stringify(newContacts));
   console.log(`Kontak dengan nama ${nama} telah dihapus.`);
   rl.close();
-}
+};
 
-module.exports = { tulisPertanyaan, simpanContact, detailContact, listcontact, removeContact };
+module.exports = {
+  tulisPertanyaan,
+  simpanContact,
+  detailContact,
+  listcontact,
+  removeContact,
+};
