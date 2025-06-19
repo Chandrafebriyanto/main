@@ -1,9 +1,7 @@
 // tittle: core module
-// const { rejects } = require("assert");
-// const { isUtf8 } = require("buffer");
-// const { resolve } = require("path");
 const fs = require("fs");
 const readline = require("readline");
+var validator = require('validator');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -36,6 +34,29 @@ const simpanContact = (nama, email, nomer) => {
   const contact = { nama, email, nomer };
   const filleBuffer = fs.readFileSync("data/contact.json", "Utf-8");
   const contacts = JSON.parse(filleBuffer);
+
+  // tittle: cek duplikat
+  const duplikat = contacts.find((contact) => contact.nama === nama);
+  if (duplikat) {
+    console.log("nama sudah terdaftar, silahkan gunakan nama lain");
+    rl.close();
+    return false;
+  }
+
+  // tittle: cek email
+  const emailExists = contacts.find((contact) => contact.email === email);
+  if (email && !validator.isEmail(email)) {
+    console.log("email tidak valid");
+    rl.close();
+    return false;
+  } else {
+    if (emailExists) {
+      console.log("email sudah terdaftar, silahkan gunakan email lain");
+      rl.close();
+      return false;
+    }
+  }
+
 
   contacts.push(contact);
   fs.writeFileSync("data/contact.json", JSON.stringify(contacts));
