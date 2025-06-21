@@ -19,15 +19,6 @@ if (!fs.existsSync(datapath)) {
   fs.writeFileSync(datapath, "[]", "utf-8");
 }
 
-// tittle: membuat pertanyaan
-const tulisPertanyaan = (pertanyaan) => {
-  return new Promise((resolve, reject) => {
-    rl.question(pertanyaan, (tanya) => {
-      resolve(tanya);
-    });
-  });
-};
-
 const loadcontact = () => {
   const filleBuffer = fs.readFileSync("data/contact.json", "Utf-8");
   const contacts = JSON.parse(filleBuffer);
@@ -38,6 +29,6 @@ const findContact = (name) => {
   const contacts = loadcontact();
   const contact = contacts.find((contact) => contact.name === name);
   return contact;
-}
+};
 
-module.exports = {loadcontact, findContact};
+module.exports = { loadcontact, findContact };

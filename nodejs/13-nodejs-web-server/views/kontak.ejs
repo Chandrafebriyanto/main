@@ -13,13 +13,19 @@
           </tr>
         </thead>
         <tbody>
-          <% contacts.forEach((contact, i) => { %>
+          <% if (contacts.length === 0) { %>
+          <div class="alert alert-danger fw-bold" role="aler">
+            Data contact tidak ada
+          </div>
+          <% } %> <% contacts.forEach((contact, i) => { %>
           <tr>
-            <th scope="row"> <%= i + 1 %></th>
+            <th scope="row"><%= i + 1 %></th>
             <td><%= contact.name %></td>
             <td><%= contact.nomer %></td>
             <td>
-              <a href="/contact/<%= contact.name %>" class="btn btn-primary btn-sm badge rounded-pill"
+              <a
+                href="/contact/<%= contact.name %>/detail"
+                class="btn btn-primary btn-sm badge rounded-pill"
                 ><i class="bi bi-info-circle"></i>Detail</a
               >
             </td>

@@ -10,16 +10,8 @@ const port = 3000;
 app.set("view engine", "ejs");
 app.use(expressLayouts); // gunakan express-ejs-layouts
 app.use(express.static("public")); // gunakan folder public untuk static files
-// app.use(morgan('tiny')) // gunakan morgan untuk logging
-
-// Middleware untuk parsing data dari form
-// app.use((req, res, next) => {
-//   console.log('Time:', Date.now())
-//   next()
-// });
 
 app.get("/", (req, res) => {
-  // res.sendFile(__dirname + '/index.html')
   const mahasiswa = [
     {
       nama: "Candra",
@@ -43,7 +35,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  // res.sendFile(__dirname + '/tentang.html')
   res.render("tentang", {
     title: "About Page",
     layout: "layouts/main-layout",
@@ -51,7 +42,6 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/contacts", (req, res) => {
-  // res.sendFile(__dirname + '/kontak.html')
   const contacts = loadcontact();
   res.render("kontak", {
     title: "Contact Page",
@@ -60,13 +50,12 @@ app.get("/contacts", (req, res) => {
   });
 });
 
-app.get("/contact/:name", (req, res) => {
-  // res.sendFile(__dirname + '/kontak.html')
+app.get("/contact/:name/detail", (req, res) => {
   const contact = findContact(req.params.name);
   res.render("detail", {
     title: "detail Contact Page",
     layout: "layouts/main-layout",
-    contact
+    contact,
   });
 });
 
