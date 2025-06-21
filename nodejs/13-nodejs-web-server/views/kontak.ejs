@@ -1,20 +1,33 @@
-<%- include('layouts/header') %>
-<%- include('layouts/nav') %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Daftar Kontak</h2>
 
-  <div class="container">
-    <h2>Hubungi Kami</h2>
-    <form action="#" method="post">
-      <label for="nama">Nama:</label><br />
-      <input type="text" id="nama" name="nama" required /><br /><br />
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Nomer Hp</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% contacts.forEach((contact, i) => { %>
+          <tr>
+            <th scope="row"> <%= i + 1 %></th>
+            <td><%= contact.name %></td>
+            <td><%= contact.nomer %></td>
+            <td>
+              <a href="/contact/<%= contact.name %>" class="btn btn-primary btn-sm badge rounded-pill"
+                ><i class="bi bi-info-circle"></i>Detail</a
+              >
+            </td>
+          </tr>
 
-      <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required /><br /><br />
-
-      <label for="pesan">Pesan:</label><br />
-      <textarea id="pesan" name="pesan" rows="5" required></textarea><br /><br />
-
-      <button type="submit">Kirim</button>
-    </form>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-<%- include('layouts/footer') %>
+</div>
