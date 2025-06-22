@@ -6,6 +6,8 @@ const {
   findContact,
   addContact,
   cekDuplikat,
+  deleteContact,
+  editContact,
 } = require("./utils/contact.js");
 const { body, validationResult, check } = require("express-validator");
 const session = require("express-session");
@@ -23,12 +25,14 @@ app.use(express.urlencoded({})); // untuk parsing data dari form
 
 // note:konfigurasi flash
 app.use(cookieParser("secret"));
-app.use(session({
-  cookie: { maxAge: 6000 },
-  secret: "secret",
-  resave: true,
-  saveUninitialized: true,
-}));
+app.use(
+  session({
+    cookie: { maxAge: 6000 },
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 app.use(flash());
 
 // tittle: halaman home
@@ -65,6 +69,51 @@ app.get("/about", (req, res) => {
   });
 });
 
+// tittle: delete kontak
+app.get("/contacts/delete/:name", (req, res) => {
+  const contact = findContact(req.params.name);
+  if (!contact) {
+    res.status(404);
+    res.send("Kontak tidak ditemukan");
+  } else {
+    // note: hapus kontak
+    deleteContact(req.params.name);
+    // note: menampilkan pesan flash
+    req.flash("msg", "Data kontak berhasil dihapus");
+    res.redirect("/contacts");
+  }
+});
+
+// tittle: edit kontak
+app.get("/contacts/edit/:name", (req, res) => {
+  const contact = findContact(req.params.name);
+  res.render("edit", {
+    //note: membuat file edit.ejs
+    title: "Form Edit Contact",
+    layout: "layouts/main-layout",
+    contact,
+  });
+});
+
+// tittle: edit kontak
+app.post("/contact/update", (req, res) => {
+  editContact(req.body);
+  // note: menampilkan pesan flash
+  req.flash("msg", "Data kontak berhasil diubah");
+  res.redirect("/contacts");
+});
+
+// tittle: halaman detail kontak
+app.get("/contacts/:name", (req, res) => {
+  const contact = findContact(req.params.name);
+  res.render("detail", {
+    //note: membuat file detail.ejs
+    title: "detail Contact Page",
+    layout: "layouts/main-layout",
+    contact,
+  });
+});
+
 // tittle: halaman kontak
 app.get("/contacts", (req, res) => {
   const contacts = loadcontact();
@@ -74,17 +123,6 @@ app.get("/contacts", (req, res) => {
     layout: "layouts/main-layout",
     contacts,
     msg: req.flash("msg"), // note: menampilkan pesan flash
-  });
-});
-
-// tittle: halaman detail kontak
-app.get("/contact/:name/detail", (req, res) => {
-  const contact = findContact(req.params.name);
-  res.render("detail", {
-    //note: membuat file detail.ejs
-    title: "detail Contact Page",
-    layout: "layouts/main-layout",
-    contact,
   });
 });
 
