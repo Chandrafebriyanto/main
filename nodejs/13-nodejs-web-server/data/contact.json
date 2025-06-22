@@ -1,17 +1,1 @@
-[
-  {
-    "name": "John Doe",
-    "nomer": "08512545869536",
-    "email": "john@gmail.com"
-  },
-  {
-    "name": "Jane Smith",
-    "nomer": "08512545869537",
-    "email": "jane@gmail.com"
-  },
-  {
-    "name": "Alice Johnson",
-    "nomer": "08512545869538",
-    "email": "alice@gmail.com"
-  }
-]
+[{"name":"John Doe","nomer":"08512545869536","email":"john@gmail.com"},{"name":"Jane Smith","nomer":"08512545869537","email":"jane@gmail.com"},{"name":"Alice Johnson","nomer":"08512545869538","email":"alice@gmail.com"},{"name":"Triaksi","email":"mobilerocket375@gmail.com","nomer":"123456789"},{"name":"CANDRA FEBRIYANTO","email":"mobilerocket375@gmail.com","nomer":"0812345678"}]
