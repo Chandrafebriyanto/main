@@ -8,7 +8,9 @@ const {
   cekDuplikat,
 } = require("./utils/contact.js");
 const { body, validationResult, check } = require("express-validator");
-const e = require("express");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
 
 const app = express();
 const port = 3000;
@@ -18,6 +20,16 @@ app.set("view engine", "ejs");
 app.use(expressLayouts); // gunakan express-ejs-layouts
 app.use(express.static("public")); // gunakan folder public untuk static files
 app.use(express.urlencoded({})); // untuk parsing data dari form
+
+// note:konfigurasi flash
+app.use(cookieParser("secret"));
+app.use(session({
+  cookie: { maxAge: 6000 },
+  secret: "secret",
+  resave: true,
+  saveUninitialized: true,
+}));
+app.use(flash());
 
 // tittle: halaman home
 app.get("/", (req, res) => {
@@ -61,6 +73,7 @@ app.get("/contacts", (req, res) => {
     title: "Contact Page",
     layout: "layouts/main-layout",
     contacts,
+    msg: req.flash("msg"), // note: menampilkan pesan flash
   });
 });
 
@@ -81,6 +94,7 @@ app.get("/contact/add", (req, res) => {
     //note: membuat file tambah.ejs
     title: "Form Tambah Contact",
     layout: "layouts/main-layout",
+    errors: [],
   });
 });
 
@@ -100,7 +114,6 @@ app.post(
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // return res.status(400).json({ error: errors.array() });
       res.render("tambah", {
         title: "Form Tambah Contact",
         layout: "layouts/main-layout",
@@ -108,6 +121,8 @@ app.post(
       });
     } else {
       addContact(req.body);
+      // note: menampilkan pesan flash
+      req.flash("msg", "Data kontak berhasil ditambahkan");
       res.redirect("/contacts");
     }
   }

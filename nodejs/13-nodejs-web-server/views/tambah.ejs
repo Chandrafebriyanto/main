@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <h2>Form Tambah Contact</h2>
 
-      <% if (typeof errors != 'undifined') { %>
+      <% if (typeof errors != 'undefined' && errors.length > 0) { %>
       <div class="alert alert-danger" role="alert">
         <ul>
           <% errors.forEach((error) => { %>
