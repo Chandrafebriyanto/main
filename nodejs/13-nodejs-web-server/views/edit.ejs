@@ -14,7 +14,11 @@
       <% } %>
 
       <form action="/contact/update" method="post">
-        <input type="hidden" name="oldName" value="<%= contact.name%>" />
+        <input
+          type="hidden"
+          name="oldName"
+          value="<%= contact.name || contact.oldName %>"
+        />
         <div class="mb-3">
           <label for="nama" class="form-label">Nama</label>
           <input
@@ -29,12 +33,24 @@
 
         <div class="mb-3">
           <label for="name" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" value="<%= contact.email%>"/>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            value="<%= contact.email%>"
+          />
         </div>
 
         <div class="mb-3">
           <label for="name" class="form-label">nomer</label>
-          <input type="text" class="form-control" id="nomer" name="nomer" value="<%= contact.nomer%>"/>
+          <input
+            type="text"
+            class="form-control"
+            id="nomer"
+            name="nomer"
+            value="<%= contact.nomer%>"
+          />
         </div>
 
         <button type="submit" class="btn btn-primary">Ubah</button>

@@ -95,13 +95,38 @@ app.get("/contacts/edit/:name", (req, res) => {
   });
 });
 
-// tittle: edit kontak
-app.post("/contact/update", (req, res) => {
-  editContact(req.body);
-  // note: menampilkan pesan flash
-  req.flash("msg", "Data kontak berhasil diubah");
-  res.redirect("/contacts");
-});
+// tittle: update kontak
+app.post(
+  "/contact/update",
+  [
+    body("name").custom((value, { req }) => {
+      const duplikat = cekDuplikat(value);
+      if (duplikat && value !== req.body.oldName) {
+        throw new Error("Nama kontak sudah terdaftar");
+      }
+      return true;
+    }),
+    check("email", "Email tidak valid").isEmail(),
+    check("nomer", "Nomor telepon tidak valid").isMobilePhone("id-ID"),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    const contact = findContact(req.body.oldName);
+    if (!errors.isEmpty()) {
+      res.render("edit", {
+        title: "Form edit Contact",
+        layout: "layouts/main-layout",
+        errors: errors.array(),
+        contact: req.body,
+      });
+    } else {
+      editContact(req.body);
+      // note: menampilkan pesan flash
+      req.flash("msg", "Data kontak berhasil ditambahkan");
+      res.redirect("/contacts");
+    }
+  }
+);
 
 // tittle: halaman detail kontak
 app.get("/contacts/:name", (req, res) => {
