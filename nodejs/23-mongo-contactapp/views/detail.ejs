@@ -15,15 +15,31 @@
             <h5 class="card-title"><%= contact.name %></h5>
             <p class="card-text"><%= contact.nomer %></p>
             <p class="card-text"><%= contact.email %></p>
-            
-            <a href="/contacts/edit/<%= contact.name%>" class="btn btn-success badge"
+
+            <a
+              href="/contacts/edit/<%= contact.name%>"
+              class="btn btn-success badge"
               >Edit</a
             >
-            <a
+            <!-- <a
               href="/contacts/delete/<%= contact.name%>"
               class="btn btn-danger badge" onclick="return confirm('Yakin ingin menghapus data ini?')"
               >Delete</a
+            > -->
+            <form
+              method="POST"
+              action="/contacts?_method=DELETE"
+              class="d-inline"
             >
+              <input type="hidden" name="name" value="<%= contact.name %>" />
+              <button
+                type="submit"
+                class="btn btn-danger badge"
+                onclick="return confirm('Yakin ingin menghapus data ini?')"
+              >
+                Hapus
+              </button>
+            </form>
             <a href="/contacts" class="card-link d-block mt-2">
               &laquo; kembali ke halaman kontak</a
             >
