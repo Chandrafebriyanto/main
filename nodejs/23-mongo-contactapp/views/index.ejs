@@ -1,0 +1,22 @@
+<header>
+  <h1>Selamat Datang di Website Sederhana</h1>
+</header>
+
+<div class="container">
+  <h2>Halo!</h2>
+  <p>
+    Ini adalah contoh website sederhana menggunakan HTML dan CSS. Kamu bisa
+    mengubah isi dan desain sesuai kebutuhanmu.
+  </p>
+  <br />
+  <h4>Daftar Mahasiswa</h4>
+  <% mahasiswa.forEach(mhs => { %>
+  <ul>
+    <li>Nama: <%= mhs.nama %></li>
+    <li>Email: <%= mhs.email %></li>
+    <br />
+  </ul>
+  <% }) %>
+
+  <h1>nama saya <%= nama %></h1>
+</div>
