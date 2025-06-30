@@ -1,14 +1,34 @@
-// server.mjs
-import { createServer } from 'node:http';
+const mongoose = require('mongoose');
+mongoose.connect("mongodb://127.0.0.1:27017/task-web-app");
 
-const server = createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello World!\n');
+const task = mongoose.model("task", {
+  tittle: {
+    type: String,
+    required: true,
+  },
+  dateline: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  link: {
+    type: String,
+    required: true,
+  },
+
 });
 
-// starts a simple http server locally on port 3000
-server.listen(3000, '127.0.0.1', () => {
-  console.log('Listening on 127.0.0.1:3000');
+// Buat instance dari model
+const task1 = new task({
+  tittle: 'Membuat Web dengan NodeJs dan Bootstrap',
+  dateline: new Date().toISOString(),
+  description: 'membuat web sederhana dengan backend nodejs dan style bootstrap',
+  link: 'http://www.google.com'
 });
 
-// run with `node server.mjs`
+task1.save()
+  .then((task) => console.log(task))
+  .catch((err) => console.log(err));

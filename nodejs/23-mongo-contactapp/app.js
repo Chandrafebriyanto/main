@@ -1,9 +1,9 @@
 // tittle: require module
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
-require("./utils/db");
 const { body, validationResult, check } = require("express-validator");
 const methodOverride = require("method-override");
+require("./utils/db");
 const Contact = require("./model/contact");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");

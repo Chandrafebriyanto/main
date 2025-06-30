@@ -1,72 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .visible-scrollbar,
-      .invisible-scrollbar,
-      .mostly-customized-scrollbar {
-        display: block;
-        width: 10em;
-        overflow: auto;
-        height: 2em;
-        padding: 1em;
-        margin: 1em auto;
-        outline: 2px dashed cornflowerblue;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      background: #0e2136;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;;
+    }
 
-      .invisible-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
+    .box{
+      background: #142d4a;
+      height: 200px;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      position: relative;
+    }
 
-      /* Demonstrate a "mostly customized" scrollbar
- * (won't be visible otherwise if width/height is specified) */
-      .mostly-customized-scrollbar::-webkit-scrollbar {
-        width: 5px;
-        height: 8px;
-        background-color: #aaa; /* or add it to the track */
-      }
+    .box::before{
+      content: "";
+      position: absolute;
+      height: 110%;
+      width: 100%;
+      background-color: conic-gradient(from 0deg at center,
+        #00c3ff,
+        #4d0199,
+        #6300c6,
+        #009dcd
+      );
+      border-radius: inherit;
+      z-index: -2;
+      padding: 2px;
+    }
 
-      /* Add a thumb */
-      .mostly-customized-scrollbar::-webkit-scrollbar-thumb {
-        background: #000;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="visible-scrollbar">
-      <h3>Visible scrollbar</h3>
-      <p>
-        Etiam sagittis sem sed lacus laoreet, eu fermentum eros auctor. Proin at
-        nulla elementum, consectetur ex eget, commodo ante. Sed eros mi,
-        bibendum ut dignissim et, maximus eget nibh. Phasellus blandit quam
-        turpis, at mollis velit pretium ut. Nunc consequat efficitur ultrices.
-        Nullam hendrerit posuere est. Nulla libero sapien, egestas ac felis
-        porta, cursus ultricies quam. Vestibulum tincidunt accumsan sapien, a
-        fringilla dui semper in. Vivamus consectetur ipsum a ornare blandit.
-        Aenean tempus at lorem sit amet faucibus. Curabitur nibh justo, faucibus
-        sed velit cursus, mattis cursus dolor. Pellentesque id pretium est.
-        Quisque convallis nisi a diam malesuada mollis. Aliquam at enim ligula.
-      </p>
-    </div>
-
-    <div class="invisible-scrollbar">
-      <h3>Invisible scrollbar</h3>
-      <p>
-        Thisisaveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerylongword
-      </p>
-    </div>
-
-    <div class="mostly-customized-scrollbar">
-      <h3>Custom scrollbar</h3>
-      <p>
-        Thisisaveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerylongword<br />
-        And pretty tall<br />
-        thing with weird scrollbars.<br />
-        Who thought scrollbars could be made weird?
-      </p>
-    </div>
-  </body>
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
 </html>
