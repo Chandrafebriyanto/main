@@ -3,45 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Before After</title>
   <style>
+
     body{
-      margin: 0;
-      padding: 0;
-      background: #0e2136;
       height: 100vh;
-      display: flex;
       justify-content: center;
-      align-items: center;;
+      align-items: center;
+      display: flex;
+      overflow: hidden;
     }
-
+    
     .box{
-      background: #142d4a;
-      height: 200px;
-      aspect-ratio: 1/1;
-      border-radius: 10px;
-      position: relative;
+      height: 100px;
+      width: 100px;
     }
 
-    .box::before{
-      content: "";
-      position: absolute;
-      height: 110%;
-      width: 100%;
-      background-color: conic-gradient(from 0deg at center,
-        #00c3ff,
-        #4d0199,
-        #6300c6,
-        #009dcd
+    button{
+      width: 100px;
+      height: 50px;
+      background: linear-gradient(
+        0deg,
+        rgb(246, 0, 0),
+        rgb(44, 1, 1)
       );
-      border-radius: inherit;
-      z-index: -2;
-      padding: 2px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-family: 'roboto';
+      font-size: 1rem;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.321);
+      cursor: pointer;
     }
 
+    button:active{
+      transform: scale(0.95);
+    }
+
+    button::before, button::after{
+      content: '';
+      position: absolute;
+      margin: 0px;
+      height: 50px;
+      width: 100px;
+      border-radius: 10px;
+      background: linear-gradient(
+        0deg,
+        rgb(246, 0, 0),
+        rgb(44, 1, 1)
+      );
+      z-index: -1;
+    }
+    
   </style>
 </head>
 <body>
-  <div class="box"></div>
+  <div class="box">
+    <button>Click Me</button>
+  </div>
 </body>
 </html>
