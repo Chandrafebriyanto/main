@@ -1,13 +1,19 @@
-def is_valid(username, password):
-    if username == "admin" or username == "user":
-        if username == "user" and password == "qweasd":
-            return True
-        elif username == "admin":
-            return True
-        else:
-            return False
+num = int(input())
+print("Welcome to FizzBuzz!")
+def fizzbuzz(n):
+    string_num = str(n)
+    if (n % 3 == 0 and n % 7 == 0):
+        return "FizzBuzz"
+    elif (n % 3 == 0):
+        return "Fizz"
+    elif (n % 7 == 0):
+        return "Buzz"
     else:
-        return False
+        if ("3" in string_num):
+            return "Almost Fizz"
+        else:
+            return string_num
 
-print(is_valid("user", "123dc3"))
 
+for i in range (1, num + 1):
+    print(fizzbuzz(i))
