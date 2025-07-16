@@ -9,3 +9,7 @@ for(; counter <= 10;){
 for(let counter = 1; counter <= 10; counter++){
     console.log(`counter ke- ${counter}`)
 }
+
+for(let counter = 1; counter <= 10; counter += 2){
+    console.log(`counter ke- ${counter}`)
+}
