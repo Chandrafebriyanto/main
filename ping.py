@@ -1,19 +1,9 @@
-num = int(input())
-print("Welcome to FizzBuzz!")
-def fizzbuzz(n):
-    string_num = str(n)
-    if (n % 3 == 0 and n % 7 == 0):
-        return "FizzBuzz"
-    elif (n % 3 == 0):
-        return "Fizz"
-    elif (n % 7 == 0):
-        return "Buzz"
-    else:
-        if ("3" in string_num):
-            return "Almost Fizz"
-        else:
-            return string_num
+def merge(lst1, lst2):
+    my_list = lst1
+    my_list.extend(lst2)
+    my_list.sort()
+    print(my_list)
 
-
-for i in range (1, num + 1):
-    print(fizzbuzz(i))
+x = [1,2,3]
+y = [4,5,6]
+merge(x,y)
