@@ -1,9 +1,8 @@
-def merge(lst1, lst2):
-    my_list = lst1
-    my_list.extend(lst2)
-    my_list.sort()
+def prod(lst):
+    my_list = []
+    for i in range (len(lst)-1, -1, -1):
+        my_list.append(lst[i])
     print(my_list)
 
-x = [1,2,3]
-y = [4,5,6]
-merge(x,y)
+x = [8, 4, 1, 2, 3, 5, 1]
+prod(x)
