@@ -1,5 +1,9 @@
-def calculate_discount(price, discount_percentage):
-    total_after_discount = price * ((100 - discount_percentage)/100)
-    return total_after_discount
+recipe_book = {
+    "Pancakes": ["flour", "milk", "eggs", "sugar"],
+    "Salad": ["lettuce", "tomato", "cucumber", "olive oil"]
+}
 
-print (calculate_discount(75.5, 10))  # Should print 80.0
+print(recipe_book["Pancakes"])
+recipe_book["Smoothie"] = ["banana", "milk", "honey"]
+recipe_book["Smoothie"].append("blueberries")
+print(recipe_book)
