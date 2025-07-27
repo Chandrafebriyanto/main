@@ -1,8 +1,9 @@
 def view_contact(contact_book):
     name = input()
-    print(f"Name: {name}")
     if name in contact_book:
+        print(f"Name: {name}")
         for key, Value in contact_book[name].items():
+            key = key.capitalize()
             print(f"{key}: {Value}")
     else: 
         print("Contact not found!")
