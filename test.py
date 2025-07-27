@@ -1,13 +1,12 @@
-def add_contact(contact_book):
-    name = input("Enter contact name: ")
-    phone = input("Enter phone number: ")
-    email = input("Enter email address: ")
-    address = input("Enter physical address: ")
-    
+def view_contact(contact_book):
+    name = input()
+    print(f"Name: {name}")
     if name in contact_book:
-        print(f"Contact already exists!")
-    else:
-        contact_book[name] = {"phone": phone, "email": email, "address": address}
-        print(f"Contact added successfully!")
-        
-add_contact({"Bob": {"phone": "234-567-8901", "email": "bob@example.com", "address": "456 Oak Ave"}})
+        for key, Value in contact_book[name].items():
+            print(f"{key}: {Value}")
+    else: 
+        print("Contact not found!")
+    
+contact_book = {"Alice": {"phone": "123-456-7890", "email": "alice@example.com", "address": "123 Main St"}}
+view_contact(contact_book)
+
