@@ -33,16 +33,43 @@ def calculate_average_grade(name:str):
         count += value
     return count / len(grade)
 
+def list_students_by_course(course:str):
+    course_students = []
+    for name, details in student_records.items():
+        if course in details["courses"]:
+            course_students.append(name)
+    return course_students
+
+def filter_top_students (threshold: float):
+    top_student = []
+    for name in student_records:
+        if calculate_average_grade(name) >= threshold:
+            top_student.append(name)
+    return top_student
+
 add_student("Alice", 20, ["Math", "Physics"])
-add_student("Bob", 22, ["Biology", "Chemistry"])
+add_student("Bob", 22, ["Math", "Biology"])
+add_student("Diana", 23, ["Chemistry", "Physics"])
+print("")
+
 add_grade("Alice", 90)
 add_grade("Alice", 85)
 add_grade("Bob", 75)
-print(calculate_average_grade("Alice"))  # Should return 87.5
-print(calculate_average_grade("Bob"))  # Should return 75.0
-print(calculate_average_grade("Charlie"))  # Non-existent student, should print message and return None
-print(calculate_average_grade("Alice"))  # Should return 87.5 again
-# print(is_enrolled("Alice", "Math"))  # Should return True
-# print(is_enrolled("Alice", "Biology"))  # Should return False
-# print(is_enrolled("Bob", "Biology"))  # Should return True
-# print(is_enrolled("Charlie", "Math"))  # Non-existent student, should print message and return False
+add_grade("Diana", 95)
+print("")
+
+print(filter_top_students(80))  
+print(filter_top_students(90))  
+print(filter_top_students(100)) 
+print("")
+
+print(calculate_average_grade("Alice"))  
+print(calculate_average_grade("Bob"))  
+print(calculate_average_grade("Charlie"))  
+print(calculate_average_grade("Alice"))
+print("")
+
+print(is_enrolled("Alice", "Math"))  
+print(is_enrolled("Alice", "Biology"))  
+print(is_enrolled("Bob", "Biology"))  
+print(is_enrolled("Charlie", "Math")) 
