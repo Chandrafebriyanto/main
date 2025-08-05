@@ -23,7 +23,7 @@ print(sum_positive_evens(numbers))
 def house_of_lists(list_of_lists):
     # Filter lists with a sum <= 50
     filtered_lists = [lst for lst in list_of_lists if sum(lst) <= 50]
-    # print(filtered_lists)
+    print(filtered_lists)
     # Extract numbers < 5 from the filtered lists
     extracted_numbers = [num for lst in filtered_lists for num in lst if num < 5]
     # Return the combined list of numbers
