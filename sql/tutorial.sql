@@ -22,88 +22,88 @@ RENAME TABLE employees TO nama_tabel_baru;
 DROP TABLE employees; 
 
 --menambah kolom pada tabel
-ALTER TABLE employees /memanggil tabel/
+ALTER TABLE employees /*memanggil tabel*/
 ADD phone_number VARCHAR(15); --menambah kolom pada tabel
 
 --mengubah nama kolom 
 ALTER TABLE employees
-RENAME COLUMN hourly_pas TO hourly_pay; /tag mengganti nama kolom/
+RENAME COLUMN hourly_pas TO hourly_pay; /*tag mengganti nama kolom*/
 
 --mengganti tipe data kolom
 ALTER TABLE employees
-MODIFY COLUMN email VARCHAR(100); /tag mengganti tipe data kolom/
+MODIFY COLUMN email VARCHAR(100); /*tag mengganti tipe data kolom*/
 
 --memindahkan posisi kolom setelah kolom last_name
 ALTER TABLE employees 
 MODIFY email VARCHAR(100) 
-AFTER last_name; /tag mengubah posisi kolom/
+AFTER last_name; /*tag mengubah posisi kolom*/
 
 --memindahkan kolom email ke kolom pertama
 ALTER TABLE employees 
 MODIFY email VARCHAR(100) 
-FIRST; /tag mengubah posisi kolom ke kolom pertama/
+FIRST; /*tag mengubah posisi kolom ke kolom pertama*/
 
 --menghapus kolom
 ALTER TABLE employees
-DROP COLUMN phone_number; /tag menghapus kolom/
+DROP COLUMN phone_number; /*tag menghapus kolom*/
 
 --memasukan nilai pada database single kolom
 INSERT INTO employees 
-VALUES (1, "chandra", "febriyanto", 25.20, "2021-01-20"); /tag memberi nilai kolom/
+VALUES (1, "chandra", "febriyanto", 25.20, "2021-01-20"); /*tag memberi nilai kolom*/
 
 --memasukan nilai pada database multi kolom
 INSERT INTO employees
 VALUES  (2, "Squidward", "Tentacles", 15.00, "2023-01-03"),
         (3, "Spongebob", "Squarepants", 12.50, "2023-01-04"), 
         (4, "Patrick", "Star", 12.50, "2023-01-04"), 
-        (5, "Sandy", "Cheeks", 17.25, "2023-01-06"); /tag memberi nilai multi kolom dipisahkan dengan koma/
+        (5, "Sandy", "Cheeks", 17.25, "2023-01-06"); /*tag memberi nilai multi kolom dipisahkan dengan koma*/
 
 --memasukan nilai pada data tertentu sesuai variabel
-INSERT INTO employees(employee_id, first_name, last_name) /menulis nama variabel yang dibutuhkan saja/
+INSERT INTO employees(employee_id, first_name, last_name) /*menulis nama variabel yang dibutuhkan saja*/
 VALUES  (6, "Sheldon", "Plankton");  
 
 --menampilkan tabel dengan kolom tertentu
-SELECT first_name, last_name /menyebutkan kolom yang ingin ditampilkan dipisahkan dengan tanda koma/
+SELECT first_name, last_name /*menyebutkan kolom yang ingin ditampilkan dipisahkan dengan tanda koma*/
 FROM employees; 
 
 --menampilan tabel dengan data yang lebih spesifik
 SELECT * FROM employees
-WHERE employee_id /menyebutkan nama kolom/ = 1; /menyebutkan tipe data yang spesifik untuk pemanggilan kolom/
+WHERE employee_id /*menyebutkan nama kolom*/ = 1; /*menyebutkan tipe data yang spesifik untuk pemanggilan kolom*/
 
 --memperbarui isi tabel, seperti mengganti nama nilai kolom
 UPDATE employees /* tag memperbarui kolom*/
-SET hire_date = "2023-01-07", hourly_pas = 12.00 /nilai yang perlu diganti/
+SET hire_date = "2023-01-07", hourly_pas = 12.00 /*nilai yang perlu diganti*/
 WHERE employee_id = 6
 
 --menghapus nilai pada tabel secara spesifik
 DELETE FROM employees 
-WHERE employee_id = 7/baris yang ingin di hapus/
+WHERE employee_id = 7/*baris yang ingin di hapus*/
 
 --program data tidak menyimpan secara otomatis (autosave)
-SET AUTOCOMMIT = OFF; /untuk mengaktifkan atau menonaktifkan autosave/
+SET AUTOCOMMIT = OFF; /*untuk mengaktifkan atau menonaktifkan autosave*/
 
 --menyimpan data program secara manual
-COMMIT; /untuk save data/
+COMMIT; /*untuk save data*/
 
 --program untuk mengembalikan data setelah di commit (undo) dengan syarat data sudah di commit terlebih dahulu
-ROLLBACK; /undo program/
+ROLLBACK; /*undo program*/
 
 --program untuk membuat nama yang berbeda
 CREATE TABLE product(
 	product_id INT,
-	product_name VARCHAR(25) UNIQUE, /tag untuk membuat nama yang berbeda (non-duplikat)/
+	product_name VARCHAR(25) UNIQUE, /*tag untuk membuat nama yang berbeda (non-duplikat)*/
 	price DECIMAL(4, 2)
 );
 
 --program mengaktifkan UNIQUE CONSTRAINT jika dalam pembuatan table belum diberi tag UNIQUE
 ALTER Table product
-ADD constraint /menambahkan contraint sebelum tag UNIQUE untuk memberitahukan program jika tidak boleh ada nilai yang sama/
+ADD constraint /*menambahkan contraint sebelum tag UNIQUE untuk memberitahukan program jika tidak boleh ada nilai yang sama*/
 UNIQUE (product_name);
 
 --contoh jika ada nama produk yang sama
 INSERT INTO product
 VALUES 	(101, "beras", 2.00),
-	 	(102, "tomat", 2.00),
+		(102, "tomat", 2.00),
 		(103, "timun", 0.20),
 		(104, "tomat", 0.20)
 
@@ -124,7 +124,7 @@ now untuk menulis tanggal dan waktu sekarang khusus tipe data DATETIME
 CREATE TABLE product(
 	product_id INT,
 	product_name VARCHAR(25),
-	price DECIMAL(4, 2) NOT NULL /harus menambahkan tag tersebut agar nilai tidak boleh kosong/
+	price DECIMAL(4, 2) NOT NULL /*harus menambahkan tag tersebut agar nilai tidak boleh kosong*/
 );
 
 --program kolom tidak boleh bernilai NULL / kosong jika tabel sudah dibuat dan ingin menambahkan fungsi NOT NULL
@@ -138,13 +138,13 @@ CREATE Table employees(
 	last_name VARCHAR(50), 
 	hourly_pay DECIMAL(5, 2),
 	hire_date DATE
-	CONSTRAINT chk_hourly_pay CHECK (hourly_pay >= 10.00) /artinya nilai gaji harus lebih besr dari pada 10/
+	CONSTRAINT chk_hourly_pay CHECK (hourly_pay >= 10.00) /*artinya nilai gaji harus lebih besr dari pada 10*/
 );
 
 --jika tabel sudah dibuat
 ALTER TABLE employees
 ADD constraint 
-chk_hourly_pay check (hourly_pas >= 10.00); /chk_hourly_pay adalah pemberian nama untuk program CHECK/
+chk_hourly_pay check (hourly_pas >= 10.00); /*chk_hourly_pay adalah pemberian nama untuk program CHECK*/
 
 --untuk menghapus CHECK
 alter table employees
@@ -159,13 +159,13 @@ CREATE Table product(
 
 --ketika ingin menambahkan di tabel yang sudah dibuat
 ALTER Table product
-alter price SET DEFAULT 0 /harus ditambah tag SET DEFAULT (nilai) untuk menambahkan nilai default/
+alter price SET DEFAULT 0 /*harus ditambah tag SET DEFAULT (nilai) untuk menambahkan nilai default*/
 
 --membuat tanggal secara otomatis
 CREATE Table transaksi(
 	transaksi_id INT,
 	amount DECIMAL(5,2),
-	transaksi_date DATETIME DEFAULT now() /harus ditambahkan default now/
+	transaksi_date DATETIME DEFAULT now() /*harus ditambahkan default now*/
 )
 
 --PRIMARY KEY = diterapkan untuk nilai kolom yang tidak sama atau null
