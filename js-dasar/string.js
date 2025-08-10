@@ -1,8 +1,8 @@
-const name = "Alexander Kurniawan"
-console.log(name.length)
-console.log(name.toLowerCase())
-console.log(name.toUpperCase())
-console.log(name.split(" "))
+const name = "Alexander Kurdistani"
+console.log(name.length) //menghitung panjang karakter
+console.log(name.toLowerCase()) //menjadikan huruf kecil
+console.log(name.toUpperCase()) //menjadikan huruf besar
+console.log(name.split(" ")) // memotong kata
 
-const input = "       Input data         "
+const input = "       Input data         " //menghilangkan spasi kiri kana / start end
 console.log(input.trim().toUpperCase())
