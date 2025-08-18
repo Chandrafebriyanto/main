@@ -18,13 +18,20 @@ def update_stock(item:str, quantity:int):
     inventory[item]["stock"] += quantity
     print(f"Stock for '{item}' updated successfully.")
 
+def check_availability(item:str):
+    if item not in inventory:
+        return "Item not found"
+    stock = inventory[item]["stock"]
+    return stock
 
-add_item("Apple", 0.5, 100)
-add_item("Banana", 0.2, 50)
-add_item("Apple", 0.6, 30)  # Should print an error
-update_stock("Apple", -20)
-update_stock("Banana", 30)
-update_stock("Orange", 10)  # Should print an error
-update_stock("Apple", -90)
-print(inventory)  
-    
+def sales_report(sales):
+    total_revenue = 0
+    for item, quantity in sales.items():
+        print(f"Item: {item}, Quantity: {quantity}")
+
+
+add_item("Apple", 0.5, 50)
+add_item("Banana", 0.2, 60)
+sales = {"Apple": 30, "Banana": 20, "Orange": 10}  # Orange should print an error
+print(sales_report(sales))  # Should output: 19.0
+print(inventory)
