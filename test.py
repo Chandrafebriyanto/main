@@ -7,11 +7,15 @@ class person:
         self.faculty = faculty
         self.campus = campus
 
-class student(person):
     def introduce(self):
-        print(f"Hello, my name is {self.name}. I am in class {self.Class} with NIM {self.nim}. I study in the {self.department} department, faculty of {self.faculty}, at {self.campus} campus.")
+        print(f"Hello everyone, my name is {self.name}.")
+        print(f"I am a student of {self.department} ")
+        print(f"department, {self.faculty} faculty at {self.campus}.")  
 
-student1 = student("Candra Febriyanto", "2024A", "24091397027", "Informatics Management", "Vocational", "State of Surabaya University")
+student1 = person(
+                "Candra Febriyanto", "2024A", "24091397027", 
+                "Informatics Management", "Vocational", 
+                "State of Surabaya University")
 student1.introduce()
 
 
