@@ -23,9 +23,10 @@ student1.introduce()
 import turtle
 
 class MyTurtle:
-    def __init__(self, color):
+    def __init__(self, color, shape = "turtle"):
         self.t = turtle.Turtle()  
-        self.t.color(color)    
+        self.t.color(color)
+        self.t.shape(shape)    
 
     def maju(self, jarak):
         self.t.forward(jarak)

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulasi Bola Memantul 2D - Unity</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Simulasi Bola Memantul 2D - Unity</h1>
+        <p>
+          Visualisasi hasil script pemrograman game Unity untuk simulasi fisika
+          2D
+        </p>
+      </div>
+
+      <div class="content">
+        <div class="game-container">
+          <div class="game-area">
+            <div class="ball" id="ball"></div>
+          </div>
+        </div>
+
+        <div class="info-container">
+          <div class="info-panel">
+            <h2>Status Permainan</h2>
+
+            <div class="status-item">
+              <span class="status-label">Kecepatan:</span>
+              <span class="status-value" id="speed-value">5.0 unit/detik</span>
+            </div>
+
+            <div class="status-item">
+              <span class="status-label">Arah:</span>
+              <span class="status-value" id="direction-value">45 derajat</span>
+            </div>
+
+            <div class="status-item">
+              <span class="status-label">Elastisitas:</span>
+              <span class="status-value" id="elasticity-value">80%</span>
+            </div>
+
+            <div class="status-item">
+              <span class="status-label">Waktu:</span>
+              <span class="status-value" id="time-value">0 detik</span>
+            </div>
+
+            <div class="status-item">
+              <span class="status-label">Jumlah Tumbukan:</span>
+              <span class="status-value" id="collision-value">0</span>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button id="start-btn">Mulai Simulasi</button>
+            <button class="reset-btn" id="reset-btn">Reset Bola (R)</button>
+            <button id="pause-btn">Jeda</button>
+            <button id="speed-btn">Tambah Kecepatan</button>
+          </div>
+        </div>
+
+        <div class="physics-explanation">
+          <h3>Fisika di Balik Simulasi</h3>
+          <p>
+            Simulasi ini menerapkan hukum pemantulan cahaya di mana sudut datang
+            sama dengan sudut pantul. Faktor elastisitas menentukan berapa
+            banyak energi yang dipertahankan setelah tumbukan.
+          </p>
+          <p>
+            Script Unity mengontrol pergerakan bola menggunakan Rigidbody2D dan
+            mendeteksi tumbukan dengan OnCollisionEnter2D.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
