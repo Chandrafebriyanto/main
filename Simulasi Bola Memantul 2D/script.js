@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
   speedBtn.addEventListener("click", function () {
-    ballState.vx *= 1.2;
-    ballState.vy *= 1.2;
+    ballState.vx *= 1.5;
+    ballState.vy *= 1.5;
     const speed = Math.sqrt(ballState.vx ** 2 + ballState.vy ** 2);
     speedValue.textContent = speed.toFixed(1) + " px/detik";
   });
