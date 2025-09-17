@@ -7,7 +7,7 @@ class Menuitem:
         self.index = index
     
     def menu(self):
-        print(f"{self.index}. {self.name} : ${self.price} ({self.details})")
+        print(f"{self.index}. {self.name} : ${self.price}, ({self.details})")
     
     def count(self, many):
         if many >= 3:
@@ -16,12 +16,12 @@ class Menuitem:
         return self.price * many
 
 menus = [
-    [1, "Sandwich", 5, "330kcal"], 
-    [2, "Chocolate", 4, "420kcal"], 
-    [3, "Cream Puff", 2, "180kcal"],
-    [4, "Coffee", 3, "180mL"],
-    [5, "Orange Juice", 2, "350mL"],
-    [6, "Expresso", 3, "30mL"],
+    [1, "Nasi Goreng",          10000,  "330kcal"], 
+    [2, "Mie Goreng",           10000,  "180kcal"], 
+    [3, "Nasi Goreng Campur",   13000,  "420kcal"],
+    [4, "Es Teh",               3000,   "180mL"],
+    [5, "Es Jeruk",             5000,   "180mL"],
+    [6, "Kopi",                 4000,   "30mL"],
     ]
 
 print("Menu:")
@@ -30,10 +30,18 @@ for index, name, price, details in menus:
     menu_item.menu()
 print("-"*30)
 
-order = int(input("Enter menu number to order: "))
+order = int(input("Masukan nomer menu yang ingin dipesan: "))
 order_selected = menus[order - 1]
 order_item = Menuitem(order_selected[0], order_selected[1], order_selected[2], order_selected[3])
-many = int(input("How many meals would you like to purchase? (10% off for 3 or more): "))
+many = int(input("Masukan jumlah pesanan: '(akan mendapatkan potongan 10% jika pembelian 3 atau lebih)' "))
 
 result = order_item.count(many)
-print(f"Total cost: ${result}")
+print("-"*30)
+print("Rincian Pembelian:")
+print(f"Menu : {order_item.name}")
+print(f"Harga satuan: ${order_item.price}")
+print(f"Jumlah: {many}")
+if many >= 3:
+    print("Mendapatkan diskon 10%")
+print(f"Total Pembayaran: Rp{result}")
+print("-"*30)
