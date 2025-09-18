@@ -7,7 +7,7 @@ class Menuitem:
         self.index = index
     
     def menu(self):
-        print(f"{self.index}. {self.name} : ${self.price}, ({self.details})")
+        print(f"{self.index}. {self.name} : Rp{self.price}, ({self.details})")
     
     def count(self, many):
         if many >= 3:
@@ -34,9 +34,9 @@ order = int(input("Masukan nomer menu yang ingin dipesan: "))
 order_selected = menus[order - 1]
 order_item = Menuitem(order_selected[0], order_selected[1], order_selected[2], order_selected[3])
 many = int(input("Masukan jumlah pesanan: '(akan mendapatkan potongan 10% jika pembelian 3 atau lebih)' "))
-
 result = order_item.count(many)
 print("-"*30)
+
 print("Rincian Pembelian:")
 print(f"Menu : {order_item.name}")
 print(f"Harga satuan: ${order_item.price}")
