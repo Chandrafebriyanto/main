@@ -11,6 +11,7 @@ class Square:
 
 persegi_1 = Square(5)
 persegi_2 = Square(7)
+persegi_3 = Square(10)
 
 print("=== Persegi 1 ===")
 print(f"Panjang Sisi : {persegi_1.sisi}")
@@ -24,3 +25,8 @@ print(f"Luas         : {persegi_2.luas()}")
 print(f"Keliling     : {persegi_2.keliling()}")
 print()
 
+print("=== Persegi 3 ===")
+print(f"Panjang Sisi : {persegi_3.sisi}")
+print(f"Luas         : {persegi_3.luas()}")
+print(f"Keliling     : {persegi_3.keliling()}")
+print()

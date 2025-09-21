@@ -28,9 +28,10 @@ fruit_1 = fruits("Apple", "Round", "Red", "Sweet", 10)
 fruit_2 = fruits("Banana", "Curved", "Yellow", "Sweet", 20)
 fruit_3 = fruits("Orange", "Round", "Orange", "Sweet and Sour", 15)
 
-# print(fruits)
-# print(fruit_1)
-# print(fruit_1.name)
+print(fruits)
+print(fruit_1)
+print(fruit_1.name)
+print()
 
 fruit_1.describe()
 fruit_2.describe()
