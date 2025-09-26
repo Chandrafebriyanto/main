@@ -1,0 +1,14 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    padding: 10px;
+}
+nav a{
+    text-decoration: none;
+    padding: 0 10px;
+}
+.logo, nav a{
+    color: #fff;
+}

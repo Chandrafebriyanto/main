@@ -1,0 +1,10 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+}
+.box{
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
