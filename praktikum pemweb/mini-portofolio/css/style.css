@@ -101,7 +101,11 @@ body::-webkit-scrollbar {
 #username {
   font-size: 1.5em;
   padding: 5px 25px;
-  background-image: linear-gradient(90deg, var(--fourth) 0%, var(--second) 100%);
+  background-image: linear-gradient(
+    90deg,
+    var(--fourth) 0%,
+    var(--second) 100%
+  );
   border-radius: 7px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   cursor: pointer;
@@ -216,11 +220,13 @@ body::-webkit-scrollbar {
   text-align: justify;
 }
 
-.about, .contact{
+.about,
+.contact {
   overflow: hidden;
 }
 
-.content-contact h1, .container-message{
+.content-contact h1,
+.container-message {
   display: flex;
   justify-content: center;
 }
@@ -296,7 +302,7 @@ textarea {
   font-weight: bolder;
 }
 
-.project img{
+.project img {
   width: 200px;
   height: auto;
   object-position: center;
@@ -304,12 +310,12 @@ textarea {
   margin-bottom: 10px;
 }
 
-.tittle{
+.tittle {
   font-size: 1.5em;
   font-weight: 1000;
 }
 
-.describe{
+.describe {
   font-family: "roboto";
 }
 
@@ -382,23 +388,31 @@ textarea {
     margin-bottom: 36px;
   }
 
-  .project img{
+  .project img {
     width: 150px;
     height: auto;
   }
 
-  .tittle{
+  .tittle {
     font-size: 1.2em;
     font-weight: 1000;
   }
 
-  .describe{
+  .describe {
     font-family: "roboto";
     font-size: 0.9em;
+  }
+  .about,
+  .contact {
+    overflow: visible;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .about,
+  .contact {
+    overflow: visible;
+  }
   .container {
     margin: 20px 3%;
   }
@@ -457,7 +471,7 @@ textarea {
     margin: 10px 0;
   }
 
-  .project img{
+  .project img {
     width: 100px;
     height: auto;
   }
