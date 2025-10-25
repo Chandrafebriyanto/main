@@ -3,7 +3,7 @@ import UserGreeting from "./UserGreeting";
 function App() {
   return (
     <>
-      <UserGreeting  isLoggedIn={true}  username="Candra"/>
+      <UserGreeting isLoggedIn={true} username="Candra"/>
     </>
   );
 }
