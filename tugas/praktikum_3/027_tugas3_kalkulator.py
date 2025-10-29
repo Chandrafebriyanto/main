@@ -1,5 +1,6 @@
 class Kalkulator:
     def hitung(self, num1=None, num2=None, num3=None):
+        
         if num1 is not None and num2 is not None and num3 is not None:
             print(f"Menjumlahkan tiga angka: {num1} + {num2} + {num3}")
             return num1 + num2 + num3

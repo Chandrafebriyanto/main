@@ -9,7 +9,6 @@ class Mobil(Transportasi):
 class Kapal(Transportasi):
     def bergerak(Self):
         print("Kapal bergerak di laut")
-        
 class Pesawat(Transportasi):
     def bergerak(Self):
         print("Pesawat bergerak di udara")
