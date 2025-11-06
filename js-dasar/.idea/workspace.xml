@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9ed86ef-346f-4628-a761-01bbe6285192" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e9ed86ef-346f-4628-a761-01bbe6285192" name="Changes" comment="commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +63,7 @@
     "Node.js.symbol.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "codingGabut",
+    "git-widget-placeholder": "test",
     "last_opened_file_path": "D:/codingGabut/js-dasar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -115,6 +113,7 @@
       <workItem from="1755611929498" duration="1045000" />
       <workItem from="1755688231943" duration="2919000" />
       <workItem from="1755759830023" duration="1930000" />
+      <workItem from="1761785340570" duration="597000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
