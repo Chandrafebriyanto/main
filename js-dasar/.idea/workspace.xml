@@ -4,7 +4,91 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9ed86ef-346f-4628-a761-01bbe6285192" name="Changes" comment="commit" />
+    <list default="true" id="e9ed86ef-346f-4628-a761-01bbe6285192" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/../news-website/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Console/Kernel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Exceptions/Handler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Controllers/Controller.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Kernel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/Authenticate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/EncryptCookies.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/PreventRequestsDuringMaintenance.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/TrimStrings.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/TrustHosts.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/TrustProxies.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/ValidateSignature.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Models/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Providers/AppServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Providers/AuthServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Providers/BroadcastServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Providers/EventServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/app/Providers/RouteServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/artisan" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/bootstrap/app.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/bootstrap/cache/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/app.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/broadcasting.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/cache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/cors.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/database.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/filesystems.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/hashing.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/logging.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/mail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/queue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/sanctum.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/services.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/session.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/config/view.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/database/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/database/factories/UserFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/database/seeders/DatabaseSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/lang/en/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/lang/en/pagination.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/lang/en/passwords.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/lang/en/validation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/public/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/public/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/resources/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/resources/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/resources/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/resources/views/welcome.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/routes/api.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/routes/channels.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/routes/console.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/routes/web.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/app/public/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/framework/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/framework/cache/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/framework/cache/data/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/framework/sessions/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/framework/testing/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/framework/views/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/storage/logs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/tests/CreatesApplication.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/tests/Feature/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/tests/TestCase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/tests/Unit/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../news-website/vite.config.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,42 +127,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.json.html.executor": "Run",
-    "Node.js.array_library.js.executor": "Run",
-    "Node.js.bigInt.js.executor": "Run",
-    "Node.js.boolean.js.executor": "Run",
-    "Node.js.date.js.executor": "Run",
-    "Node.js.json.js.executor": "Run",
-    "Node.js.map.js.executor": "Run",
-    "Node.js.math.py.js.executor": "Run",
-    "Node.js.number.js.executor": "Run",
-    "Node.js.object.js.executor": "Run",
-    "Node.js.proxy.js.executor": "Run",
-    "Node.js.reflect.js.executor": "Run",
-    "Node.js.regexp.js.executor": "Run",
-    "Node.js.set.js.executor": "Debug",
-    "Node.js.string.js.executor": "Run",
-    "Node.js.symbol.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "test",
-    "last_opened_file_path": "D:/codingGabut/js-dasar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.json.html.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.array_library.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.bigInt.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.boolean.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.date.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.json.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.map.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.math.py.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.number.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.object.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.proxy.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.reflect.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.regexp.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.set.js.executor&quot;: &quot;Debug&quot;,
+    &quot;Node.js.string.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.symbol.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/codingGabut/js-dasar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\codingGabut\js-dasar" />
@@ -114,6 +198,7 @@
       <workItem from="1755688231943" duration="2919000" />
       <workItem from="1755759830023" duration="1930000" />
       <workItem from="1761785340570" duration="597000" />
+      <workItem from="1762869323733" duration="60000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
