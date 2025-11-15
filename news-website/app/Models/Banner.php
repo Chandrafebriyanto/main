@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
     protected $fillable = [
-        'news_id'
+        'name',
+        'username',
+        'avatar',
+        'bio'
     ];
 
     public function news() {
-        return $this->belongsTo(News::class);
+        return $this->hasMany(News::class);
     }
 }

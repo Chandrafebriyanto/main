@@ -8,26 +8,24 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('news_categories', function (Blueprint $table) {
+        Schema::create('authors', function (Blueprint $table) {
             $table->id();
-            $table->string('tittle');
-            $table->string('slug')->unique();
+            $table->string('name');
+            $table->string('username')->unique();
+            $table->string('avatar');
+            $table->longText('bio');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('news_categories');
+        Schema::dropIfExists('authors');
     }
 };
