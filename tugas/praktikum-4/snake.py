@@ -4,7 +4,6 @@ import random
 import time
 import os
 
-
 class GameObject:
     def __init__(self, color, position):
         self.color = color
