@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///D:/codingGabut/company-profile/app/page.tsx"],"sourcesContent":["\nexport default function Home() {\n  return (\n    <div>\n      <h1>Hello world</h1>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AACe,SAAS;IACtB,qBACE,8OAAC;kBACC,cAAA,8OAAC;sBAAG;;;;;;;;;;;AAGV","debugId":null}}]
+}
