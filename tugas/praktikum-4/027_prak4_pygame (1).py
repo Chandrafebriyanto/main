@@ -8,7 +8,7 @@ pygame.mixer.music.load('Blue Moon.mp3')
 pygame.mixer.music.play(-1)
 
 image = pygame.image.load('logo-unesa.png')
-width, height = 600, 400
+width, height = 1000, 600
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Menampilkan Gambar dan Memutar Musik')
 

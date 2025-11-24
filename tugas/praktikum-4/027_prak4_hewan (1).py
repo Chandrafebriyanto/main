@@ -1,22 +1,29 @@
 import tkinter as tk
+import pygame as pg
+import os
+pg.mixer.init()
 
 class Animal:
     def make_sound(self):
         return "some sound"
-    
+
 class Bird(Animal):
     def make_sound(self):
+        pg.mixer.music.load('bird.mp3')
+        pg.mixer.music.play()
         return "Tweet tweet"
 
 class Dog(Animal):
     def make_sound(self):
+        pg.mixer.music.load('dog.mp3')
+        pg.mixer.music.play() 
         return "Woof woof"
 
 def show_sound(animal):
     label_result.config(text=animal.make_sound())
 
 root = tk.Tk()
-root.geometry("500x200")
+root.geometry("500x300")
 root.title("Polimorphism Example")
 
 label_result = tk.Label(root, text="Klik salah satu tombol untuk mendengar suara hewan", font=("Arial", 14))
