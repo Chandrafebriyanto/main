@@ -1,0 +1,14 @@
+props adalah cara untuk meneruskan data dari komponen induk ke komponen anak dalam aplikasi React
+Cara Kerja:
+1. Penerusan props: Komponen induk meneruskan data sebagai atribut saat memanggil komponen anak.
+Contoh: <Avatar person={{ name: 'Lin Lanying' }} size={100} />.
+
+2. Penerimaan props: Komponen anak menerima data yang diteruskan melalui parameter fungsi (dalam bentuk objek).
+Contoh: function Avatar({ person, size }) { ... }.
+
+3. Penggunaan props: Data yang diterima dapat digunakan di dalam logika komponen anak untuk merender tampilan atau menjalankan fungsi. 
+
+
+conditional rendering adalah teknik untuk menampilkan konten yang berbeda berdasarkan kondisi tertentu. Ini memungkinkan Anda untuk mengendalikan apa yang ditampilkan kepada pengguna berdasarkan state, props, atau logika lainnya.
+Cara Kerja:
+1. 
